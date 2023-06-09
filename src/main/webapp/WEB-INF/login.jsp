@@ -1,26 +1,25 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
-	pageEncoding="UTF-8"%>
-<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
-<%@ taglib prefix="form" uri="http://www.springframework.org/tags/form"%>
-<%@ page isErrorPage="true"%>
+    pageEncoding="UTF-8"%>
+<%@ taglib prefix = "c" uri = "http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix = "form" uri="http://www.springframework.org/tags/form" %>
+<%@ page isErrorPage="true" %>
 <!DOCTYPE html>
 <html>
 <head>
 <meta charset="UTF-8">
-<title>PuppyShop & Shelter</title>
-<link rel="stylesheet" href="/css/style.css">
-<script type="text/javascript" src="/js/app.js"></script>
-<!-- for Bootstrap CSS -->
+<title>Log into your account</title>
+<link rel="stylesheet" type="text/css" href="/css/style.css">
+	<script type="text/javascript" src="/js/app.js"></script>
+	<!-- for Bootstrap CSS -->
 <link rel="stylesheet" href="/webjars/bootstrap/css/bootstrap.min.css" />
 <!-- YOUR own local CSS -->
-<link rel="stylesheet" href="/css/main.css" />
+<link rel="stylesheet" href="/css/main.css"/>
 <!-- For any Bootstrap that uses JS -->
 <script src="/webjars/bootstrap/js/bootstrap.min.js"></script>
-<script src="/js/javascript.js"></script>
 
 </head>
 <body>
-	<header class="header mx-auto d-flex justify-content-between fixed-top">
+<header class="header mx-auto d-flex justify-content-between fixed-top">
 		<div class="pt-4 col-4">
 			<div>
 				<img class="myIcon" alt="location Icon"
@@ -54,139 +53,21 @@
 			</div>
 		</div>
 	</header>
-	<div class="position-relative"
-		style="height: 800px; margin-top: 140px;">
-		<img class="bgPic" alt="bg walpaper"
-			src="${pageContext.request.contextPath}/images/wallpaper-grass-puppy4.jpeg">
-		<div class="absolute mx-auto col-8 pt-2">
-			<h1 class="mb-3 display-4 col-8 mx-auto text-center"
-				style="margin-top: 50px; color: #C02C30;">Welcome to PuppyShop!</h1>
-			<h3></h3>
-			<button class="scroll-btn" onclick="scrollX(-100)"><</button>
-			<button class="scroll-btn" onclick="scrollX(100)">></button>
-			<div
-				class="d-flex mx-auto col-8 overflow-auto overflow-hidden scroll-container">
-				<c:forEach var="i" begin="0" end="8">
-					<div class="puppy p-1 rounded"
-						 onmouseover='changeColor(this);'
-						 onmouseout='resetColor(this);'>
-						<img
-							onclick='popupCenter({url: "http://localhost:8080/", title: "details", w: 500, h: 500});'
-							class="mypicture" alt="my picture1" title="click me"
-							src="${pageContext.request.contextPath}/images/puppyImg${i}.jpeg">
-						<p class="mt-3 text-danger">
-							<c:out value="${objList[i].name}" />
-						</p>
+	<div class="top-div-under-header border border-dark col-5">
+		<form:form action="/login" method="post" modelAttribute="newLogin" style="padding: 100px 100px;">
+					<h3 class="mb-3">Login</h3>
+					<div class="mb-3">
+						<div class="row"><form:label path="email">Email Address:</form:label></div>
+						<form:errors path="email" class="text-danger"/>
+						<form:input path="email" type="email" class="loginForm" />
 					</div>
-				</c:forEach>
-			</div>
-			<div class="d-flex flex-row-reverse mt-3 col-8 mx-auto">
-				<a href="#" class="btn btn-large bg-success text-light rounded-pill">See
-					available puppies</a>
-			</div>
-		</div>
-
+					<div class="mb-3">
+						<div class="row"><form:label path="password">Password:</form:label></div>
+						<form:errors path="password" class="text-danger"/>
+						<form:input path="password" type="password" class="loginForm" />
+					</div>
+					<input type="submit" value="Login" class="btn btn-primary"/>
+		</form:form>
 	</div>
-	<main>
-		<h1 class="text-center my-5 pt-5">About Us</h1>
-		<h5 class="text-center mx-auto col-9 p-1">We are a community of
-			dog lovers, committed to connecting the nation’s top breeders to
-			caring, responsible individuals and families. We hold ourselves and
-			our customers to the highest standards and aim to improve the life of
-			each puppy, breeder and owner who joins our family.</h5>
-		<div
-			class="aboutUs my-5 p-5 border border-success border-4 d-flex justify-content-around col-9 mx-auto rounded">
-			<div
-				class="box border border-1 border-secondary text-center p-3 rounded">
-				<img class="myMainIcon" alt="safe"
-					src="${pageContext.request.contextPath}/images/SafeIcon.png">
-				<h3>Safe</h3>
-				<p>Our breeders are vetted and screened in partnership with
-					USDA.</p>
-			</div>
-			<div
-				class="box border border-1 border-secondary text-center p-3 rounded">
-				<img class="myMainIcon" alt="healthy"
-					src="${pageContext.request.contextPath}/images/Healthy.png">
-				<h3>Healthy</h3>
-				<p>All our puppies recieve our industry-leading 10-year puppy
-					health commitment.</p>
-			</div>
-			<div
-				class="box border border-1 border-secondary text-center p-3 rounded">
-				<img class="myMainIcon" alt="healthy"
-					src="${pageContext.request.contextPath}/images/travel.png">
-				<h3>Comfy</h3>
-				<p>Our private travel network ensures your new pup arrives home
-					healthy and safe.</p>
-			</div>
-		</div>
-		<h1 class="text-center my-5 pt-5">Reviews</h1>
-		<div id="divReview"
-			class="reviewDiv d-flex justify-content-between mx-auto overflow-auto overflow-hidden text-nowrap">
-			<c:forEach var="i" begin="1" end="3">
-				<img class="personReview rounded" alt="person${i}"
-					src="${pageContext.request.contextPath}/images/person${i}.jpeg">
-				<div class="px-3">
-					<div class="">
-						<c:if test="${i==1}">
-							<p class="m-0 p-0">by Chris W.</p>
-						</c:if>
-						<c:if test="${i==2}">
-							<p class="m-0 p-0">by Mark C.</p>
-						</c:if>
-						<c:if test="${i==3}">
-							<p class="m-0 p-0">by Chloe P.</p>
-						</c:if>
-						<img class="ratingIcon" alt="fiveStar"
-							src="${pageContext.request.contextPath}/images/fiveStarRating.jpeg">
-					</div>
-					<p class="m-0 p-0">I am so in love with my new fur babies,</p>
-					<p class="m-0 p-0">they are absolutely amazing.</p>
-					<p class="m-0 p-0">They were pretty much trained when I got</p>
-					<p class="m-0 p-0">them at 19 weeks old and they are learning
-						more every day.</p>
-				</div>
-			</c:forEach>
-		</div>
-	</main>
-	<footer class="bg-success mt-5 text-center">
-		<h1
-			class="text-light p-1 border border-light border-5 rounded col-3 mx-auto">PuppyShop
-			& Shelter</h1>
-		<div class="mx-auto col-3 mt-5 d-flex justify-content-between">
-			<a href="/" class=" link-dark text-decoration-none">Home</a> <a
-				href="/aboutUs" class=" link-dark text-decoration-none">About Us</a>
-			<a href="/contactUs"
-				class="headerAnchor link-dark text-decoration-none">Contact Us</a><a
-				href="#" class=" link-dark text-decoration-none">Puppies</a> <a
-				href="#" class=" link-dark text-decoration-none">Shelter</a>
-		</div>
-		<div
-			class="d-flex justify-content-between mx-auto col-7 my-5 pb-5 text-light">
-			<div class="d-flex justify-content-between">
-				<img class="footerIcon" alt="phone"
-					src="${pageContext.request.contextPath}/images/phone-call.png">
-				<p>(800) 789-7545</p>
-			</div>
-			<div class="d-flex justify-content-between">
-				<img class="footerIcon" alt="location"
-					src="${pageContext.request.contextPath}/images/location_icon.png">
-				<p class="">9858 Clint Moore Rd # 110 Boca Raton, FL 33496</p>
-			</div>
-			<div class="d-flex justify-content-between">
-				<img class="footerIcon" alt="email"
-					src="${pageContext.request.contextPath}/images/email.png">
-				<p>PuppyShopShelter@Email.com</p>
-			</div>
-		</div>
-		<div class="bg-white py-3">
-			<p>
-				Copyright <span><img class="copyRightIcon" alt="copyright"
-					src="${pageContext.request.contextPath}/images/copyright.png"></span>
-				2023 PuppyShopShelter.com - All Rights Reserved.
-			</p>
-		</div>
-	</footer>
 </body>
 </html>
