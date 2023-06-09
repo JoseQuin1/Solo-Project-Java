@@ -7,7 +7,7 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>Log into your account</title>
+<title>Insert title here</title>
 <link rel="stylesheet" type="text/css" href="/css/style.css">
 	<script type="text/javascript" src="/js/app.js"></script>
 	<!-- for Bootstrap CSS -->
@@ -16,10 +16,9 @@
 <link rel="stylesheet" href="/css/main.css"/>
 <!-- For any Bootstrap that uses JS -->
 <script src="/webjars/bootstrap/js/bootstrap.min.js"></script>
-
 </head>
 <body>
-<header class="header mx-auto d-flex justify-content-between fixed-top">
+	<header class="header mx-auto d-flex justify-content-between fixed-top">
 		<div class="pt-4 col-4">
 			<div>
 				<img class="myIcon" alt="location Icon"
@@ -49,61 +48,10 @@
 			<div class="d-flex justify-content-between">
 				<a href="#" class="headerAnchor link-dark text-decoration-none">Service</a>
 				<a href="/contactUs" class="headerAnchor link-dark text-decoration-none">ContactUs</a>
-								<a href="/login" class="headerAnchor link-dark text-decoration-none">Login</a>
+				<a href="/logout" class="headerAnchor link-dark text-decoration-none">Logout</a>
 			</div>
 		</div>
 	</header>
-	<main 
-		class="top-div-under-header d-flex justify-content-center" 
-		style="min-width:500px; height:80%;" >
-	<div 
-		style="width:90%;">
-		<img 
-			class="myMainIcon" alt="safe"
-			style="width:100%; height:90%;"
-			src="${pageContext.request.contextPath}/images/login-Images/loginLeftColumnImg.png">
-	</div>
-	<div style="min-width:500px; width:500px; padding: 100px 50px 0 0;" >
-		<form:form action="/login" method="post" modelAttribute="newLogin" 
-			style="width:90%; height:auto;"
-			class="">
-					<h3 class="mb-5">Log into PuppyShop</h3>
-					<div class="mb-3">
-						<div class="row">
-							<form:label 
-								path="email"
-								class="loginFormLabel">Email Address:
-							</form:label>
-						</div>
-						<form:errors path="email" class="text-danger"/>
-						<form:input path="email" type="email" class="loginFromInput" />
-					</div>
-					<div class="mb-3">
-						<div class="row">
-							<form:label 
-								path="password"
-								class="loginFormLabel">Password:
-							</form:label>
-						</div>
-						<form:errors path="password" class="text-danger"/>
-						<form:input path="password" type="password" class="loginFromInput" />
-					</div>
-					<div class="d-flex justify-content-center">
-					<input type="submit" value="Login" 
-						class="btn mt-3 bg-primary text-light" 
-						style="width:200px; border-radius:25px;"/>
-					</div>
-					<div class="d-flex justify-content-between mt-4">
-						<div class="loginOrLine"></div>
-						<p style="color:LightGray;" >or</p>
-						<div class="loginOrLine"></div>
-					</div>
-					<div class="d-flex justify-content-center">
-						<a href="/register" 
-							style="text-decoration: none; color:green;">Create new account?</a>
-					</div>
-		</form:form>
-		</div>
-	</main>
+	<p style="margin-top: 150px;">User</p>
 </body>
 </html>

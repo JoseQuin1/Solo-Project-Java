@@ -7,23 +7,25 @@ import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
-
 import com.jquinones.soloproject.models.LoginUser;
 import com.jquinones.soloproject.models.User;
+import com.jquinones.soloproject.services.DogService;
 import com.jquinones.soloproject.services.UserService;
-
 import jakarta.servlet.http.HttpSession;
 import jakarta.validation.Valid;
 
-//.. don't forget to include all your imports! ..
+
 
 @Controller
 public class UserController {
  
- // Add once service is implemented:
+ 
   @Autowired
   private UserService userServ;
+  @Autowired
+  private DogService dogServ;
  
+  
   @GetMapping("/login")
   private String login(Model model){
 //    Bind empty User and LoginUser objects to the JSP
@@ -33,37 +35,50 @@ public class UserController {
    return "login.jsp";
   }
 
+  @GetMapping("/register")
+  private String register(Model model) {
+	  model.addAttribute("newUser", new User());
+	  return "register.jsp";
+  }
   
- @GetMapping("/teams")
- public String books(Model model, HttpSession session){
-	 Long userId = (Long) session.getAttribute("userId");
-	 
-	 if(userId == null) {
-		 return "redirect:/";
-	 }
-	 else {
-		 model.addAttribute("user", userServ.getOne((Long)session.getAttribute("userId")));
-		 return "dashboard.jsp";
-	 }
- }
+  @GetMapping("/profile")
+  private String profile(Model model, HttpSession session) {
+		 Long userId = (Long) session.getAttribute("userId");
+		 User user = userServ.getOne((Long)session.getAttribute("userId"));
+		 
+		 if(userId == null) {
+			 return "redirect:/";
+		 }
+		 
+		 else if(  user.getProfile().equals("Breeder")) {
+			 model.addAttribute("courses", dogServ.all());
+			 model.addAttribute("user", user);
+			 return "profile-breeder.jsp";
+		 }
+		 else{
+			 model.addAttribute("courses", dogServ.all());
+			 model.addAttribute("user", user);
+			 return "profile-user.jsp";
+		 }
+		 
+  }
+  
  
  @PostMapping("/register")
  public String register(@Valid @ModelAttribute("newUser") User newUser, 
          BindingResult result, Model model, HttpSession session) {
      
-     // TO-DO Later -- call a register method in the service 
-     // to do some extra validations and create a new user!
+
      userServ.register(newUser, result);
      
      if(result.hasErrors()) {
-         // Be sure to send in the empty LoginUser before 
-         // re-rendering the page.
+
          model.addAttribute("newLogin", new LoginUser());
-         return "index.jsp";
+         return "register.jsp";
      }else {
     	 userServ.register(newUser, result);
     	 session.setAttribute("userId",newUser.getId());
-    	 return "redirect:/teams";
+    	 return "redirect:/profile";
      }
  
  }
@@ -77,12 +92,12 @@ public class UserController {
  
      if(result.hasErrors()) {
          model.addAttribute("newUser", new User());
-         return "index.jsp";
+         return "login.jsp";
      }
      else {
     	 session.setAttribute("userId", user.getId());
     	 System.out.println(user.getId());
-    	 return "redirect:/teams";
+    	 return "redirect:/profile";
      }
  
      // No errors! 

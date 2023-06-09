@@ -48,7 +48,7 @@ public class User {
     private String confirm;
     
     @NotBlank(message="Profile is required!")
-    private Boolean profile;
+    private String profile;
     
   
     @Column(updatable=false)
@@ -124,11 +124,11 @@ public class User {
 		return createdAt;
 	}
 
-	public Boolean getProfile() {
+	public String getProfile() {
 		return profile;
 	}
 
-	public void setProfile(Boolean profile) {
+	public void setProfile(String profile) {
 		this.profile = profile;
 	}
 
