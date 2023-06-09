@@ -7,8 +7,13 @@ import org.springframework.web.bind.annotation.GetMapping;
 
 @Controller
 public class PuppyController {
+	
+	 @GetMapping("/")
+	 public String index() {
+		 return "redirect:/puppyShop";
+	 }
 
-	@GetMapping("/")
+	@GetMapping("/puppyShop")
 	public String index(Model model) {
 		
 		model.addAttribute("objList", Puppy.puppies());

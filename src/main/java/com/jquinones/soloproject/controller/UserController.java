@@ -24,11 +24,16 @@ public class UserController {
   @Autowired
   private UserService userServ;
  
-     // Bind empty User and LoginUser objects to the JSP
-     // to capture the form input
-//     model.addAttribute("newUser", new User());
-//     model.addAttribute("newLogin", new LoginUser());
- 
+  @GetMapping("/login")
+  private String login(Model model){
+//    Bind empty User and LoginUser objects to the JSP
+//    to capture the form input
+   model.addAttribute("newUser", new User());
+   model.addAttribute("newLogin", new LoginUser());
+   return "login.jsp";
+  }
+
+  
  @GetMapping("/teams")
  public String books(Model model, HttpSession session){
 	 Long userId = (Long) session.getAttribute("userId");

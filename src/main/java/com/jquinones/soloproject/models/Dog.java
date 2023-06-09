@@ -1,5 +1,6 @@
 package com.jquinones.soloproject.models;
 
+import java.text.SimpleDateFormat;
 import java.util.Date;
 
 import jakarta.persistence.Column;
@@ -35,10 +36,16 @@ public class Dog {
 	@NotBlank(message="Breed is required")
     private String breed;
 	
-	@NotNull(message ="Weight is required")
-	private Integer weight;
-    
-    @Column(updatable=false)
+	@NotBlank(message="Mother's weight is required")
+	private Integer momsWeight;
+	
+	@NotBlank(message="Status is required!")
+	private String status;
+	
+	@NotNull(message="Date Available is required!")
+	private SimpleDateFormat dt_available = new SimpleDateFormat("dd-MM-yyyy"); 
+	
+	@Column(updatable=false)
     private Date createdAt;
     private Date updatedAt;
     
@@ -89,14 +96,6 @@ public class Dog {
 		this.breed = breed;
 	}
 
-	public Integer getWeight() {
-		return weight;
-	}
-
-	public void setWeight(Integer weight) {
-		this.weight = weight;
-	}
-
 	public Date getCreatedAt() {
 		return createdAt;
 	}
@@ -111,6 +110,30 @@ public class Dog {
 
 	public void setUpdatedAt(Date updatedAt) {
 		this.updatedAt = updatedAt;
+	}
+
+	public Integer getMomsWeight() {
+		return momsWeight;
+	}
+
+	public void setMomsWeight(Integer momsWeight) {
+		this.momsWeight = momsWeight;
+	}
+
+	public String getStatus() {
+		return status;
+	}
+
+	public void setStatus(String status) {
+		this.status = status;
+	}
+
+	public SimpleDateFormat getDt_available() {
+		return dt_available;
+	}
+
+	public void setDt_available(SimpleDateFormat dt_available) {
+		this.dt_available = dt_available;
 	}
 
 	public User getUser() {

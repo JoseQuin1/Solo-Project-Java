@@ -46,6 +46,10 @@ public class User {
     @NotBlank(message="Confirm Password is required!")
     @Size(min=8, max=128, message="Confirm Password must be between 8 and 128 characters")
     private String confirm;
+    
+    @NotBlank(message="Profile is required!")
+    private Boolean profile;
+    
   
     @Column(updatable=false)
     private Date createdAt;
@@ -120,6 +124,22 @@ public class User {
 		return createdAt;
 	}
 
+	public Boolean getProfile() {
+		return profile;
+	}
+
+	public void setProfile(Boolean profile) {
+		this.profile = profile;
+	}
+
+	public List<Dog> getDoggies() {
+		return doggies;
+	}
+
+	public void setDoggies(List<Dog> doggies) {
+		this.doggies = doggies;
+	}
+
 	public void setCreatedAt(Date createdAt) {
 		this.createdAt = createdAt;
 	}
@@ -131,15 +151,6 @@ public class User {
 	public void setUpdatedAt(Date updatedAt) {
 		this.updatedAt = updatedAt;
 	}
-
-	public List<Dog> getCourses() {
-		return doggies;
-	}
-	
-	public void setCourses(List<Dog> doggies) {
-		this.doggies = doggies;
-	}
-
 
     // TODO - Don't forget to generate getters and setters
     
