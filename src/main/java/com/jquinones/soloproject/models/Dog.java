@@ -1,7 +1,9 @@
 package com.jquinones.soloproject.models;
 
-import java.text.SimpleDateFormat;
+
 import java.util.Date;
+
+import org.springframework.format.annotation.DateTimeFormat;
 
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
@@ -36,14 +38,18 @@ public class Dog {
 	@NotBlank(message="Breed is required")
     private String breed;
 	
-	@NotBlank(message="Mother's weight is required")
-	private Integer momsWeight;
+	@NotNull(message="Weight is required")
+	private Integer weight;
+	
+	@NotBlank(message="Color is required!")
+	private String color;
 	
 	@NotBlank(message="Status is required!")
 	private String status;
 	
-	@NotNull(message="Date Available is required!")
-	private SimpleDateFormat dt_available = new SimpleDateFormat("dd-MM-yyyy"); 
+    @DateTimeFormat(pattern="yyyy-MM-dd")
+    @NotNull(message="Available Date is required!")
+    private Date availableDate;
 	
 	@Column(updatable=false)
     private Date createdAt;
@@ -112,12 +118,12 @@ public class Dog {
 		this.updatedAt = updatedAt;
 	}
 
-	public Integer getMomsWeight() {
-		return momsWeight;
+	public Integer getWeight() {
+		return weight;
 	}
 
-	public void setMomsWeight(Integer momsWeight) {
-		this.momsWeight = momsWeight;
+	public void setWeight(Integer weight) {
+		this.weight = weight;
 	}
 
 	public String getStatus() {
@@ -128,12 +134,20 @@ public class Dog {
 		this.status = status;
 	}
 
-	public SimpleDateFormat getDt_available() {
-		return dt_available;
+	public String getColor() {
+		return color;
 	}
 
-	public void setDt_available(SimpleDateFormat dt_available) {
-		this.dt_available = dt_available;
+	public void setColor(String color) {
+		this.color = color;
+	}
+	
+	public Date getAvailableDate() {
+		return availableDate;
+	}
+
+	public void setAvailableDate(Date availableDate) {
+		this.availableDate = availableDate;
 	}
 
 	public User getUser() {

@@ -30,15 +30,15 @@ public class DogService {
 			return repo.findAll();
 		}
 		
-		public Dog create(Dog course) {
-			return repo.save(course);
+		public Dog create(Dog dog) {
+			return repo.save(dog);
 		}
 		
 		public void delete(Long id) {
 			repo.deleteById(id);
 		}
 		
-		public Dog update(Dog course) {
-			return repo.save(course);
+		public Dog update(Dog dog) {
+			return repo.save(dog);
 		}
 	}

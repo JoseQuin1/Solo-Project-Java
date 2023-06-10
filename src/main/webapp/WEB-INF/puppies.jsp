@@ -49,8 +49,11 @@
 			<div class="d-flex justify-content-between">
 				<a href="#" class="headerAnchor link-dark text-decoration-none">Service</a>
 				<a href="/contactUs"
-					class="headerAnchor link-dark text-decoration-none">ContactUs</a> <a
-					href="#" class="headerAnchor link-dark text-decoration-none">Login</a>
+					class="headerAnchor link-dark text-decoration-none">ContactUs</a>
+				<c:if test="${userId != null}">
+					<a href="/profile" class="headerAnchor link-dark text-decoration-none">My Profile</a>
+				</c:if> 
+				<a	href="#" class="headerAnchor link-dark text-decoration-none">Login</a>
 			</div>
 		</div>
 	</header>

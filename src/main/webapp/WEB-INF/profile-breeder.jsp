@@ -2,6 +2,7 @@
     pageEncoding="UTF-8"%>
 <%@ taglib prefix = "c" uri = "http://java.sun.com/jsp/jstl/core" %>
 <%@ taglib prefix = "form" uri="http://www.springframework.org/tags/form" %>
+<%@ taglib prefix ="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 <%@ page isErrorPage="true" %>
 <!DOCTYPE html>
 <html>
@@ -52,6 +53,82 @@
 			</div>
 		</div>
 	</header>
-	<p style="margin-top: 150px;">Breeder</p>
+	<h1 style="margin-top:150px;">Welcome, ${user.firstName}</h1>
+	<form:form action="/doggies/new" method="post" modelAttribute="dog"
+			style="width:50%; min-width:500px; padding-left: 10px;">
+				<div class="mb-3">
+					<form:label path="name">Name:</form:label>
+					<form:errors path="name" class="text-danger"/>
+					<form:input path="name" type="text" class="form-control" />
+				</div>
+				<div class="mb-3">
+					<form:label path="age">Age:</form:label>
+					<form:errors path="age" class="text-danger"/>
+					<form:input path="age" type="number" class="form-control" />
+				</div>
+				<div class="mb-3">
+					<form:label path="breed">Breed:</form:label>
+					<form:errors path="breed" class="text-danger"/>
+					<form:input path="breed" type="text" class="form-control" />
+				</div>
+				<div class="mb-3">
+					<form:label path="weight">Mother's Weight:</form:label>
+					<form:errors path="weight" class="text-danger"/>
+					<form:input path="weight" type="number" class="form-control" />
+				</div>
+				<div class="mb-3">
+					<form:label path="color">Color:</form:label>
+					<form:errors path="color" class="text-danger"/>
+					<form:input path="color" type="text" class="form-control" />
+				</div>
+				<div class="mb-3">
+					<form:label path="status">Status:</form:label>
+					<form:errors path="status" class="text-danger"/>
+					<form:input path="status" type="text" class="form-control" />
+				</div>
+								<div class="mb-3">
+					<form:label path="availableDate">Status:</form:label>
+					<form:errors path="availableDate" class="text-danger"/>
+					<form:input path="availableDate" type="date" class="form-control" />
+				</div>
+				<input type="submit" value="Submit"/>
+	</form:form>
+	<h3 class="text-center">My Catalog</h3>
+	<div style="
+			height:auto; 
+			width:90%; 
+			min-width: 650px;
+			border-style: solid; 
+			padding: 0 10px; 
+			margin:auto; ">
+			
+		<table class="table table-border">
+			<thead>
+				<tr>
+					<th>Name</th>
+					<th>Age</th>
+					<th>Breed</th>
+					<th>Color</th>
+					<th>Mom's Weight</th>
+					<th>Status</th>
+					<th>Date Available</th>
+				</tr>
+			</thead>
+			<c:forEach var="oneDog" items="${doggies}">
+				<tbody>
+				<c:if test="${oneDog.user.id == userId}">
+					<td><c:out value="${oneDog.name}"></c:out></td>
+					<td><c:out value="${oneDog.age}"></c:out></td>
+					<td><c:out value="${oneDog.name}"></c:out></td>
+					<td><c:out value="${oneDog.breed}"></c:out></td>
+					<td><c:out value="${oneDog.color}"></c:out></td>
+					<td><c:out value="${oneDog.weight}"></c:out></td>
+					<td><fmt:formatDate value="${oneDog.availableDate}" pattern="yyyy-MM-dd"/></td>
+				</c:if>
+				</tbody>
+			</c:forEach>
+		</table>
+	</div>
+	
 </body>
 </html>

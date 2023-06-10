@@ -7,6 +7,8 @@ import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
+
+import com.jquinones.soloproject.models.Dog;
 import com.jquinones.soloproject.models.LoginUser;
 import com.jquinones.soloproject.models.User;
 import com.jquinones.soloproject.services.DogService;
@@ -43,20 +45,21 @@ public class UserController {
   
   @GetMapping("/profile")
   private String profile(Model model, HttpSession session) {
-		 Long userId = (Long) session.getAttribute("userId");
+		 Long userId = (Long)session.getAttribute("userId");
 		 User user = userServ.getOne((Long)session.getAttribute("userId"));
 		 
 		 if(userId == null) {
-			 return "redirect:/";
+			 return "redirect:/login";
 		 }
 		 
-		 else if(  user.getProfile().equals("Breeder")) {
-			 model.addAttribute("courses", dogServ.all());
+		 else if(user.getProfile().equals("Breeder")) {
+			 model.addAttribute("dog", new Dog());
+			 model.addAttribute("doggies", dogServ.all());
 			 model.addAttribute("user", user);
 			 return "profile-breeder.jsp";
 		 }
 		 else{
-			 model.addAttribute("courses", dogServ.all());
+			 model.addAttribute("doggies", dogServ.all());
 			 model.addAttribute("user", user);
 			 return "profile-user.jsp";
 		 }
@@ -87,28 +90,23 @@ public class UserController {
  public String login(@Valid @ModelAttribute("newLogin") LoginUser newLogin, 
          BindingResult result, Model model, HttpSession session) {
      
-     // Add once service is implemented:
+	 
       User user = userServ.login(newLogin, result);
  
      if(result.hasErrors()) {
          model.addAttribute("newUser", new User());
          return "login.jsp";
      }
-     else {
-    	 session.setAttribute("userId", user.getId());
-    	 System.out.println(user.getId());
-    	 return "redirect:/profile";
-     }
- 
-     // No errors! 
-     // TO-DO Later: Store their ID from the DB in session, 
-     // in other words, log them in.
+	 else{
+		 session.setAttribute("userId", user.getId());
+		 return "redirect:/profile";
+	 }
  }
  
  @GetMapping("/logout")
  public String logout(HttpSession session) {
 	 session.invalidate();
-	 return "redirect:/";
+	 return "redirect:/login";
  }
  
 }

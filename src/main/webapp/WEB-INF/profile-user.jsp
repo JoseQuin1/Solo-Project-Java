@@ -18,7 +18,7 @@
 <script src="/webjars/bootstrap/js/bootstrap.min.js"></script>
 </head>
 <body>
-	<header class="header mx-auto d-flex justify-content-between fixed-top">
+<header class="header mx-auto d-flex justify-content-between fixed-top">
 		<div class="pt-4 col-4">
 			<div>
 				<img class="myIcon" alt="location Icon"
@@ -52,6 +52,7 @@
 			</div>
 		</div>
 	</header>
-	<p style="margin-top: 150px;">User</p>
+	<h1 style="margin-top:150px;"> Welcome, ${user.firstName}</h1>
+	
 </body>
 </html>
