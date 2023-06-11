@@ -2,8 +2,7 @@ package com.jquinones.soloproject.models;
 
 
 import java.util.Date;
-
-import org.springframework.format.annotation.DateTimeFormat;
+import java.util.List;
 
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
@@ -12,7 +11,11 @@ import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.JoinColumn;
+import jakarta.persistence.JoinTable;
+import jakarta.persistence.Lob;
+import jakarta.persistence.ManyToMany;
 import jakarta.persistence.ManyToOne;
+import jakarta.persistence.OneToMany;
 import jakarta.persistence.PrePersist;
 import jakarta.persistence.PreUpdate;
 import jakarta.persistence.Table;
@@ -47,19 +50,49 @@ public class Dog {
 	@NotBlank(message="Status is required!")
 	private String status;
 	
-    @DateTimeFormat(pattern="yyyy-MM-dd")
-    @NotNull(message="Available Date is required!")
-    private Date availableDate;
+	@NotBlank(message="Gender is required!")
+	private String gender;
+	
+	private String fileName;
+	
+	@Lob
+	@Column(name="content", columnDefinition = "BLOB")
+	private byte[] content;
+	
+//    @DateTimeFormat(pattern="yyyy-MM-dd")
+//    @NotNull(message="Available Date is required!")
+//    private Date availableDate;
 	
 	@Column(updatable=false)
     private Date createdAt;
     private Date updatedAt;
     
+	@OneToMany(mappedBy="dog", fetch=FetchType.LAZY)
+    private List<Review> reviews;
+    
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name="user_id")
     private User user;
     
+	@ManyToMany(fetch = FetchType.LAZY)
+	@JoinTable(
+			name = "users_dogs",
+			joinColumns = @JoinColumn(name = "dog_id"),
+			inverseJoinColumns = @JoinColumn(name = "user_id")
+	)
+    private List<User> userWhoLiked;
+	
     public Dog() {}
+    
+    public Dog(String name,Integer age,String breed,Integer weight,String color, String status, String gender) {
+    	this.name = name;
+    	this.age = age;
+    	this.breed = breed;
+    	this.weight = weight;
+    	this.color = color;
+    	this.status = status;
+    	this.gender = gender;
+    }
     
     @PrePersist
     protected void onCreate(){
@@ -141,13 +174,13 @@ public class Dog {
 	public void setColor(String color) {
 		this.color = color;
 	}
-	
-	public Date getAvailableDate() {
-		return availableDate;
+
+	public String getGender() {
+		return gender;
 	}
 
-	public void setAvailableDate(Date availableDate) {
-		this.availableDate = availableDate;
+	public void setGender(String gender) {
+		this.gender = gender;
 	}
 
 	public User getUser() {
@@ -157,5 +190,38 @@ public class Dog {
 	public void setUser(User user) {
 		this.user = user;
 	}
+
+	public List<User> getUserWhoLiked() {
+		return userWhoLiked;
+	}
+
+	public void setUserWhoLiked(List<User> userWhoLiked) {
+		this.userWhoLiked = userWhoLiked;
+	}
+
+	public List<Review> getReviews() {
+		return reviews;
+	}
+
+	public void setReviews(List<Review> reviews) {
+		this.reviews = reviews;
+	}
+
+	public byte[] getContent() {
+		return content;
+	}
+
+	public void setContent(byte[] content) {
+		this.content = content;
+	}
+
+	public String getFileName() {
+		return fileName;
+	}
+
+	public void setFileName(String fileName) {
+		this.fileName = fileName;
+	}
+	
     
 }

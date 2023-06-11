@@ -20,7 +20,8 @@
 
 </head>
 <body>
-	<header class="header mx-auto d-flex justify-content-between fixed-top">
+	<header class=" header fixed-top">
+	<div class="mx-auto d-flex justify-content-between">
 		<div class="pt-4 col-4">
 			<div>
 				<img class="myIcon" alt="location Icon"
@@ -33,8 +34,9 @@
 			</div>
 			<div class="d-flex justify-content-between mt-4">
 				<a href="/" class="headerAnchor link-dark text-decoration-none">Home</a>
-				<a href="/aboutUs"class="headerAnchor link-dark text-decoration-none">About Us</a> 
-				<a href="#" class="headerAnchor link-dark text-decoration-none">Reviews</a>
+				<a href="/aboutUs"
+					class="headerAnchor link-dark text-decoration-none">About Us</a> <a
+					href="/reviews" class="headerAnchor link-dark text-decoration-none">Reviews</a>
 				<a href="/puppies" class="headerAnchor link-dark text-decoration-none">Puppies</a>
 			</div>
 		</div>
@@ -49,12 +51,37 @@
 			</div>
 			<div class="d-flex justify-content-between">
 				<a href="#" class="headerAnchor link-dark text-decoration-none">Service</a>
-				<a href="/contactUs" class="headerAnchor link-dark text-decoration-none">ContactUs</a>
-				<a href="/login" class="headerAnchor link-dark text-decoration-none">Login</a>
+				<a href="/contactUs"
+					class="headerAnchor link-dark text-decoration-none">ContactUs</a>
+				<c:choose>
+					<c:when test="${userId != null}">
+						<a	href="/logout" class="headerAnchor link-dark text-decoration-none">Logout</a>
+					</c:when>
+					<c:otherwise>
+						<a href="/login" class="headerAnchor link-dark text-decoration-none">Login</a>
+					</c:otherwise>
+				</c:choose>
+				
 			</div>
 		</div>
+	</div>
+		<div class="d-flex justify-content-center">
+			<c:if test="${userId != null}">
+			<a href="/profile"
+				style="  background-color: #4CAF50; /* Green */
+  border: none;
+  border-radius: 10px;
+  color: white;
+  text-align: center;
+  text-decoration: none;
+  padding:0 5px;
+  font-size: 12px;"
+					>My Profile</a>
+
+			</c:if> 
+		</div>
 	</header>
-	<div class="position-relative"
+	<div class="top-div-under-header position-relative"
 		style="height: 800px; margin-top: 140px;">
 		<img class="bgPic" alt="bg walpaper"
 			src="${pageContext.request.contextPath}/images/wallpaper-grass-puppy4.jpeg">
@@ -66,16 +93,16 @@
 			<button class="scroll-btn" onclick="scrollX(100)">></button>
 			<div
 				class="d-flex mx-auto col-8 overflow-auto overflow-hidden scroll-container">
-				<c:forEach var="i" begin="0" end="8">
+				<c:forEach var="oneDog" items="${dogs}">
 					<div class="puppy p-1 rounded"
 						 onmouseover='changeColor(this);'
 						 onmouseout='resetColor(this);'>
 						<img
 							onclick='popupCenter({url: "http://localhost:8080/", title: "details", w: 500, h: 500});'
 							class="mypicture" alt="my picture1" title="click me"
-							src="${pageContext.request.contextPath}/images/puppyImg${i}.jpeg">
+							src="${pageContext.request.contextPath}/images/puppyImg${oneDog.id}.jpeg">
 						<p class="mt-3 text-danger">
-							<c:out value="${objList[i].name}" />
+							<c:out value="${oneDog.name}" />
 						</p>
 					</div>
 				</c:forEach>
@@ -149,6 +176,7 @@
 				</div>
 			</c:forEach>
 		</div>
+		
 	</main>
 	<footer class="bg-success mt-5 text-center">
 		<h1

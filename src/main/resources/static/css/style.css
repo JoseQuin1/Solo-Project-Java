@@ -3,8 +3,14 @@
 	padding: 0;
 }
 /*HEADER*/
+.header{
+	height: 165px;
+	padding: 0 16%;
+	background-color: white;
+	border-bottom: 2px solid #F8F8FF;
+}
 .top-div-under-header{
-	margin-top: 140px;
+	margin-top: 165px;
 }
 /* Index.jsp */
 .location{
@@ -42,12 +48,6 @@
 .bgPic{
 	height: 800px;
 	width: 100%;
-}
-.header{
-	height: 135px;
-	padding: 0 16%;
-	background-color: white;
-	border-bottom: 2px solid #F8F8FF;
 }
 .mylogo{
 	height: 130px;

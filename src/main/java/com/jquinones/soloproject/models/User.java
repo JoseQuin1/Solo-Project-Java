@@ -9,6 +9,9 @@ import jakarta.persistence.FetchType;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
+import jakarta.persistence.JoinColumn;
+import jakarta.persistence.JoinTable;
+import jakarta.persistence.ManyToMany;
 import jakarta.persistence.OneToMany;
 import jakarta.persistence.PrePersist;
 import jakarta.persistence.PreUpdate;
@@ -57,7 +60,21 @@ public class User {
 
 	@OneToMany(mappedBy="user", fetch=FetchType.LAZY)
     private List<Dog> doggies;
+	
+	@OneToMany(mappedBy="user", fetch=FetchType.LAZY)
+    private List<Review> reviews;
     
+	@ManyToMany(fetch = FetchType.LAZY)
+	@JoinTable(
+			name = "users_dogs",
+			joinColumns = @JoinColumn(name = "user_id"),
+			inverseJoinColumns = @JoinColumn(name = "dog_id")
+	)
+	
+	
+	private List<Dog> dogsLiked;
+	
+	
     public User() {}
     
     @PrePersist
@@ -152,8 +169,20 @@ public class User {
 		this.updatedAt = updatedAt;
 	}
 
-    // TODO - Don't forget to generate getters and setters
-    
-  
+	public List<Dog> getDogsLiked() {
+		return dogsLiked;
+	}
+
+	public void setDogsLiked(List<Dog> dogsLiked) {
+		this.dogsLiked = dogsLiked;
+	}
+
+	public List<Review> getReviews() {
+		return reviews;
+	}
+
+	public void setReviews(List<Review> reviews) {
+		this.reviews = reviews;
+	}
+	
 }
-    

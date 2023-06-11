@@ -7,6 +7,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.jquinones.soloproject.models.Dog;
+import com.jquinones.soloproject.models.User;
 import com.jquinones.soloproject.repositories.DogRepository;
 
 @Service
@@ -40,5 +41,11 @@ public class DogService {
 		
 		public Dog update(Dog dog) {
 			return repo.save(dog);
+		}
+		
+		public void likedDog(Dog thisDog, User user) {
+			List<User> likers = thisDog.getUserWhoLiked();
+			likers.add(user);
+			this.update(thisDog);
 		}
 	}

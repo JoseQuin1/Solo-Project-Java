@@ -7,7 +7,7 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>Insert title here</title>
+<title>All Puppies</title>
 <link rel="stylesheet" type="text/css" href="/css/style.css">
 <script type="text/javascript" src="/js/app.js"></script>
 <!-- for Bootstrap CSS -->
@@ -18,7 +18,8 @@
 <script src="/webjars/bootstrap/js/bootstrap.min.js"></script>
 </head>
 <body>
-	<header class="header mx-auto d-flex justify-content-between fixed-top">
+	<header class=" header fixed-top">
+	<div class="mx-auto d-flex justify-content-between">
 		<div class="pt-4 col-4">
 			<div>
 				<img class="myIcon" alt="location Icon"
@@ -50,11 +51,24 @@
 				<a href="#" class="headerAnchor link-dark text-decoration-none">Service</a>
 				<a href="/contactUs"
 					class="headerAnchor link-dark text-decoration-none">ContactUs</a>
-				<c:if test="${userId != null}">
-					<a href="/profile" class="headerAnchor link-dark text-decoration-none">My Profile</a>
-				</c:if> 
-				<a	href="#" class="headerAnchor link-dark text-decoration-none">Login</a>
+				<a	href="/login" class="headerAnchor link-dark text-decoration-none">Login</a>
 			</div>
+		</div>
+	</div>
+		<div class="d-flex justify-content-center">
+			<c:if test="${userId != null}">
+			<a href="/profile"
+				style="  background-color: #4CAF50; /* Green */
+  border: none;
+  border-radius: 10px;
+  color: white;
+  text-align: center;
+  text-decoration: none;
+  padding:0 5px;
+  font-size: 12px;"
+					>My Profile</a>
+
+			</c:if> 
 		</div>
 	</header>
 	<main>
@@ -64,16 +78,20 @@
 			<p></p>
 
 			<div class="row">
-			<c:forEach var="i" begin="0" end="8" varStatus="status">
+			<c:forEach var="oneDog" items="${dogs}" varStatus="status">
+
+			
+			
 				<div class="col-md-4">
 									<img class="mypicture rounded" alt="my picture1"
 								title="click me"
-								src="${pageContext.request.contextPath}/images/puppyImg${i}.jpeg">
+								src="${pageContext.request.contextPath}/images/puppyImg${oneDog.id}.jpeg">
 									<p class="mt-1 text-danger font-weight-bold">
-										<c:out value="${objList[i].name}" />
+										<c:out value="${oneDog.name}" />
 									</p>
+									<a href="/like/${oneDog.id}">like</a>
 				</div>
-				<c:if test="${status.count % 3==0 }">
+												<c:if test="${status.count % 3==0 }">
 					<div class="row"></div>
 				</c:if>
 			</c:forEach>

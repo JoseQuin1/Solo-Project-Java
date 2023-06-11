@@ -8,7 +8,7 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>Insert title here</title>
+<title>Breeder-Profile</title>
 <link rel="stylesheet" type="text/css" href="/css/style.css">
 	<script type="text/javascript" src="/js/app.js"></script>
 	<!-- for Bootstrap CSS -->
@@ -53,8 +53,8 @@
 			</div>
 		</div>
 	</header>
-	<h1 style="margin-top:150px;">Welcome, ${user.firstName}</h1>
-	<form:form action="/doggies/new" method="post" modelAttribute="dog"
+	<h1 class="top-div-under-header"style="margin-top:150px;">Welcome, ${user.firstName}</h1>
+	<form:form action="/doggies/new" method="post" modelAttribute="dog" enctype="multipart/form-data"
 			style="width:50%; min-width:500px; padding-left: 10px;">
 				<div class="mb-3">
 					<form:label path="name">Name:</form:label>
@@ -79,18 +79,42 @@
 				<div class="mb-3">
 					<form:label path="color">Color:</form:label>
 					<form:errors path="color" class="text-danger"/>
-					<form:input path="color" type="text" class="form-control" />
+					<form:select path="color">
+						<option value="selected"></option>
+						<option value="white">White</option>
+						<option value="beige">Beige</option>
+						<option value="brown">Brown</option>
+						<option value="black">Black</option>
+						<option value="gold">Gold</option>
+						<option value="red">Red</option>
+						<option value="gray">Gray</option>
+					</form:select>
 				</div>
 				<div class="mb-3">
 					<form:label path="status">Status:</form:label>
 					<form:errors path="status" class="text-danger"/>
-					<form:input path="status" type="text" class="form-control" />
-				</div>
-								<div class="mb-3">
+					<form:select path="status">
+						<option value="selected"></option>
+						<option value="avilable">Available</option>
+						<option value="unavailable">Unavailable</option>
+					</form:select>
+ 				</div>
+ 				<div class="mb-3">
+					<form:label path="gender">Gender:</form:label>
+					<form:errors path="gender" class="text-danger"/>
+					<form:select path="gender">
+						<option value="selected"></option>
+						<option value="male">M</option>
+						<option value="female">F</option>
+					</form:select>
+ 				</div>
+				<%--<div class="mb-3">
 					<form:label path="availableDate">Status:</form:label>
 					<form:errors path="availableDate" class="text-danger"/>
 					<form:input path="availableDate" type="date" class="form-control" />
-				</div>
+				</div> --%>
+			<input type="file" name="file" />
+
 				<input type="submit" value="Submit"/>
 	</form:form>
 	<h3 class="text-center">My Catalog</h3>
@@ -98,11 +122,12 @@
 			height:auto; 
 			width:90%; 
 			min-width: 650px;
-			border-style: solid; 
+			border-style: solid;
+			border-radius: 10px; 
 			padding: 0 10px; 
 			margin:auto; ">
 			
-		<table class="table table-border">
+		<table class="table table-border rounded">
 			<thead>
 				<tr>
 					<th>Name</th>
@@ -111,7 +136,8 @@
 					<th>Color</th>
 					<th>Mom's Weight</th>
 					<th>Status</th>
-					<th>Date Available</th>
+					<th>Gender</th>
+					<th>Action</th>
 				</tr>
 			</thead>
 			<c:forEach var="oneDog" items="${doggies}">
@@ -123,7 +149,10 @@
 					<td><c:out value="${oneDog.breed}"></c:out></td>
 					<td><c:out value="${oneDog.color}"></c:out></td>
 					<td><c:out value="${oneDog.weight}"></c:out></td>
-					<td><fmt:formatDate value="${oneDog.availableDate}" pattern="yyyy-MM-dd"/></td>
+					<td><c:out value="${oneDog.gender}"></c:out></td>
+					<td><img style="height:50px;" src="${pageContext.request.contextPath}/profile/${oneDog.content}"></td>
+					<td><a href="/puppy/${oneDog.id}/delete">delete</a></td>
+					<%-- <td><fmt:formatDate value="${oneDog.availableDate}" pattern="yyyy-MM-dd"/></td> --%>
 				</c:if>
 				</tbody>
 			</c:forEach>
