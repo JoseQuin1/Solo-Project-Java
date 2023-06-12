@@ -7,11 +7,8 @@ import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
-
-import com.jquinones.soloproject.models.Dog;
 import com.jquinones.soloproject.models.LoginUser;
 import com.jquinones.soloproject.models.User;
-import com.jquinones.soloproject.services.DogService;
 import com.jquinones.soloproject.services.UserService;
 import jakarta.servlet.http.HttpSession;
 import jakarta.validation.Valid;
@@ -24,8 +21,7 @@ public class UserController {
  
   @Autowired
   private UserService userServ;
-  @Autowired
-  private DogService dogServ;
+
  
   
   @GetMapping("/login")
@@ -52,8 +48,8 @@ public class UserController {
 			 return "redirect:/login";
 		 }
 		 
-			 model.addAttribute("dog", new Dog());
-			 model.addAttribute("doggies", dogServ.all());
+//			 model.addAttribute("dog", new Dog());
+//			 model.addAttribute("doggies", dogServ.all());
 			 model.addAttribute("user", user);
 			 return "myAccount.jsp";
 		 

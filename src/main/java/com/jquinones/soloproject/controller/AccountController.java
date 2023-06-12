@@ -23,7 +23,8 @@ public class AccountController {
 			 Long userId = (Long)session.getAttribute("userId");
 			 User user = userServ.getOne((Long)session.getAttribute("userId"));
 			 
-			 if(userId == null) {
+
+			 if(userId.equals(null)) {
 				 return "redirect:/login";
 			 }
 			 

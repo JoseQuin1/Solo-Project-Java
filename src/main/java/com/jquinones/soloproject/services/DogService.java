@@ -48,4 +48,8 @@ public class DogService {
 			likers.add(user);
 			this.update(thisDog);
 		}
+		
+		public List<Dog> findAllWithImg(){
+			return repo.findAllWithImg();
+		}
 	}

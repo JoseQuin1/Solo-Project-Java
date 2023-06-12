@@ -102,7 +102,7 @@ public class PuppyController {
 	
 	@PostMapping("/doggies/new")
 	public String newDog(@Valid @ModelAttribute("dog") Dog dog,
-		@RequestParam("file")MultipartFile file,
+		@RequestParam("file") MultipartFile file,
 		BindingResult result, Model model, HttpSession session) {
 		
 		if (session.getAttribute("userId") == null) {
@@ -211,6 +211,11 @@ public class PuppyController {
 			dogServ.update(dog);
 			return "redirect:/myCatalog";
 		}
+	}
+	
+	@GetMapping("puppy-travel")
+	public String travel() {
+		return "travel.jsp";
 	}
 	
 }
