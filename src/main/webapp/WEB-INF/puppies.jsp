@@ -18,7 +18,7 @@
 <script src="/webjars/bootstrap/js/bootstrap.min.js"></script>
 </head>
 <body>
-	<header class=" header fixed-top">
+		<header class=" header fixed-top">
 	<div class="mx-auto d-flex justify-content-between">
 		<div class="pt-4 col-4">
 			<div>
@@ -34,8 +34,8 @@
 				<a href="/" class="headerAnchor link-dark text-decoration-none">Home</a>
 				<a href="/aboutUs"
 					class="headerAnchor link-dark text-decoration-none">About Us</a> <a
-					href="#" class="headerAnchor link-dark text-decoration-none">Reviews</a>
-				<a href="#" class="headerAnchor link-dark text-decoration-none">Puppies</a>
+					href="/reviews" class="headerAnchor link-dark text-decoration-none">Reviews</a>
+				<a href="/puppies" class="headerAnchor link-dark text-decoration-none">Puppies</a>
 			</div>
 		</div>
 		<div>
@@ -51,7 +51,15 @@
 				<a href="#" class="headerAnchor link-dark text-decoration-none">Service</a>
 				<a href="/contactUs"
 					class="headerAnchor link-dark text-decoration-none">ContactUs</a>
-				<a	href="/login" class="headerAnchor link-dark text-decoration-none">Login</a>
+				<c:choose>
+					<c:when test="${userId != null}">
+						<a	href="/logout" class="headerAnchor link-dark text-decoration-none">Logout</a>
+					</c:when>
+					<c:otherwise>
+						<a href="/login" class="headerAnchor link-dark text-decoration-none">Login</a>
+					</c:otherwise>
+				</c:choose>
+				
 			</div>
 		</div>
 	</div>
@@ -71,7 +79,7 @@
 			</c:if> 
 		</div>
 	</header>
-	<main>
+		<main>
 		<div class="col-6 mx-auto text-center"
 			style="margin-top: 150px; Padding-top: 100px;">
 			<h3 class="mb-3 d-flex justify-content-start" style="padding-left:53px;">Available Puppies for sale</h3>

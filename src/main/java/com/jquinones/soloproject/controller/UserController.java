@@ -52,17 +52,10 @@ public class UserController {
 			 return "redirect:/login";
 		 }
 		 
-		 else if(user.getProfile().equals("Breeder")) {
 			 model.addAttribute("dog", new Dog());
 			 model.addAttribute("doggies", dogServ.all());
 			 model.addAttribute("user", user);
-			 return "profile-breeder.jsp";
-		 }
-		 else{
-			 model.addAttribute("doggies", dogServ.all());
-			 model.addAttribute("user", user);
-			 return "profile-user.jsp";
-		 }
+			 return "myAccount.jsp";
 		 
   }
   

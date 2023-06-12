@@ -10,9 +10,9 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.multipart.MultipartFile;
-
 import com.jquinones.soloproject.models.Dog;
 import com.jquinones.soloproject.models.User;
 import com.jquinones.soloproject.services.DogService;
@@ -84,6 +84,22 @@ public class PuppyController {
 		return "puppies.jsp";
 	}
 	
+	@GetMapping("/doggies/new")
+	public String newDog(Model model,
+			HttpSession session) {
+
+		Long userId = (Long)session.getAttribute("userId");
+		User user = userServ.getOne((Long)session.getAttribute("userId"));
+				 
+		if(userId == null) {
+			return "redirect:/login";
+		}
+		
+		model.addAttribute("dog", new Dog());
+		model.addAttribute("user", user);
+		return "dogAdd.jsp";
+	}
+	
 	@PostMapping("/doggies/new")
 	public String newDog(@Valid @ModelAttribute("dog") Dog dog,
 		@RequestParam("file")MultipartFile file,
@@ -94,7 +110,7 @@ public class PuppyController {
 		}
 		
 		if (result.hasErrors()) {
-			return "profile-breeder.jsp";
+			return "redirect:/myCatalog";
 		}
 		else {
 			try {
@@ -102,7 +118,7 @@ public class PuppyController {
 			dog.setFileName(file.getOriginalFilename());
 			dog.setContent(file.getBytes());
 			dogServ.create(dog);
-			return "redirect:/profile";
+			return "redirect:/myCatalog";
 			}catch(IOException e) {
 				e.printStackTrace();
 				return "error";
@@ -148,13 +164,52 @@ public class PuppyController {
 		Dog puppy = dogServ.findById(id);
 		
 		if(session.getAttribute("userId") == null) {
-			return "redirect:/profile";
+			return "redirect:/login";
 		}
 		if(!session.getAttribute("userId").equals(puppy.getUser().getId())) {
 			return "redirect:/profile";
 		}else {
 			dogServ.delete(id);
+			return "redirect:/myCatalog";
+		}
+	}
+	
+	@GetMapping("/puppy/{id}/edit")
+	public String editBook(@PathVariable("id") Long id,
+		Model model, HttpSession session){
+		User user = userServ.getOne((Long)session.getAttribute("userId"));
+		model.addAttribute("user", user);
+		Dog dog = dogServ.findById(id);
+		
+		if(session.getAttribute("userId") == null) {
+			return "redirect:/login";
+		}
+		if (!session.getAttribute("userId").equals(dog.getUser().getId())) {
+			return "redirect:/myCatalog";
+		}
+		else {
+			model.addAttribute("dog", dogServ.findById(id));
+			return "dogEdit.jsp";
+		}
+
+	}
+
+	
+	@PutMapping("/puppy/{id}/edit")
+	public String update(@Valid @ModelAttribute("dog") Dog dog,
+			BindingResult result, @PathVariable("id")Long id, HttpSession session,
+			Model model) {
+		if(session.getAttribute("userId") == null) {
 			return "redirect:/profile";
+		}
+		
+		if(result.hasErrors()) {
+//			model.addAttribute("dog", dogServ.findById(id));
+			return "dogEdit.jsp";
+		}else {
+			dog.setUser(userServ.getOne((Long)session.getAttribute("userId")));
+			dogServ.update(dog);
+			return "redirect:/myCatalog";
 		}
 	}
 	

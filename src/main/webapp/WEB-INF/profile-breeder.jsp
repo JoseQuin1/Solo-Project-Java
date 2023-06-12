@@ -53,7 +53,18 @@
 			</div>
 		</div>
 	</header>
-	<h1 class="top-div-under-header"style="margin-top:150px;">Welcome, ${user.firstName}</h1>
+	<h1 class="top-div-under-header pt-3">Welcome, ${user.firstName}</h1>
+	<main class="d-flex">
+	<div style="
+			height:auto:
+			width:30%; 
+			min-width:300px;
+			background-color: yellow;
+			padding-left: 20px;">
+		<a href="/myAccount">My Account</a>
+			
+	</div>
+	<div style="width:70%;">
 	<form:form action="/doggies/new" method="post" modelAttribute="dog" enctype="multipart/form-data"
 			style="width:50%; min-width:500px; padding-left: 10px;">
 				<div class="mb-3">
@@ -137,6 +148,7 @@
 					<th>Mom's Weight</th>
 					<th>Status</th>
 					<th>Gender</th>
+					<th>Image</th>
 					<th>Action</th>
 				</tr>
 			</thead>
@@ -150,7 +162,8 @@
 					<td><c:out value="${oneDog.color}"></c:out></td>
 					<td><c:out value="${oneDog.weight}"></c:out></td>
 					<td><c:out value="${oneDog.gender}"></c:out></td>
-					<td><img style="height:50px;" src="${pageContext.request.contextPath}/profile/${oneDog.content}"></td>
+					<%-- <td><img style="height:50px;" src="${pageContext.request.contextPath}/profile/${oneDog.content}"></td> --%>
+					<td><img src="data:image/png;base64, ${oneDog.fileName}"></img></td>
 					<td><a href="/puppy/${oneDog.id}/delete">delete</a></td>
 					<%-- <td><fmt:formatDate value="${oneDog.availableDate}" pattern="yyyy-MM-dd"/></td> --%>
 				</c:if>
@@ -158,6 +171,7 @@
 			</c:forEach>
 		</table>
 	</div>
-	
+	</div>
+	</main>
 </body>
 </html>

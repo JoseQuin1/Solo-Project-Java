@@ -10,7 +10,7 @@
 	border-bottom: 2px solid #F8F8FF;
 }
 .top-div-under-header{
-	margin-top: 165px;
+	margin-top: 170px;
 }
 /* Index.jsp */
 .location{
@@ -154,4 +154,9 @@ footer{
 }
 .loginFormLabel{
 	color:gray;
+}
+.myAccount-p{
+	border-bottom-style: solid;
+	border-color:#D3D3D3;
+	margin-right: 300px;
 }
