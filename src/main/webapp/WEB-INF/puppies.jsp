@@ -85,20 +85,17 @@
 	<main>
 		<div class="col-6 mx-auto text-center"
 			style="margin-top: 150px; Padding-top: 100px;">
-			<h2 class="mb-3"
-				style="margin-bottom: 50px;">
-					Available Puppies for sale</h2>
+			<h2 class="mb-3" style="margin-bottom: 50px;">Available Puppies
+				for sale</h2>
 			<div class="row mt-5">
 				<c:forEach var="oneDog" items="${dogs}" varStatus="status">
 					<c:if test="${oneDog.user.id == null}">
 						<div class="col-md-4 d-inline-block">
-							<a href="/like/${oneDog.id}" 
-							style="
-									margin-right: 5px;
-									text-shadow: 2px 4px 10px #000000;
-									text-decoration: none;">like
-							</a>
-							<a href="/puppy/${oneDog.id}"><img class="mypicture rounded" style="box-shadow: 2px 2px 10px #000000;" alt="my picture1" title="click me"
+							<a href="/like/${oneDog.id}"
+								style="margin-right: 5px; text-shadow: 2px 4px 10px #000000; text-decoration: none;">like
+							</a> <a href="/puppy/${oneDog.id}"><img class="mypicture rounded"
+								style="box-shadow: 2px 2px 10px #000000;" alt="my picture1"
+								title="click me"
 								src="${pageContext.request.contextPath}/images/puppyImg${oneDog.id}.jpeg"></a>
 							<p class="mt-1 text-danger font-weight-bold">
 								<c:out value="${oneDog.name}" />

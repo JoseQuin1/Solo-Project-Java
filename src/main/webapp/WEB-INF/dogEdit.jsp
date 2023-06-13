@@ -128,6 +128,11 @@
 					<form:errors path="age" class="text-danger"/>
 					<form:input path="age" type="number" class="form-control" />
 				</div>
+				<div>
+					<form:label path="price">Price:</form:label>
+					<form:errors path="price" class="text-danger"/>
+					<form:input path="price" type="number" min="0" class="form-control" />
+				</div>
 				<div class="mb-3">
 					<form:label path="breed">Breed:</form:label>
 					<form:errors path="breed" class="text-danger"/>

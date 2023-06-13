@@ -85,7 +85,7 @@
 			<h1>Genuine Customer Reviews</h1>
 			<p class="mx-auto col-6 mt-5">PuppyShop is a safe, easy, and responsible way to find your new puppy. We serve you best by putting the health and well-being of your puppy first. Don't just take our word for it.</p>
 		</div>
-		<div class="d-flex mx-auto col-6" style="margin: 20px 0 150px 0;">
+		<div class="d-flex mx-auto col-6 flex-wrap" style="margin: 20px 0 150px 0;">
 			<div class="text-center">
 				<h4 class="pt-4">4.3 / 5</h4>
 				<img style="margin: -110px 0 -100px 0; height: 300px;" class="mylogo" alt="logo"

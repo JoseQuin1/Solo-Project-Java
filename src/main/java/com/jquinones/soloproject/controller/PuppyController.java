@@ -35,15 +35,15 @@ public class PuppyController {
 		 Long one = (long) 1;
 
 		 if(dogServ.findById(one)==null) {
-			 Dog dog = new Dog("Sput",8,"Great Dane",140,"Gray","available","m","puppyImg1");
-			 Dog dog1 = new Dog("Ziggy",12,"Corgi",30,"Brown","available","m","puppyImg2");
-			 Dog dog2 = new Dog("Bell",9,"Golden Retriever",100,"Beige","available","f","puppyImg3");
-			 Dog dog3 = new Dog("Mike",11,"Labrador Retriever",110,"Brown","available","m","puppyImg4");
-			 Dog dog4 = new Dog("Maze",8,"Jack Rusell Terrier",35,"White","available","f","puppyImg5");
-			 Dog dog5 = new Dog("Mel",6,"Husky",90,"Brown","available","m","puppyImg6");
-			 Dog dog6 = new Dog("Chester",13,"Pointer",70,"White","available","m","puppyImg7");
-			 Dog dog7 = new Dog("Kenzi",15,"German Shepherd",110,"Black","available","f","puppyImg8");
-			 Dog dog8 = new Dog("Herbie",11,"Cavalier King Charles Spaniel",30,"Beige","available","m","puppyImg9");
+			 Dog dog = new Dog("Sput",8,"Great Dane",140,"Gray","available","m","puppyImg1",4000.0);
+			 Dog dog1 = new Dog("Ziggy",12,"Corgi",30,"Brown","available","m","puppyImg2",5000.0);
+			 Dog dog2 = new Dog("Bell",9,"Golden Retriever",100,"Beige","available","f","puppyImg3",3200.0);
+			 Dog dog3 = new Dog("Mike",11,"Labrador Retriever",110,"Brown","available","m","puppyImg4",3800.0);
+			 Dog dog4 = new Dog("Maze",8,"Jack Rusell Terrier",35,"White","available","f","puppyImg5",4500.0);
+			 Dog dog5 = new Dog("Mel",6,"Husky",90,"Brown","available","m","puppyImg6",3000.0);
+			 Dog dog6 = new Dog("Chester",13,"Pointer",70,"White","available","m","puppyImg7",3700.0);
+			 Dog dog7 = new Dog("Kenzi",15,"German Shepherd",110,"Black","available","f","puppyImg8",4800.0);
+			 Dog dog8 = new Dog("Herbie",11,"Cavalier King Charles Spaniel",30,"Beige","available","m","puppyImg9",5000.0);
 
 			dogServ.create(dog);
 			dogServ.create(dog1);
@@ -201,7 +201,7 @@ public class PuppyController {
 	
 	@GetMapping("/puppy/{id}")
 	public String puppyShow(Model model, @PathVariable("id") Long id) {
-		model.addAttribute("puppy", dogServ.findById(id));
+		model.addAttribute("oneDog", dogServ.findById(id));
 		return "puppyDetails.jsp";
 	}
 	

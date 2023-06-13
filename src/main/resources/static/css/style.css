@@ -63,8 +63,7 @@
 }
 .box{
 	width: 400px;
-	margin: 10px;
-	box-shadow: 2px 4px 10px #000000;
+	margin:10px 30px;
 }
 .block{
 	border-style: dashed;
@@ -91,7 +90,6 @@
 }
 footer{
 	padding-top: 100px;
-	height: 450px;
 }
 /* End of Index.jsp */
 
@@ -174,4 +172,25 @@ footer{
 	border-radius: 15px;
 	box-shadow: 2px 4px 10px #000000;
 	
+}
+/* PUPPY DETAILS */
+.puppy-card-details{
+	margin:5px;
+}
+.dog-details{
+	font-weight: bold;
+}
+.info-col{
+	border-bottom: 1px solid #DCDCDC;
+	display: flex;
+	justify-content: space-between;
+	padding:0 10px;
+}
+.mid-box{
+	padding:100px;
+	height:auto;
+}
+.puppy-details-Review {
+	height: 100px;
+	width: 100px;
 }

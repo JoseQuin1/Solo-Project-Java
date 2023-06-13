@@ -129,7 +129,7 @@
 			caring, responsible individuals and families. We hold ourselves and
 			our customers to the highest standards and aim to improve the life of
 			each puppy, breeder and owner who joins our family.</h5>
-		<div class="aboutUs my-5 p-5 border border-success border-4 col-9 mx-auto rounded text-center"
+		<div class="aboutUs my-5 py-5 border border-success border-4 col-10 mx-auto rounded text-center"
 			 style="min-width:500px">
 			<div class="box border border-1 border-secondary text-center p-3 rounded d-inline-block">
 				<img class="myMainIcon" alt="safe"
@@ -184,10 +184,10 @@
 		</div>
 
 	</main>
-	<footer class="bg-success mt-5 mx-auto">
-		<h1 class="text-light col-2 mx-auto pb-2"
+	<footer class="bg-success mt-5 mx-auto my-auto">
+		<h1 class="text-light col-2 text-center mx-auto pb-2"
 			style="text-shadow: 2px 4px 10px #000000; back-ground-color: white;">PuppyShop</h1>
-		<div class="mx-auto mt-5 col-6 d-flex justify-content-between flex-wrap">
+		<div class="mx-auto mt-5 col-4 d-flex justify-content-between flex-wrap">
 			<a href="/" class=" link-dark text-decoration-none">Home</a> <a
 				href="/aboutUs" class=" link-dark text-decoration-none">About Us</a>
 			<a href="/contactUs"
@@ -200,7 +200,7 @@
 				d-flex 
 				justify-content-between 
 				mx-auto
-				my-5 pb-5 col-6
+				my-5 pb-5 col-5
 				text-light
 				flex-wrap" style="height:auto;">
 			<div class="d-flex justify-content-between p-2">
@@ -216,7 +216,7 @@
 			<div class="d-flex justify-content-between p-2">
 				<img class="footerIcon" alt="email"
 					src="${pageContext.request.contextPath}/images/email.png">
-				<p>PuppyShopShelter@Email.com</p>
+				<p>PuppyShop@Email.com</p>
 			</div>
 		</div>
 		<div class="bg-white py-3 mx-auto text-center">

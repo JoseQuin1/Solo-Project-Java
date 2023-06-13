@@ -19,6 +19,7 @@ import jakarta.persistence.OneToMany;
 import jakarta.persistence.PrePersist;
 import jakarta.persistence.PreUpdate;
 import jakarta.persistence.Table;
+import jakarta.validation.constraints.Min;
 import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.NotNull;
 import jakarta.validation.constraints.Size;
@@ -53,6 +54,10 @@ public class Dog {
 	@NotBlank(message="Gender is required!")
 	private String gender;
 	
+	@NotNull(message="Price is required!")
+	@Min(value=1, message="Price must be greater than 1!")
+	private Double price;
+	
 	private String fileName;
 	
 	@Lob
@@ -84,7 +89,7 @@ public class Dog {
 	
     public Dog() {}
     
-    public Dog(String name,Integer age,String breed,Integer weight,String color, String status, String gender, String fileName) {
+    public Dog(String name,Integer age,String breed,Integer weight,String color, String status, String gender, String fileName, Double price) {
     	this.name = name;
     	this.age = age;
     	this.breed = breed;
@@ -93,6 +98,7 @@ public class Dog {
     	this.status = status;
     	this.gender = gender;
     	this.fileName = fileName;
+    	this.price = price;
     }
     
     @PrePersist
@@ -222,6 +228,14 @@ public class Dog {
 
 	public void setFileName(String fileName) {
 		this.fileName = fileName;
+	}
+
+	public Double getPrice() {
+		return price;
+	}
+
+	public void setPrice(Double price) {
+		this.price = price;
 	}
 	
     
