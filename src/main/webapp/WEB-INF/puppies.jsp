@@ -18,7 +18,7 @@
 <script src="/webjars/bootstrap/js/bootstrap.min.js"></script>
 </head>
 <body>
-	<header class=" header fixed-top">
+	<header class=" header fixed-top flex-wrap">
 		<div class="mx-auto d-flex justify-content-between">
 			<div class="pt-4 col-4">
 				<div style="padding-left: 5px;">
@@ -85,22 +85,28 @@
 	<main>
 		<div class="col-6 mx-auto text-center"
 			style="margin-top: 150px; Padding-top: 100px;">
-			<h3 class="mb-3 d-flex justify-content-start"
-				style="padding-left: 53px;">Available Puppies for sale</h3>
-			<p></p>
-
-			<div class="row">
+			<h2 class="mb-3"
+				style="margin-bottom: 50px;">
+					Available Puppies for sale</h2>
+			<div class="row mt-5">
 				<c:forEach var="oneDog" items="${dogs}" varStatus="status">
-					<div class="col-md-4">
-						<img class="mypicture rounded" style="box-shadow: 2px 2px 10px #000000;" alt="my picture1" title="click me"
-							src="${pageContext.request.contextPath}/images/puppyImg${oneDog.id}.jpeg">
-						<p class="mt-1 text-danger font-weight-bold">
-							<c:out value="${oneDog.name}" />
-						</p>
-						<a href="/like/${oneDog.id}">like</a>
-					</div>
-					<c:if test="${status.count % 3==0 }">
-						<div class="row"></div>
+					<c:if test="${oneDog.user.id == null}">
+						<div class="col-md-4 d-inline-block">
+							<a href="/like/${oneDog.id}" 
+							style="
+									margin-right: 5px;
+									text-shadow: 2px 4px 10px #000000;
+									text-decoration: none;">like
+							</a>
+							<a href="/puppy/${oneDog.id}"><img class="mypicture rounded" style="box-shadow: 2px 2px 10px #000000;" alt="my picture1" title="click me"
+								src="${pageContext.request.contextPath}/images/puppyImg${oneDog.id}.jpeg"></a>
+							<p class="mt-1 text-danger font-weight-bold">
+								<c:out value="${oneDog.name}" />
+							</p>
+						</div>
+						<c:if test="${status.count % 3==0 }">
+							<div class="row"></div>
+						</c:if>
 					</c:if>
 				</c:forEach>
 			</div>

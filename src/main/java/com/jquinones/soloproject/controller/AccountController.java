@@ -24,7 +24,7 @@ public class AccountController {
 			 User user = userServ.getOne((Long)session.getAttribute("userId"));
 			 
 
-			 if(userId.equals(null)) {
+			 if(userId == null) {
 				 return "redirect:/login";
 			 }
 			 

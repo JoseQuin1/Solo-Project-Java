@@ -105,7 +105,7 @@
 		</div>
 		<div style="height: 500px; width: 100%; min-width: 650px; margin-right: 30px;">
 			<h4 class="text-center text-light mb-3" style="text-shadow: 2px 4px 10px #000000;">Catalog
-				<a href="/doggies/new"style="margin-left: 5px; text-decoration: none; font-size: 15px;">( add )</a>
+				<a href="/doggies/new" style="margin-left: 5px; text-decoration: none; font-size: 15px;">( add )</a>
 			</h4>
 			<div style="
 					height: 300px; 

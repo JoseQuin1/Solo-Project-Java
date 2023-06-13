@@ -174,7 +174,7 @@
 	 				</div>
  				</div>
 			<input type="file" name="file" />
-					<input type="submit" value="Submit" class="mt-4 bg-primary text-light" style="width:100%;"/>
+					<input type="submit" value="Submit for approval!" class="mt-4 bg-primary text-light" style="width:100%;"/>
 	</form:form>
 	</div>
 	</div>

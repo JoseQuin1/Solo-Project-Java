@@ -94,15 +94,26 @@
 					class="text-decoration-none text-dark" 
 					style="margin-top: 10px;">My Account</a>
 			</div>
-			<c:if test="${user.profile == 'Breeder'}">
-				<div class="d-flex">
-					<img class="myIcon" style="margin: 15px 10px 0 0;" alt="user Icon"
-							src="${pageContext.request.contextPath}/images/icons/catalog-icon.png">	
-					<a href="/myCatalog" 
-						class="text-decoration-none text-dark" 
-						style="margin-top: 10px;">My Catalog</a>
-				</div>
-			</c:if>
+			<c:choose>
+				<c:when test="${user.profile == 'Breeder'}">
+					<div class="d-flex">
+						<img class="myIcon" style="margin: 15px 10px 0 0;" alt="user Icon"
+								src="${pageContext.request.contextPath}/images/icons/catalog-icon.png">	
+						<a href="/myCatalog" 
+							class="text-decoration-none text-dark" 
+							style="margin-top: 10px;">My Catalog</a>
+					</div>
+				</c:when>
+				<c:otherwise>
+					<div class="d-flex">
+						<img class="myIcon" style="margin: 15px 10px 0 0;" alt="user Icon"
+								src="${pageContext.request.contextPath}/images/icons/catalog-icon.png">	
+						<a href="/myCatalog" 
+							class="text-decoration-none text-dark" 
+							style="margin-top: 10px;">My Favorites</a>
+					</div>
+				</c:otherwise>
+			</c:choose>
 			<div class="d-flex">
 				<img class="myIcon" style="margin: 15px 10px 0 0;" alt="user Icon"
 						src="${pageContext.request.contextPath}/images/icons/cart-icon.png">	

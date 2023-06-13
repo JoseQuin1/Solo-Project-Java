@@ -2,12 +2,13 @@
     pageEncoding="UTF-8"%>
 <%@ taglib prefix = "c" uri = "http://java.sun.com/jsp/jstl/core" %>
 <%@ taglib prefix = "form" uri="http://www.springframework.org/tags/form" %>
+<%@ taglib uri = "http://java.sun.com/jsp/jstl/functions" prefix = "fn" %>
 <%@ page isErrorPage="true" %>
 <!DOCTYPE html>
 <html>
 <head>
 <meta charset="UTF-8">
-<title>PuppyShop-Register</title>
+<title>Puppy Details</title>
 <link rel="stylesheet" type="text/css" href="/css/style.css">
 	<script type="text/javascript" src="/js/app.js"></script>
 	<!-- for Bootstrap CSS -->
@@ -16,6 +17,7 @@
 <link rel="stylesheet" href="/css/main.css"/>
 <!-- For any Bootstrap that uses JS -->
 <script src="/webjars/bootstrap/js/bootstrap.min.js"></script>
+
 </head>
 <body>
 	<header class=" header fixed-top">
@@ -80,71 +82,24 @@
 			</c:if>
 		</div>
 	</header>
-	<main 
-		class="top-div-under-header d-flex justify-content-center" 
-		style="min-width:500px; height:80%;" >
-	<div 
-		style="width:90%;">
-		<img 
-			class="myMainIcon" alt="safe"
-			style="width:100%; height:90%;"
-			src="${pageContext.request.contextPath}/images/login-Images/loginLeftColumnImg.png">
-	</div>
-	<div style="
-			min-width:400px;
-			height:700px; 
-			width:400px; 
-			margin-right:150px;
-			border-style: solid;
-			border-radius: 25px;
-			box-shadow: 2px 2px 20px #000000">
-			<form:form action="/register" method="post" modelAttribute="newUser" 
-				class="col-6 p-5"
-				style="width:100%; height:auto;">
-				<h2 class="mb-3">New Registration</h2>
-				<div class="mb-3">
-					<form:label path="firstName">First Name:</form:label>
-					<form:errors path="firstName" class="text-danger"/>
-					<form:input path="firstName" type="text" class="form-control" />
+	<main class="top-div-under-header col-6 mx-auto">
+		<h1 class="text-center my-5">Puppy Details</h1>
+		<div class="d-flex justify-content-around flex-wrap p-3 border border-solid border-3 rounded">
+			<img
+				style="
+					height:300px;
+					border-radius: 25px; 
+					box-shadow: 2px 4px 10px #000000;"
+				alt="puppyImg" src="${pageContext.request.contextPath}/images/puppyImg${puppy.id}.jpeg">
+				<div class="p-3">
+					<p>Name: ${puppy.name}</p>
+					<p>Age: ${puppy.age}</p>
+					<p>Color: ${puppy.color}</p>
+					<p>Breed: ${puppy.breed}</p>
+					<p>Gender: ${puppy.gender}</p>
+					<p>Moms Weight: ${puppy.weight}</p>
+					<p>Status: ${puppy.status}</p>
 				</div>
-				<div class="mb-3">
-					<form:label path="lastName">Last Name:</form:label>
-					<form:errors path="lastName" class="text-danger"/>
-					<form:input path="lastName" type="text" class="form-control" />
-				</div>
-				<div class="mb-3">
-					<form:label path="email">Email:</form:label>
-					<form:errors path="email" class="text-danger"/>
-					<form:input path="email" type="email" class="form-control" />
-				</div>
-								<p>Profile Type:</p>
-				<div class="mb-3">
-					<form:label path="profile">
-					<form:errors path="profile" class="text-danger"/>
-						<form:radiobutton
-							path="profile"
-							value="User"/> User
-					</form:label>
-					<form:label path="profile">
-					<form:errors path="profile" class="text-danger"/>
-						<form:radiobutton
-							path="profile"
-							value="Breeder"/> Breeder
-					</form:label>
-				</div>
-				<div class="mb-3">
-					<form:label path="password">Password:</form:label>
-					<form:errors path="password" class="text-danger"/>
-					<form:input path="password" type="password" class="form-control" />
-				</div>
-				<div class="mb-3">
-					<form:label path="confirm">Confirm PW:</form:label>
-					<form:errors path="confirm" class="text-danger"/>
-					<form:input path="confirm" type="password" class="form-control" />
-				</div>
-				<input type="submit" value="Register" class="btn btn-primary"/>
-			</form:form>
-
 		</div>
 	</main>
 </body>

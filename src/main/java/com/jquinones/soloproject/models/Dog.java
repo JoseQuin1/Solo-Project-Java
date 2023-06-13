@@ -84,7 +84,7 @@ public class Dog {
 	
     public Dog() {}
     
-    public Dog(String name,Integer age,String breed,Integer weight,String color, String status, String gender) {
+    public Dog(String name,Integer age,String breed,Integer weight,String color, String status, String gender, String fileName) {
     	this.name = name;
     	this.age = age;
     	this.breed = breed;
@@ -92,6 +92,7 @@ public class Dog {
     	this.color = color;
     	this.status = status;
     	this.gender = gender;
+    	this.fileName = fileName;
     }
     
     @PrePersist

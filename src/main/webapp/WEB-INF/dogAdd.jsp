@@ -7,7 +7,7 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>Insert title here</title>
+<title>Add Puppy</title>
 <link rel="stylesheet" type="text/css" href="/css/style.css">
 	<script type="text/javascript" src="/js/app.js"></script>
 	<!-- for Bootstrap CSS -->
@@ -82,13 +82,14 @@
 		</div>
 	</header>
 	<main class="top-div-under-header border border-light rounded">
+	<h3 style="margin-left:20px;">Add Puppy</h3>
 	<div class="my-auto d-flex">
-		<div class="d-inline-block"
+		<div
 			style="
 				height:auto:
-				width:30%; 
 				min-width:300px;
-				padding-left: 40px;">
+				padding-left: 40px;
+				">
 			<div class="d-flex">
 				<img class="myIcon" style="margin: 15px 10px 0 0;" alt="user Icon"
 						src="${pageContext.request.contextPath}/images/icons/user-regular.svg">	
@@ -112,12 +113,7 @@
 			</div>
 				
 		</div>
-		<div class="d-inline-block"
-			 style="
-				margin: 0 0 0 20%;
-				height:auto;
-				border-radius: 25px; 
-				box-shadow: 2px 4px 10px #000000;">
+		<div class="d-inline-block" style="height:auto; width:auto; margin-left:150px;">
 		<form:form 
 				action="/doggies/new" 
 				method="post" 
@@ -126,10 +122,11 @@
 				style="
 				height: 600px;
 					width:30%;
-					min-width:500px;
+					min-width:400px;
 					padding: 30px;
 					border-radius: 25px; 
-					background-color:#F0F8FF;">
+					background-color:#F0F8FF;
+					box-shadow: 2px 4px 10px #000000;">
 				<div class="mb-3">
 					<form:label path="name">Name:</form:label>
 					<form:errors path="name" class="text-danger"/>
@@ -186,7 +183,7 @@
 	 				</div>
  				</div>
 			<input type="file" name="file" />
-					<input type="submit" value="Submit" class="bg-primary text-light rounded-pill" style="width:100%; margin-top:40px;"/>
+					<input type="submit" value="Submit for approval!" class="bg-primary text-light rounded-pill" style="width:100%; margin-top:40px;"/>
 	</form:form>
 	</div>
 	</div>

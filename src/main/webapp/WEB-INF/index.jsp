@@ -20,7 +20,7 @@
 
 </head>
 <body>
-	<header class=" header fixed-top">
+	<header class=" header fixed-top flex-wrap">
 		<div class="mx-auto d-flex justify-content-between">
 			<div class="pt-4 col-4">
 				<div style="padding-left: 5px;">
@@ -34,8 +34,12 @@
 				</div>
 				<div class="d-flex justify-content-between mt-4">
 					<div class="d-flex" style="padding-left:3px;">
-						<img class="myIcon" style="height: 20px; padding-top: 2px;" alt="location Icon"
-							 src="${pageContext.request.contextPath}/images/icons/home-icon.png">
+						<img 
+							class="myIcon" 
+							style="height: 20px; 
+							padding-top: 2px;
+							margin-right;5px;"
+							alt="home Icon" src="${pageContext.request.contextPath}/images/icons/home-icon.png">
 						<a href="/" class="headerAnchor link-dark text-decoration-none">Home</a>
 					</div>
 					<a href="/aboutUs"
@@ -93,17 +97,19 @@
 				<button class="scroll-btn" onclick="scrollX(-100)"><</button>
 				<div class="d-flex overflow-auto overflow-hidden scroll-container ">
 					<c:forEach var="oneDog" items="${dogs}">
-						<div class="puppy p-1 rounded""
+					<c:if test="${oneDog.user.id == null}">
+						<div class="puppy p-1 rounded"
 							onmouseover='changeColor(this);'
 							onmouseout='resetColor(this);'>
-							<img
-								onclick='popupCenter({url: "http://localhost:8080/", title: "details", w: 500, h: 500});'
+							<a href="/puppy/${oneDog.id}"><img
+								<%-- onclick='popupCenter({url: "http://localhost:8080/puppy/${oneDog.id}", title: "details", w: 500, h: 500});' --%>
 								class="mypicture" alt="my picture1" title="click me"
-								src="${pageContext.request.contextPath}/images/puppyImg${oneDog.id}.jpeg">
+								src="${pageContext.request.contextPath}/images/puppyImg${oneDog.id}.jpeg"></a>
 							<p class="mt-3 text-light" style="text-shadow: 2px 2px 10px #000000;">
 								<c:out value="${oneDog.name}" />
 							</p>
 						</div>
+					</c:if>
 					</c:forEach>
 				</div>
 				<button class="scroll-btn" onclick="scrollX(100)">></button>
@@ -178,10 +184,10 @@
 		</div>
 
 	</main>
-	<footer class="bg-success mt-5 text-center">
+	<footer class="bg-success mt-5 mx-auto">
 		<h1 class="text-light col-2 mx-auto pb-2"
 			style="text-shadow: 2px 4px 10px #000000; back-ground-color: white;">PuppyShop</h1>
-		<div class="mx-auto col-3 mt-5 d-flex justify-content-between">
+		<div class="mx-auto mt-5 col-6 d-flex justify-content-between flex-wrap">
 			<a href="/" class=" link-dark text-decoration-none">Home</a> <a
 				href="/aboutUs" class=" link-dark text-decoration-none">About Us</a>
 			<a href="/contactUs"
@@ -190,25 +196,30 @@
 			<a href="/reviews" class=" link-dark text-decoration-none">Reviews</a>
 			<a href="/travel" class=" link-dark text-decoration-none">Puppy Travel</a>
 		</div>
-		<div
-			class="d-flex justify-content-between mx-auto col-5 my-5 pb-5 text-light">
-			<div class="d-flex justify-content-between">
+		<div class="
+				d-flex 
+				justify-content-between 
+				mx-auto
+				my-5 pb-5 col-6
+				text-light
+				flex-wrap" style="height:auto;">
+			<div class="d-flex justify-content-between p-2">
 				<img class="footerIcon" alt="phone"
 					src="${pageContext.request.contextPath}/images/phone-call.png">
 				<p>(800) 789-7545</p>
 			</div>
-			<div class="d-flex justify-content-between col-4">
+			<div class="d-flex justify-content-between p-2">
 				<img class="footerIcon" alt="location"
 					src="${pageContext.request.contextPath}/images/location_icon.png">
-				<p class="">9858 Clint Moore Rd # 110 Boca Raton, FL 33496</p>
+				<p>9858 Clint Moore Rd # 110 <br>Boca Raton, FL 33496</p>
 			</div>
-			<div class="d-flex justify-content-between">
+			<div class="d-flex justify-content-between p-2">
 				<img class="footerIcon" alt="email"
 					src="${pageContext.request.contextPath}/images/email.png">
 				<p>PuppyShopShelter@Email.com</p>
 			</div>
 		</div>
-		<div class="bg-white py-3">
+		<div class="bg-white py-3 mx-auto text-center">
 			<p>
 				Copyright <span><img class="copyRightIcon" alt="copyright"
 					src="${pageContext.request.contextPath}/images/copyright.png"></span>

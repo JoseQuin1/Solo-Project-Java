@@ -80,13 +80,13 @@
 			</c:if>
 		</div>
 	</header>
-	<div class="divRow d-flex justify-content-center mx-auto col-7">
+	<div class="divRow d-flex justify-content-center mx-auto col-7 flex-wrap">
 		<img class="aboutUs-mission-pic" alt="aboutUs-picture"
 			src="${pageContext.request.contextPath}/images/aboutUs-pic.jpeg">
 		<h1 class="p-3 mt-5 display-5">Our mission is to make lives
 			better by placing healthy puppies and adult dogs in happy homes</h1>
 	</div>
-	<div class="divRow d-flex justify-content-center mx-auto col-7">
+	<div class="divRow d-flex justify-content-center mx-auto col-7 flex-wrap">
 		<h1 class="p-2 mt-5 display-5">We have placed over 100,000 dogs
 			into over 100,000 homes.</h1>
 		<img class="aboutUs-mission-pic2" alt="aboutUs-picture2"
@@ -95,7 +95,7 @@
 	<h1 class="divRow mx-auto text-center">LeaderShip</h1>
 
 	<c:forEach var="i" begin="1" end="3">
-		<div class="divRow mx-auto d-flex justify-content-center col-6">
+		<div class="divRow mx-auto d-flex justify-content-center col-6 flex-wrap">
 			<img class="rounded" alt="person${i}"
 				src="${pageContext.request.contextPath}/images/aboutUs-person${i}-pic.jpeg">
 			<div class="px-3">

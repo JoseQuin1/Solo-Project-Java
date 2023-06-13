@@ -44,14 +44,12 @@ public class UserController {
 		 Long userId = (Long)session.getAttribute("userId");
 		 User user = userServ.getOne((Long)session.getAttribute("userId"));
 		 
-		 if(userId == null) {
+		 if (userId == null) {
 			 return "redirect:/login";
 		 }
 		 
-//			 model.addAttribute("dog", new Dog());
-//			 model.addAttribute("doggies", dogServ.all());
-			 model.addAttribute("user", user);
-			 return "myAccount.jsp";
+		 model.addAttribute("user", user);
+		 return "myAccount.jsp";
 		 
   }
   
