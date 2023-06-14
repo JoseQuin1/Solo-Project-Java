@@ -1,20 +1,19 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
-	pageEncoding="UTF-8"%>
-<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
-<%@ taglib prefix="form" uri="http://www.springframework.org/tags/form"%>
-<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
-<%@ page isErrorPage="true"%>
+    pageEncoding="UTF-8"%>
+<%@ taglib prefix = "c" uri = "http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix = "form" uri="http://www.springframework.org/tags/form" %>
+<%@ page isErrorPage="true" %>
 <!DOCTYPE html>
 <html>
 <head>
 <meta charset="UTF-8">
-<title>Account</title>
+<title>Favorites</title>
 <link rel="stylesheet" type="text/css" href="/css/style.css">
-<script type="text/javascript" src="/js/app.js"></script>
-<!-- for Bootstrap CSS -->
+	<script type="text/javascript" src="/js/app.js"></script>
+	<!-- for Bootstrap CSS -->
 <link rel="stylesheet" href="/webjars/bootstrap/css/bootstrap.min.css" />
 <!-- YOUR own local CSS -->
-<link rel="stylesheet" href="/css/main.css" />
+<link rel="stylesheet" href="/css/main.css"/>
 <!-- For any Bootstrap that uses JS -->
 <script src="/webjars/bootstrap/js/bootstrap.min.js"></script>
 </head>
@@ -32,10 +31,9 @@
 						Moore Rd # 110, Boca Raton, FL 33496</a>
 				</div>
 				<div class="d-flex justify-content-between mt-4">
-					<div class="d-flex" style="padding-left: 3px;">
-						<img class="myIcon" style="height: 20px; padding-top: 2px;"
-							alt="location Icon"
-							src="${pageContext.request.contextPath}/images/icons/home-icon.png">
+					<div class="d-flex" style="padding-left:3px;">
+						<img class="myIcon" style="height: 20px; padding-top: 2px;" alt="location Icon"
+							 src="${pageContext.request.contextPath}/images/icons/home-icon.png">
 						<a href="/" class="headerAnchor link-dark text-decoration-none">Home</a>
 					</div>
 					<a href="/aboutUs"
@@ -56,9 +54,8 @@
 						(800) 789-7545</p>
 				</div>
 				<div class="d-flex justify-content-between">
-					<a href="/puppy-travel"
-						class="headerAnchor link-dark text-decoration-none">Puppy
-						Travel</a> <a href="/contactUs"
+					<a href="/puppy-travel" class="headerAnchor link-dark text-decoration-none">Puppy Travel</a>
+					<a href="/contactUs"
 						class="headerAnchor link-dark text-decoration-none">ContactUs</a>
 					<c:choose>
 						<c:when test="${userId != null}">
@@ -83,16 +80,16 @@
 			</c:if>
 		</div>
 	</header>
-	<main class="top-div-under-header pt-3">
-		<h3 style="padding-left: 20px; ">My Account</h3>
+		<main class="top-div-under-header pt-3">
+		<h3 style="padding-left: 20px;">My Favorites</h3>
 		<div class="d-flex flex-wrap">
 		
-			<div style="padding: 10px 30px;">
+			<div style="height: auto: width:auto; padding: 10px 30px;">
 			
 				<div class="d-flex">
 					<img class="myIcon" style="margin: 15px 10px 0 0;" alt="user Icon"
 						src="${pageContext.request.contextPath}/images/icons/user-regular.svg">
-					<a href="/profile" class="text-decoration-none text-warning"
+					<a href="/profile" class="text-decoration-none text-dark"
 						style="margin-top: 10px;">My Account</a>
 				</div>
 				
@@ -109,7 +106,7 @@
 						<div class="d-flex">
 							<img class="myIcon" style="margin: 15px 10px 0 0;" alt="user Icon"
 								src="${pageContext.request.contextPath}/images/icons/heart-icon.png">
-							<a href="/favorites" class="text-decoration-none text-dark"
+							<a href="/favorites" class="text-decoration-none text-warning"
 								style="margin-top: 10px;">My Favorites</a>
 						</div>
 					</c:otherwise>
@@ -124,30 +121,33 @@
 	
 			</div>
 
-			<div class="col-4 p-5 mx-5">
-				<h6 class="mb-3">First Name</h6>
-				<p class="myAccount-p">
-					<c:out value="${user.firstName}" />
-					<span>
-						<a href="#" style="color:orange; text-decoration: none;">edit</a>
-					</span>
-				</p>
-				<h6 class="my-3">Last Name</h6>
-				<p class="myAccount-p">
-					<c:out value="${user.lastName}" />
-					<span>
-						<a href="#" style="color:orange; text-decoration: none;">edit</a>
-					</span>
-				</p>
-				<h6 class="my-3">Email</h6>
-				<p class="myAccount-p">
-					<c:out value="${user.email}" />
-					<span>
-						<a href="#" style="color:orange; text-decoration: none;">edit</a>
-					</span>
-				</p>
+			<div class="col-6 p-5 mx-5 overflow-auto" style="height: 500px">
+				<c:forEach items="${dogs}" var="oneDog">
+					<c:if test="${oneDog.userWhoLiked.contains(currentUser) && currentUser.dogsLiked.contains(oneDog)}">
+					<div class="my-3 d-flex">
+					<a href="/puppy/${oneDog.id}"><img class="mypicture rounded d-inline-block"
+						style="box-shadow: 2px 2px 10px #000000;" alt="my picture1"
+						title="click me"
+						src="${pageContext.request.contextPath}/images/puppyImg${oneDog.id}.jpeg"></a>
+						<div>
+							<p class="favorite-puppy-info" style="margin-left:20px;"><span class="text-secondary">Puppy ID#:</span> <c:out value="${oneDog.id}"/></p>
+							<p class="favorite-puppy-info" style="margin-left:20px;"><span class="favorite-puppy-info text-secondary">Name:</span> <c:out value="${oneDog.name}"/></p>
+							<p class="favorite-puppy-info" style="margin-left:20px;"><span class="favorite-puppy-info text-secondary">Breed:</span> <c:out value="${oneDog.breed}"/></p>
+							<p class="favorite-puppy-info" style="margin-left:20px;"><span class="favorite-puppy-info text-secondary">Puppy Message:</span>Hello There! Thank you for adding me to your favorites. Please feel free to 
+								<span>
+									<a href="/contactUs"style="text-shadow: 2px 4px 10px #000000; text-decoration: none; color: white;">Ask About Me!</a>
+								</span> I look forward to meeting you.
+							</p>
+							<p style="margin-left:20px;"><a href="/userFavorite/unlike/${oneDog.id}"
+								style="text-shadow: 2px 4px 10px #000000; text-decoration: none;color: orange;">unlike</a>
+							</p>
+						</div>
+					</div>
+					</c:if>
+				</c:forEach>
 			</div>
 		</div>
 	</main>
+
 </body>
 </html>

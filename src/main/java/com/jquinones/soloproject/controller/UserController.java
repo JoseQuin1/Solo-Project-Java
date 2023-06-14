@@ -49,17 +49,20 @@ public class UserController {
   
   @GetMapping("/profile")
   private String profile(Model model, HttpSession session) {
-		 Long userId = (Long)session.getAttribute("userId");
-		 User user = userServ.getOne((Long)session.getAttribute("userId"));
+
 		 
-		 if (userId == null) {
-			 return "redirect:/login";
+		 if (session.getAttribute("userId") != null) {
+			 User user = userServ.getOne((Long)session.getAttribute("userId"));
+			 model.addAttribute("user", user);
+			 return "myAccount.jsp";
 		 }
 		 
-		 model.addAttribute("user", user);
-		 return "myAccount.jsp";
+		 return "redirect:/login";
+		 
+
 		 
   }
+  
   
  
  @PostMapping("/register")
@@ -126,6 +129,11 @@ public class UserController {
 		User thisUser = userServ.getOne((Long)session.getAttribute("userId"));
 		dogServ.unlikeDog(thisDog, thisUser);
 		return "redirect:/puppy/"+dogId;
+	}
+	
+	@GetMapping("/reviews")
+	public String reviews() {
+		return "review.jsp";
 	}
  
 }

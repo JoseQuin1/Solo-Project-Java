@@ -82,34 +82,41 @@
 			</c:if>
 		</div>
 	</header>
-	<main>
-		<div class="col-6 mx-auto text-center"
-			style="margin-top: 150px; Padding-top: 100px;">
-			<h2 class="mb-3" style="margin-bottom: 50px;">Available Puppies
-				for sale</h2>
+	<main class="top-div-under-header pt-3">
+		<div class="col-6 mx-auto">
+			<h1 class="mb-3" style="margin-bottom: 50px;">Available Puppies for sale</h1>
+			<p>Please browse our selection of puppies, and discover your perfect companion.</p>
 			<div class="row mt-5">
 				<c:forEach var="oneDog" items="${dogs}" varStatus="status">
 					<c:if test="${oneDog.user.id == null}">
-						<div class="col-md-4 d-inline-block">
- 						<c:choose>
-							<c:when test="${oneDog.userWhoLiked.contains(currentUser)}">
-								<a href="/unlike/${oneDog.id}"
-									style="margin-right: 5px; text-shadow: 2px 4px 10px #000000; text-decoration: none;">unlike</a>
-							</c:when>
-							<c:otherwise>
-								<a href="/like/${oneDog.id}"
-									style="margin-right: 5px; text-shadow: 2px 4px 10px #000000; text-decoration: none;">like</a>
-							</c:otherwise>
-						</c:choose>
+						<div class="col-md-4">
+													
+							<div class="m-3 p-2 border border-3" 
+								style=" width:100px; min-width:220px; box-shadow: 2px 4px 10px #000000; border-radius:15px; border-color:lightgray;">
+								<a href="/puppy/${oneDog.id}"><img class="rounded"
+									style="
+										height: 200px; width:200px; margin: 0 15px 5px 0;" alt="puppy pic"
+									title="click me"
+									src="${pageContext.request.contextPath}/images/puppyImg${oneDog.id}.jpeg"></a>
+								<c:choose>
+									<c:when test="${oneDog.userWhoLiked.contains(currentUser)}">
+										<a href="/unlike/${oneDog.id}"
+											style=" text-shadow: 2px 4px 10px #000000; text-decoration: none;">unlike</a>
+									</c:when>
+									<c:otherwise>
+										<a href="/like/${oneDog.id}"
+											style=" text-shadow: 2px 4px 10px #000000; text-decoration: none;">like</a>
+									</c:otherwise>
+								</c:choose>	
+								<p class="text-danger font-weight-bold" style="font-size:20px;">
+									<c:out value="${oneDog.name}" /></p>
+								<p class=""style="font-size:15px; margin-top:-15px">
+									<c:out value="${oneDog.age}" /> weeks</p>
+								<p class="" style="font-size:15px; margin-top:-15px;">
+									<c:out value="${oneDog.breed}" /></p>
+									
+							</div>
 							
-							
-							<a href="/puppy/${oneDog.id}"><img class="mypicture rounded"
-								style="box-shadow: 2px 2px 10px #000000;" alt="my picture1"
-								title="click me"
-								src="${pageContext.request.contextPath}/images/puppyImg${oneDog.id}.jpeg"></a>
-							<p class="mt-1 text-danger font-weight-bold">
-								<c:out value="${oneDog.name}" />
-							</p>
 						</div>
 						<c:if test="${status.count % 3==0 }">
 							<div class="row"></div>

@@ -80,14 +80,14 @@
 			</c:if>
 		</div>
 	</header>
-	<div class="divRow d-flex justify-content-center mx-auto col-7 flex-wrap">
-		<img class="aboutUs-mission-pic" alt="aboutUs-picture"
-			src="${pageContext.request.contextPath}/images/aboutUs-pic.jpeg">
-		<h1 class="p-3 mt-5 display-5">Our mission is to make lives
+	<main class="top-div-under-header mx-auto">
+	<div class="divRow d-flex justify-content-center mx-auto flex-wrap">
+		<img alt="aboutUs-picture" src="${pageContext.request.contextPath}/images/aboutUs-pic.jpeg">
+		<h1 class="p-3 mt-5 col-4">Our mission is to make lives
 			better by placing healthy puppies and adult dogs in happy homes</h1>
 	</div>
-	<div class="divRow d-flex justify-content-center mx-auto col-7 flex-wrap">
-		<h1 class="p-2 mt-5 display-5">We have placed over 100,000 dogs
+	<div class="d-flex justify-content-center mx-auto flex-wrap" style="margin-top:80px">
+		<h1 class="p-2 mb-5 col-4">We have placed over 100,000 dogs
 			into over 100,000 homes.</h1>
 		<img class="aboutUs-mission-pic2" alt="aboutUs-picture2"
 			src="${pageContext.request.contextPath}/images/aboutUs-pic2.jpeg">
@@ -95,11 +95,13 @@
 	<h1 class="divRow mx-auto text-center">LeaderShip</h1>
 
 	<c:forEach var="i" begin="1" end="3">
-		<div class="divRow mx-auto d-flex justify-content-center col-6 flex-wrap">
-			<img class="rounded" alt="person${i}"
+		<div class="divRow d-flex justify-content-center flex-wrap">
+			<div style="margin-right: 30px;">
+				<img class="rounded" alt="person${i}" style="height: 200px;"
 				src="${pageContext.request.contextPath}/images/aboutUs-person${i}-pic.jpeg">
-			<div class="px-3">
-				<div class="">
+			</div>
+			<div class="col-5" style="margin:0 30px;">
+				<div>
 					<c:if test="${i==1}">
 						<h5 class="m-0 pb-2">David Cannon - CEO</h5>
 					</c:if>
@@ -121,6 +123,7 @@
 			</div>
 		</div>
 	</c:forEach>
+	</main>
 <footer class="bg-success mt-5 text-center">
 		<h1 class="text-light col-2 mx-auto pb-2"
 			style="text-shadow: 2px 4px 10px #000000; back-ground-color: white;">PuppyShop</h1>

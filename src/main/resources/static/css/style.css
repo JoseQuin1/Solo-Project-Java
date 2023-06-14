@@ -91,16 +91,17 @@
 footer{
 	padding-top: 100px;
 }
-/* End of Index.jsp */
 
-/* aboutUs.jsp */
+
+/* ===================== AboutUs.jsp ========================= */
 .divRow{
-	margin-top: 140px;
+	margin-top: 120px;
 }
 .aboutUs-mission-pic2{
 	height: 250px;
+	display: inline-block;
 }
-/* End of aboutUs.jsp */
+
 
 .colBox{
 	margin-top: 150px;
@@ -137,7 +138,8 @@ footer{
 	margin-top: 10px;
 	width: 400px;
 }
-/*LOGIN PAGE*/
+
+/* =========================== LOGIN PAGE ============================*/
 .loginFromInput{
 	height: 35px;
 	width: 100%;
@@ -159,10 +161,12 @@ footer{
 	color:gray;
 }
 .myAccount-p{
+	display: flex;
+	justify-content: space-between;
 	border-bottom-style: solid;
 	border-color:#D3D3D3;
-	margin-right: 300px;
 }
+
 /* TRAVEL */
 .travel-main-div{
 	height:700px;
@@ -193,4 +197,9 @@ footer{
 .puppy-details-Review {
 	height: 100px;
 	width: 100px;
+}
+
+/*FAVORITES*/
+.favorite-puppy-info{
+	margin:1px;
 }

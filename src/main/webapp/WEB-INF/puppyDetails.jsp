@@ -86,15 +86,15 @@
 	</header>
 	<main class="top-div-under-header mx-auto">
 
-		<h1 class="text-center my-5 pt-5 text-light"
+		<h1 class="text-center mb-5 pt-5 display-5 text-light"
 			style="text-shadow: 2px 4px 10px #000000;">Puppy Details</h1>
 		
 			<div
-				class="d-flex justify-content-center flex-wrap mx-auto py-5 rounded"
-				style="min-width: 300px; ">
+				class="d-flex justify-content-center flex-wrap mx-auto py-5 mb-5 rounded"
+				style="min-width: 300px; background-color:#DCDCDC;">
 					
-				<div class="text-end p-3">
-					<p><a href="#"
+				<div class="text-end p-3 bg-light rounded">
+					<p><a href="/contactUs"
 							style="text-shadow: 2px 4px 10px #000000; text-decoration: none; color: orange;">Ask About Me</a></p>
 						<c:choose>
 							<c:when test="${oneDog.userWhoLiked.contains(currentUser)}">
@@ -133,15 +133,18 @@
 				
 					
 			</div>
-			<div class="d-flex justify-content-between flex-wrap mx-5"
+			<div class="d-flex justify-content-between mx-5 flex-wrap"
 				style="min-width: 900px;"
 			>
 				<div 
 					class="mid-box border border-solid border-3 col-6"
 					style="border-radius: 0 35px 35px 0;">
 					<h3>About Me!</h3>
-					<p>This is my time to shine! Only, the designer of this project is <span class="text-danger fw-bold">lazy,</span> and only wants to give you "<span style="color:orange;font-weight: bold;">filler</span>" text. 
-						I'll keep it short and say, <span style="color:orange; font-weight: bold;">pick me, i'm adorable!</span> Oh, Yeah! I'm totally worth the price, don't even think about it, just do it! I'm waiting!</p>
+					<p>ID#: <c:out value="${oneDog.id}"/></p>
+					<p style="margin:-15px 0 20px 0;">Price: $<span class="fw-bolder" style="font-size: 20px;"><c:out value="${oneDog.price}"/></span></p>
+					<p>	<span style="margin-left:40px;">Hi!</span> Thank you for visiting me! I would like to get into more details about myself, but
+						the designer of this project is <span class="text-danger fw-bold">lazy,</span> and only wants to give you "<span style="color:orange;font-weight: bold;">filler</span>" text. 
+						I'll keep it short and say, <span style="color:orange; font-weight: bold;">pick me, i'm adorable!</span></p>
 					<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, 
 					quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. 
 					Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. 
