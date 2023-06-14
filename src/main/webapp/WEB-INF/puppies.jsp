@@ -91,9 +91,19 @@
 				<c:forEach var="oneDog" items="${dogs}" varStatus="status">
 					<c:if test="${oneDog.user.id == null}">
 						<div class="col-md-4 d-inline-block">
-							<a href="/like/${oneDog.id}"
-								style="margin-right: 5px; text-shadow: 2px 4px 10px #000000; text-decoration: none;">like
-							</a> <a href="/puppy/${oneDog.id}"><img class="mypicture rounded"
+ 						<c:choose>
+							<c:when test="${oneDog.userWhoLiked.contains(currentUser)}">
+								<a href="/unlike/${oneDog.id}"
+									style="margin-right: 5px; text-shadow: 2px 4px 10px #000000; text-decoration: none;">unlike</a>
+							</c:when>
+							<c:otherwise>
+								<a href="/like/${oneDog.id}"
+									style="margin-right: 5px; text-shadow: 2px 4px 10px #000000; text-decoration: none;">like</a>
+							</c:otherwise>
+						</c:choose>
+							
+							
+							<a href="/puppy/${oneDog.id}"><img class="mypicture rounded"
 								style="box-shadow: 2px 2px 10px #000000;" alt="my picture1"
 								title="click me"
 								src="${pageContext.request.contextPath}/images/puppyImg${oneDog.id}.jpeg"></a>

@@ -79,7 +79,19 @@ public class PuppyController {
 	}
 	
 	@GetMapping("/puppies")
-	public String contactUs(Model model) {
+	public String contactUs(Model model, 
+			@ModelAttribute("newDogs")Dog newDogs,
+			HttpSession session) {
+		
+		
+		if(session.getAttribute("userId")!=null) {
+			User thisUser = userServ.getOne((Long) session.getAttribute("userId"));
+			model.addAttribute("dogs", dogServ.all());
+			model.addAttribute("currentUser", thisUser);
+			
+			return "puppies.jsp";
+		}
+		
 		model.addAttribute("dogs", dogServ.all());
 		return "puppies.jsp";
 	}
@@ -136,6 +148,18 @@ public class PuppyController {
 		Dog thisDog = dogServ.findById(dogId);
 		User thisUser = userServ.getOne((Long)session.getAttribute("userId"));
 		dogServ.likedDog(thisDog, thisUser);
+		return "redirect:/puppies";
+	}
+	
+	@GetMapping("/unlike/{dogId}")
+	public String unlikeDog(@PathVariable("dogId") Long dogId, 
+			HttpSession session) {
+		if (session.getAttribute("userId") == null) {
+			return "redirect:/login";
+		}
+		Dog thisDog = dogServ.findById(dogId);
+		User thisUser = userServ.getOne((Long)session.getAttribute("userId"));
+		dogServ.unlikeDog(thisDog, thisUser);
 		return "redirect:/puppies";
 	}
 	
@@ -200,7 +224,17 @@ public class PuppyController {
 	}
 	
 	@GetMapping("/puppy/{id}")
-	public String puppyShow(Model model, @PathVariable("id") Long id) {
+	public String puppyShow(Model model, @PathVariable("id") Long id,
+			HttpSession session) {
+		
+		if(session.getAttribute("userId")!=null) {
+			User thisUser = userServ.getOne((Long) session.getAttribute("userId"));
+			model.addAttribute("oneDog", dogServ.findById(id));
+			model.addAttribute("currentUser", thisUser);
+			
+			return "puppyDetails.jsp";
+		}
+		
 		model.addAttribute("oneDog", dogServ.findById(id));
 		return "puppyDetails.jsp";
 	}

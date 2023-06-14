@@ -94,10 +94,18 @@
 				style="min-width: 300px; ">
 					
 				<div class="text-end p-3">
-					<p><a href="/like/${oneDog.id}"
+					<p><a href="#"
 							style="text-shadow: 2px 4px 10px #000000; text-decoration: none; color: orange;">Ask About Me</a></p>
-					<p><a href="/like/${oneDog.id}"
-							style="text-shadow: 2px 4px 10px #000000; text-decoration: none; color: orange;">Like me</a></p>
+						<c:choose>
+							<c:when test="${oneDog.userWhoLiked.contains(currentUser)}">
+								<p><a href="/user/unlike/${oneDog.id}"
+									style="text-shadow: 2px 4px 10px #000000; text-decoration: none;color: orange;">unlike</a></p>
+							</c:when>
+							<c:otherwise>
+								<p><a href="/user/like/${oneDog.id}"
+									style="text-shadow: 2px 4px 10px #000000; text-decoration: none; color: orange;">Like me</a></p>
+							</c:otherwise>
+						</c:choose>
 					<p><span class="text-success">Name:</span> <span class="dog-details"><c:out value="${oneDog.name}"/></span></p>
 					<p><span class="text-success">Age:</span> <span class="dog-details"><c:out value="${oneDog.age}"/> weeks</span> </p>
 					<c:choose>

@@ -49,6 +49,12 @@ public class DogService {
 			this.update(thisDog);
 		}
 		
+		public void unlikeDog(Dog thisDog, User user) {
+			List<User> likers = thisDog.getUserWhoLiked();
+			likers.remove(user);
+			this.update(thisDog);
+		}
+		
 		public List<Dog> findAllWithImg(){
 			return repo.findAllWithImg();
 		}
