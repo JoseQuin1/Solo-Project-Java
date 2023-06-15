@@ -2,14 +2,13 @@
 	pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form"%>
-<%@ taglib uri="http://java.sun.com/jsp/jstl/functions" prefix="fn"%>
 <%@ page isErrorPage="true"%>
 <!DOCTYPE html>
 <html>
 <head>
 <meta charset="UTF-8">
-<title>Puppy Details</title>
-<link rel="stylesheet" type="text/css" href="/css/style.css">
+<title>PuppyShop</title>
+<link rel="stylesheet" href="/css/style.css">
 <script type="text/javascript" src="/js/app.js"></script>
 <!-- for Bootstrap CSS -->
 <link rel="stylesheet" href="/webjars/bootstrap/css/bootstrap.min.css" />
@@ -17,132 +16,117 @@
 <link rel="stylesheet" href="/css/main.css" />
 <!-- For any Bootstrap that uses JS -->
 <script src="/webjars/bootstrap/js/bootstrap.min.js"></script>
+<script src="/js/javascript.js"></script>
+<link rel="stylesheet"
+	href="https://use.fontawesome.com/releases/v5.8.1/css/all.css"
+	integrity="sha384-50oBUHEmvpQ+1lW4y57PTFmhCaXp0ML5d60M1M7uH2+nqUivzIebhndOJK28anvf"
+	crossorigin="anonymous">
+<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
+		integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
+		crossorigin="anonymous"></script>
+<script
+		src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js"></script>
+<script
+		src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js"></script>
 
 </head>
 <body>
-	<header class=" header fixed-top">
-		<div class="mx-auto d-flex justify-content-between">
-			<div class="pt-4 col-4">
-				<div style="padding-left: 5px;">
-					<img class="myIcon" alt="location Icon"
-						src="${pageContext.request.contextPath}/images/icons/location_Icon1.png">
-					<a
-						href="https://www.google.com/maps/place/PuppyBuddy+Boca/@26.4073937,-80.2041224,
-					17z/data=!3m1!4b1!4m6!3m5!1s0x88d919850de9707d:0x3ebe8c54ab9b9c0d!8m2!3d26.4073937!4d-80.2015475!16s%2Fg%2F11pq3b4jt3?entry=ttu"
-						class="location link-dark text-decoration-none">9858 Clint
-						Moore Rd # 110, Boca Raton, FL 33496</a>
-				</div>
-				<div class="d-flex justify-content-between mt-4">
-					<div class="d-flex" style="padding-left: 3px;">
-						<img class="myIcon" style="height: 20px; padding-top: 2px;"
-							alt="location Icon"
-							src="${pageContext.request.contextPath}/images/icons/home-icon.png">
-						<a href="/" class="headerAnchor link-dark text-decoration-none">Home</a>
-					</div>
-					<a href="/aboutUs"
-						class="headerAnchor link-dark text-decoration-none">About Us</a> <a
-						href="/reviews"
-						class="headerAnchor link-dark text-decoration-none">Reviews</a> <a
-						href="/puppies"
-						class="headerAnchor link-dark text-decoration-none">Puppies</a>
-				</div>
-			</div>
-			<div>
-				<img class="mylogo" alt="logo"
-					src="${pageContext.request.contextPath}/images/logo.webp">
-			</div>
-			<div class="pt-4 col-4">
-				<div class="d-flex flex-row-reverse">
-					<p class=" col-5 p-1 bg-success text-light text-center rounded">
-						(800) 789-7545</p>
-				</div>
-				<div class="d-flex justify-content-between">
-					<a href="/puppy-travel"
-						class="headerAnchor link-dark text-decoration-none">Puppy
-						Travel</a> <a href="/contactUs"
-						class="headerAnchor link-dark text-decoration-none">ContactUs</a>
-					<c:choose>
-						<c:when test="${userId != null}">
-							<a href="/logout"
-								class="headerAnchor link-dark text-decoration-none">Logout</a>
-						</c:when>
-						<c:otherwise>
-							<a href="/login"
-								class="headerAnchor link-dark text-decoration-none">Login</a>
-						</c:otherwise>
-					</c:choose>
 
-				</div>
-			</div>
-		</div>
-		<div class="d-flex justify-content-center">
+	<nav class="navbar sticky-top navbar-expand-lg" style="background-color:white;">
+		<div class="container">
+			<a class="navbar-brand" href="/"> <img class="mylogo rounded"
+				alt="logo" src="${pageContext.request.contextPath}/images/logo.webp">
+			</a>
 			<c:if test="${userId != null}">
 				<a href="/profile"
-					style="background-color: #4CAF50; /* Green */ border: none; border-radius: 10px; color: white; text-align: center; text-decoration: none; padding: 0 5px; font-size: 12px;">My
-					Profile</a>
+					style="background-color: #4CAF50;
+						border: none; 
+						border-radius: 10px; 
+						color: white; 
+						text-align: center; 
+						text-decoration: none; 
+						padding: 0 5px; 
+						font-size: 12px;">My Profile
+				</a>
 
 			</c:if>
-		</div>
-	</header>
-	<main class="top-div-under-header mx-auto">
+			<button class="navbar-toggler" type="button" data-toggle="collapse"
+				data-target="#navbarSupportedContent"
+				aria-controls="navbarSupportedContent" aria-expanded="false"
+				aria-label="Toggle navigation">
+				<i class="fas fa-bars"></i>
+			</button>
 
-		<h1 class="text-center mb-5 pt-5 display-5 text-light"
-			style="text-shadow: 2px 4px 10px #000000;">Puppy Details</h1>
-		
-			<div
-				class="d-flex justify-content-center flex-wrap mx-auto py-5 mb-5 rounded"
-				style="min-width: 300px; background-color:#DCDCDC;">
-					
-				<div class="text-end p-3 bg-light rounded">
-					<p><a href="/contactUs"
-							style="text-shadow: 2px 4px 10px #000000; text-decoration: none; color: orange;">Ask About Me</a></p>
-						<c:choose>
-							<c:when test="${oneDog.userWhoLiked.contains(currentUser)}">
-								<p><a href="/user/unlike/${oneDog.id}"
-									style="text-shadow: 2px 4px 10px #000000; text-decoration: none;color: orange;">unlike</a></p>
+			<div class="collapse navbar-collapse" id="navbarSupportedContent">
+				<ul class="navbar-nav mr-auto w-100 justify-content-center">
+					<li class="nav-item active"><a class="nav-link" href="/">Home
+							<span class="sr-only">(current)</span>
+					</a></li>
+					<li class="nav-item"><a class="nav-link" href="/aboutUs">About</a>
+					<li class="nav-item"><a class="nav-link" href="/contactUs">Contact</a>
+					<li class="nav-item"><a class="nav-link" href="/reviews">Reviews</a>
+					<li class="nav-item"><a class="nav-link" href="/puppies">Puppies</a>
+					<li class="nav-item">
+					<c:choose>
+							<c:when test="${userId != null}">
+								<a href="/logout" class="nav-link">Logout</a>
 							</c:when>
 							<c:otherwise>
-								<p><a href="/user/like/${oneDog.id}"
-									style="text-shadow: 2px 4px 10px #000000; text-decoration: none; color: orange;">Like me</a></p>
+								<a href="/login" class="nav-link">Login</a>
 							</c:otherwise>
-						</c:choose>
-					<p><span class="text-success">Name:</span> <span class="dog-details"><c:out value="${oneDog.name}"/></span></p>
-					<p><span class="text-success">Age:</span> <span class="dog-details"><c:out value="${oneDog.age}"/> weeks</span> </p>
-					<c:choose>
-						<c:when test="${oneDog.gender == 'f'}">
-							<p><span class="text-success">Gender:</span> <span class="dog-details">Female</span></p>
-						</c:when>
-						<c:otherwise>
-							<p><span class="text-success">Gender:</span> <span class="dog-details">Male</span></p>
-						</c:otherwise>
-					</c:choose>
-					<p><span class="text-success">Breed: </span> <span class="dog-details"><c:out value="${oneDog.breed}"/></span></p>
-					<p><span class="text-success">Color: </span> <span class="dog-details"><c:out value="${oneDog.color}"/></span></p>
-					<p><span class="text-success">Moms Weight: </span> <span class="dog-details"><c:out value="${oneDog.weight}"/> lbs</span> </p>
-					<p><span class="text-success">Status: </span> <span class="dog-details"><c:out value="${oneDog.status}"/></span></p>
-					
-				</div>
-	
-				<div class="text-center p-3">
-					<img
-						style="height: 370px; box-shadow: 2px 4px 10px #000000;"
-						alt="puppyImg"
-						src="${pageContext.request.contextPath}/images/puppyImg${oneDog.id}.jpeg">
-	
-				</div>
-				
-					
+					</c:choose></li>
+				</ul>
 			</div>
+		</div>
+	</nav>
+	<main class="mx-auto">
+		<h1 class="text-center mb-5 pt-5 display-5 text-light"
+			style="text-shadow: 2px 4px 10px #000000;">Puppy Details</h1>
 			<div class="d-flex justify-content-between mx-5 flex-wrap"
-				style="min-width: 900px;"
-			>
+				style="min-width: 900px;">
 				<div 
 					class="mid-box border border-solid border-3 col-6"
 					style="border-radius: 0 35px 35px 0;">
 					<h3>About Me!</h3>
-					<p>ID#: <c:out value="${oneDog.id}"/></p>
-					<p style="margin:-15px 0 20px 0;">Price: $<span class="fw-bolder" style="font-size: 20px;"><c:out value="${oneDog.price}"/></span></p>
-					<p>	<span style="margin-left:40px;">Hi!</span> Thank you for visiting me! I would like to get into more details about myself, but
+						<div class="flip-card">
+							<div class="flip-card-inner">
+								<div class="flip-card-front">
+									<img style="height: 370px; box-shadow: 2px 4px 10px #000000;" alt="puppyImg"
+									src="${pageContext.request.contextPath}/images/puppyImg${oneDog.id}.jpeg">	
+								</div>
+							<div class="flip-card-back" style="height: 370px; box-shadow: 2px 4px 10px #000000;">
+								<div class="text-start p-3 bg-light rounded">
+
+										<c:choose>
+											<c:when test="${oneDog.userWhoLiked.contains(currentUser)}">
+												<p><a href="/user/unlike/${oneDog.id}"
+													style="text-shadow: 2px 4px 10px #000000; text-decoration: none;color: orange;">unlike</a></p>
+											</c:when>
+											<c:otherwise>
+												<p><a href="/user/like/${oneDog.id}"
+													style="text-shadow: 2px 4px 10px #000000; text-decoration: none; color: orange;">Like me</a></p>
+											</c:otherwise>
+										</c:choose>
+									<p><span class="text-success">Name:</span> <span class="dog-details text-dark"><c:out value="${oneDog.name}"/></span></p>
+									<p><span class="text-success">Age:</span> <span class="dog-details text-dark"><c:out value="${oneDog.age}"/> weeks</span> </p>
+									<c:choose>
+										<c:when test="${oneDog.gender == 'f'}">
+											<p><span class="text-success">Gender:</span> <span class="dog-details text-dark">Female</span></p>
+										</c:when>
+										<c:otherwise>
+											<p><span class="text-success">Gender:</span> <span class="dog-details text-dark">Male</span></p>
+										</c:otherwise>
+									</c:choose>
+									<p><span class="text-success">Breed: </span> <span class="dog-details text-dark"><c:out value="${oneDog.breed}"/></span></p>
+									<p><span class="text-success">Color: </span> <span class="dog-details text-dark"><c:out value="${oneDog.color}"/></span></p>
+									<p><span class="text-success">Moms Weight: </span> <span class="dog-details text-dark"><c:out value="${oneDog.weight}"/> lbs</span> </p>
+									<p><span class="text-success">Status: </span> <span class="dog-details text-dark"><c:out value="${oneDog.status}"/></span></p>
+									
+								</div>
+							</div>
+						</div>
+					</div>
+					<p style="margin-top: 200px;">	<span style="margin-left:40px;">Hi!</span> Thank you for visiting me! I would like to get into more details about myself, but
 						the designer of this project is <span class="text-danger fw-bold">lazy,</span> and only wants to give you "<span style="color:orange;font-weight: bold;">filler</span>" text. 
 						I'll keep it short and say, <span style="color:orange; font-weight: bold;">pick me, i'm adorable!</span></p>
 					<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, 

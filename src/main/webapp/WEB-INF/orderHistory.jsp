@@ -7,8 +7,8 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>PuppyShop</title>
-<link rel="stylesheet" href="/css/style.css">
+<title>Order History</title>
+<link rel="stylesheet" type="text/css" href="/css/style.css">
 <script type="text/javascript" src="/js/app.js"></script>
 <!-- for Bootstrap CSS -->
 <link rel="stylesheet" href="/webjars/bootstrap/css/bootstrap.min.css" />
@@ -16,7 +16,6 @@
 <link rel="stylesheet" href="/css/main.css" />
 <!-- For any Bootstrap that uses JS -->
 <script src="/webjars/bootstrap/js/bootstrap.min.js"></script>
-<script src="/js/javascript.js"></script>
 <link rel="stylesheet"
 	href="https://use.fontawesome.com/releases/v5.8.1/css/all.css"
 	integrity="sha384-50oBUHEmvpQ+1lW4y57PTFmhCaXp0ML5d60M1M7uH2+nqUivzIebhndOJK28anvf"
@@ -58,7 +57,7 @@
 			</button>
 
 			<div class="collapse navbar-collapse" id="navbarSupportedContent">
-				<ul class="navbar-nav mr-auto w-100 justify-content-center">
+				<ul class="navbar-nav mr-auto w-100 justify-content-end">
 					<li class="nav-item active"><a class="nav-link" href="/">Home
 							<span class="sr-only">(current)</span>
 					</a></li>
@@ -79,77 +78,30 @@
 			</div>
 		</div>
 	</nav>
-	<main class="">
-		<h3 style="padding-left: 20px; ">My Account</h3>
-		<div class="d-flex flex-wrap">
-		
-			<div style="padding: 10px 30px;">
-			
-				<div class="d-flex">
-					<img class="myIcon" style="margin: 15px 10px 0 0;" alt="user Icon"
-						src="${pageContext.request.contextPath}/images/icons/user-regular.svg">
-					<a href="/profile" class="text-decoration-none text-warning"
-						style="margin-top: 10px;">My Account</a>
-				</div>
-				
-				<c:choose>
-					<c:when test="${user.profile == 'Breeder'}">
-						<div class="d-flex">
-							<img class="myIcon" style="margin: 15px 10px 0 0;" alt="user Icon"
-								src="${pageContext.request.contextPath}/images/icons/catalog-icon.png">
-							<a href="/myCatalog" class="text-decoration-none text-dark"
-								style="margin-top: 10px;">My Catalog</a>
-						</div>
-												<div class="d-flex">
-							<img class="myIcon" style="margin: 15px 10px 0 0;" alt="user Icon"
-								src="${pageContext.request.contextPath}/images/icons/heart-icon.png">
-							<a href="/favorites" class="text-decoration-none text-dark"
-								style="margin-top: 10px;">My Favorites</a>
-						</div>
-					</c:when>
-					<c:otherwise>
-						<div class="d-flex">
-							<img class="myIcon" style="margin: 15px 10px 0 0;" alt="user Icon"
-								src="${pageContext.request.contextPath}/images/icons/heart-icon.png">
-							<a href="/favorites" class="text-decoration-none text-dark"
-								style="margin-top: 10px;">My Favorites</a>
-						</div>
-					</c:otherwise>
-				</c:choose>
-				
-				<div class="d-flex">
-					<img class="myIcon" style="margin: 15px 10px 0 0;" alt="user Icon"
-						src="${pageContext.request.contextPath}/images/icons/cart-icon.png">
-					<a href="/order-history" class="text-decoration-none text-dark"
-						style="margin-top: 10px;">Order History</a>
-				</div>
-	
-			</div>
 
-			<div class="col-4 p-5 mx-5">
-				<h6 class="mb-3">First Name</h6>
-				<p class="myAccount-p">
-					<c:out value="${user.firstName}" />
-					<span>
-						<a href="#" style="color:orange; text-decoration: none;">edit</a>
-					</span>
-				</p>
-				<h6 class="my-3">Last Name</h6>
-				<p class="myAccount-p">
-					<c:out value="${user.lastName}" />
-					<span>
-						<a href="#" style="color:orange; text-decoration: none;">edit</a>
-					</span>
-				</p>
-				<h6 class="my-3">Email</h6>
-				<p class="myAccount-p">
-					<c:out value="${user.email}" />
-					<span>
-						<a href="#" style="color:orange; text-decoration: none;">edit</a>
-					</span>
-				</p>
-			</div>
+
+
+
+
+
+
+
+
+
+=================================================
+
+<div class="flip-card">
+	<div class="flip-card-inner">
+		<div class="flip-card-front">
+			<img src="img_avatar.png" alt="Avatar"
+				style="width: 300px; height: 300px;">
 		</div>
-	</main>
+		<div class="flip-card-back">
+			<h1>John Doe</h1>
+			<p>Architect & Engineer</p>
+			<p>We love that guy</p>
+		</div>
+	</div>
+</div>
 </body>
 </html>

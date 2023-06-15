@@ -61,4 +61,18 @@ public class AccountController {
 			dogServ.unlikeDog(thisDog, thisUser);
 			return "redirect:/favorites";
 		}
+		
+		@GetMapping("/order-history")
+		public String orderHistory(Model model,
+				HttpSession session) {
+			
+			if (session.getAttribute("userId") != null) {
+				User thisUser = userServ.getOne((Long)session.getAttribute("userId"));
+				model.addAttribute("user", thisUser);
+				return "orderHistory.jsp";
+			}
+			
+			return "redirect:/login";
+			
+		}
 }

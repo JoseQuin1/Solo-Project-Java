@@ -41,9 +41,9 @@ public class PuppyController {
 			 Dog dog3 = new Dog("Mike",11,"Labrador Retriever",110,"Brown","available","m","puppyImg4",3800.0);
 			 Dog dog4 = new Dog("Maze",8,"Jack Rusell Terrier",35,"White","available","f","puppyImg5",4500.0);
 			 Dog dog5 = new Dog("Mel",6,"Husky",90,"Brown","available","m","puppyImg6",3000.0);
-			 Dog dog6 = new Dog("Chester",13,"Pointer",70,"White","available","m","puppyImg7",3700.0);
-			 Dog dog7 = new Dog("Kenzi",15,"German Shepherd",110,"Black","available","f","puppyImg8",4800.0);
-			 Dog dog8 = new Dog("Herbie",11,"Cavalier King Charles Spaniel",30,"Beige","available","m","puppyImg9",5000.0);
+			 Dog dog6 = new Dog("Kenzi",13,"German Shepherd",70,"White","available","m","puppyImg7",3700.0);
+			 Dog dog7 = new Dog("Chester",15,"Pointer",110,"Black","available","f","puppyImg8",4800.0);
+			 Dog dog8 = new Dog("Herbie",11,"King Charles Spaniel",30,"Beige","available","m","puppyImg9",5000.0);
 
 			dogServ.create(dog);
 			dogServ.create(dog1);
