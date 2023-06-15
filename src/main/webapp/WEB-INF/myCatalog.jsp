@@ -26,14 +26,12 @@
 		crossorigin="anonymous"></script>
 <script
 		src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js"></script>
-<script
-		src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js"></script>
 
 </head>
 <body>
 
 	<nav class="navbar sticky-top navbar-expand-lg" style="background-color:white;">
-		<div class="container">
+		<div class="container border-bottom">
 			<a class="navbar-brand" href="/"> <img class="mylogo rounded"
 				alt="logo" src="${pageContext.request.contextPath}/images/logo.webp">
 			</a>
@@ -79,34 +77,52 @@
 			</div>
 		</div>
 	</nav>
-	<h3 class="top-div-under-header pt-3" style="margin-left: 20px;">My Catalog</h3>
+	<h3 class="top-div-under-header pt-3" style="margin-left: 20px;">Catalog</h3>
 	<main class="d-flex">
-		<div style="height: auto: width:23%; min-width: 300px; padding-left: 40px;">
-			<div class="d-flex">
-				<img class="myIcon" style="margin: 15px 10px 0 0;" alt="user Icon"
-					src="${pageContext.request.contextPath}/images/icons/user-regular.svg">
-				<a href="/profile" class="text-decoration-none text-dark"
-					style="margin-top: 10px;">My Account</a>
-			</div>
-			<div class="d-flex">
-				<img class="myIcon" style="margin: 15px 10px 0 0;" alt="user Icon"
-					src="${pageContext.request.contextPath}/images/icons/catalog-icon.png">
-				<a href="/myCatalog" class="text-decoration-none text-warning"
-					style="margin-top: 10px;">My Catalog</a>
-			</div>
-									<div class="d-flex">
+		<div style="height: auto: width:23%; min-width: 300px;">
+			<div style="padding: 10px 30px;">
+			
+				<div class="d-flex">
+					<img class="myIcon" style="margin: 15px 10px 0 0;" alt="user Icon"
+						src="${pageContext.request.contextPath}/images/icons/user-regular.svg">
+					<a href="/profile" class="text-decoration-none text-dark"
+						style="margin-top: 10px;">Account</a>
+				</div>
+				
+				<c:choose>
+					<c:when test="${user.profile == 'Breeder'}">
+						<div class="d-flex">
+							<img class="myIcon" style="margin: 15px 10px 0 0;" alt="user Icon"
+								src="${pageContext.request.contextPath}/images/icons/catalog-icon.png">
+							<a href="/myCatalog" class="text-decoration-none text-warning"
+								style="margin-top: 10px;">Catalog</a>
+						</div>
+												<div class="d-flex">
 							<img class="myIcon" style="margin: 15px 10px 0 0;" alt="user Icon"
 								src="${pageContext.request.contextPath}/images/icons/heart-icon.png">
 							<a href="/favorites" class="text-decoration-none text-dark"
-								style="margin-top: 10px;">My Favorites</a>
+								style="margin-top: 10px;">Favorites</a>
 						</div>
-			<div class="d-flex">
-				<img class="myIcon" style="margin: 15px 10px 0 0;" alt="user Icon"
-					src="${pageContext.request.contextPath}/images/icons/cart-icon.png">
-				<a href="/myCatalog" class="text-decoration-none text-dark"
-					style="margin-top: 10px;">Order History</a>
+					</c:when>
+					<c:otherwise>
+						<div class="d-flex">
+							<img class="myIcon" style="margin: 15px 10px 0 0;" alt="user Icon"
+								src="${pageContext.request.contextPath}/images/icons/heart-icon.png">
+							<a href="/favorites" class="text-decoration-none text-dark"
+								style="margin-top: 10px;">Favorites</a>
+						</div>
+					</c:otherwise>
+				</c:choose>
+				
+				<div class="d-flex">
+					<img class="myIcon" style="margin: 15px 10px 0 0;" alt="user Icon"
+						src="${pageContext.request.contextPath}/images/icons/cart-icon.png">
+					<a href="/order-history" class="text-decoration-none text-dark"
+						style="margin-top: 10px;">Order History</a>
+				</div>
+	
 			</div>
-		</div>
+			</div>
 		<div style="height: 500px; width: 100%; min-width: 650px; margin-right: 30px;">
 			<h4 class="text-center text-light mb-3" style="text-shadow: 2px 4px 10px #000000;">Catalog
 				<a href="/doggies/new" style="margin-left: 5px; text-decoration: none; font-size: 15px;">( add )</a>

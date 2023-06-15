@@ -22,32 +22,23 @@
 	integrity="sha384-50oBUHEmvpQ+1lW4y57PTFmhCaXp0ML5d60M1M7uH2+nqUivzIebhndOJK28anvf"
 	crossorigin="anonymous">
 <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
-		integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
-		crossorigin="anonymous"></script>
+	integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
+	crossorigin="anonymous"></script>
 <script
-		src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js"></script>
-<script
-		src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js"></script>
+	src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js"></script>
 
 </head>
 <body>
-
-	<nav class="navbar sticky-top navbar-expand-lg" style="background-color:white;">
-		<div class="container">
+	<nav class="navbar sticky-top navbar-expand-lg"
+		style="background-color: white;">
+		<div class="container border-bottom">
 			<a class="navbar-brand" href="/"> <img class="mylogo rounded"
 				alt="logo" src="${pageContext.request.contextPath}/images/logo.webp">
 			</a>
 			<c:if test="${userId != null}">
 				<a href="/profile"
-					style="background-color: #4CAF50;
-						border: none; 
-						border-radius: 10px; 
-						color: white; 
-						text-align: center; 
-						text-decoration: none; 
-						padding: 0 5px; 
-						font-size: 12px;">My Profile
-				</a>
+					style="background-color: #4CAF50; border: none; border-radius: 10px; color: white; text-align: center; text-decoration: none; padding: 0 5px; font-size: 12px;">My
+					Profile </a>
 
 			</c:if>
 			<button class="navbar-toggler" type="button" data-toggle="collapse"
@@ -66,87 +57,85 @@
 					<li class="nav-item"><a class="nav-link" href="/contactUs">Contact</a>
 					<li class="nav-item"><a class="nav-link" href="/reviews">Reviews</a>
 					<li class="nav-item"><a class="nav-link" href="/puppies">Puppies</a>
-					<li class="nav-item">
-					<c:choose>
+					<li class="nav-item"><c:choose>
 							<c:when test="${userId != null}">
 								<a href="/logout" class="nav-link">Logout</a>
 							</c:when>
 							<c:otherwise>
 								<a href="/login" class="nav-link">Login</a>
 							</c:otherwise>
-					</c:choose></li>
+						</c:choose></li>
 				</ul>
 			</div>
 		</div>
 	</nav>
-	<main>
-		<div
-			class="d-flex justify-content-center position-relative bg-warning">
-			<div class="leftbox position-absolute colBox col-6"></div>
-			<div class="rightbox position-absolute colBox col-6 bg-success"></div>
-			<form action=""
-				class="center position-absolute bg-light text-success col-7">
-				<div>
-					<h2 style="margin-top: 100px;">Send a Message</h2>
+	<main class="pt-5">
+		<div class="mx-auto p-5 col-8 d-flex justify-content-center flex-wrap bg-secondary rounded"
+			style=" position: relative;border: 3px solid #73AD21; height:auto; box-shadow: 2px 4px 10px">
+		
+			  	<div style="
+			  			height:400px;
+			  			background-color: black;
+			  			padding: 100px 25px 0 25px;">
 					<div class="d-flex">
-						<div style="margin-right: 30px;">
-							<div class="d-flex flex-column mb-3">
-								<label name="fname">First Name</label> 
-								<input
-									class="contact-form-input border border-0 border-bottom"
-									name="fname" type="text" />
-							</div>
-							<div class="d-flex flex-column">
-								<label name="email"></label> 
-								<input
-									class="contact-form-input border border-0 border-bottom"
-									name="email" type="email" placeholder="Email Address" />
-							</div>
-						</div>
-						<div>
-							<div class="d-flex flex-column mb-3">
-								<label name="lname">Last Name</label> 
-								<input
-									class="contact-form-input border border-0 border-bottom"
-									name="lname" type="text" />
-							</div>
-							<div class="d-flex flex-column">
-								<label name="phone"></label> 
-								<input
-									class="contact-form-input border border-0 border-bottom"
-									name="phone" type="number" placeholder="Mobile Number" />
-							</div>
-						</div>
-
+						<img class="contact-Us-Icon rounded-circle" alt="phone"
+							src="${pageContext.request.contextPath}/images/phoneContactUs.png">
+						<p class="contact-info">(800) 789-7545</p>
 					</div>
-					<div class="" style="margin-left: -4px; margin-top: 30px;">
+					<div class="d-flex"style="margin: 30px 0;">
+						<img class="contact-Us-Icon rounded-circle" alt="email"
+							src="${pageContext.request.contextPath}/images/emailContactUs.png">
+						<p class="contact-info">PuppyShopShelter@Email.com</p>
+					</div>
+					<div class="d-flex">
+						<img class="contact-Us-Icon  rounded-circle" alt="location"
+							src="${pageContext.request.contextPath}/images/locationContactUs.png">
+						<p class="contact-info">9858 Clint Moore Rd # 110 Boca
+							Raton, FL 33496</p>
+					</div>
+				</div>
+		<form class="m-2"
+			style="
+			  min-width:400px;
+			  height: auto;
+			  width:500px;">
+					<h2 style="padding: 5px 0 0 5px;">Send a Message</h2>
+					<div class="d-flex justify-content-between">
+						<div class="p-2">
+							<label name="fname" >First Name</label> 
+							<input 
+								name="fname" type="text" 
+								class="contact-form-input"/>
+								
+							<label name="email"></label> 
+							<input
+								name="email" type="email" placeholder="Email Address"
+								class="contact-form-input" />
+						</div>
+						<div class="p-2 rounded">
+							<label name="lname" class="">Last Name</label> 
+							<input 
+								name="lname" type="text" 
+								class="contact-form-input"/>
+								
+							<label name="phone"></label> 
+							<input
+								name="phone" type="number" placeholder="Phone Number"
+								class="contact-form-input" />
+						</div>
+					</div>
+					<div class="px-2" style="margin-top: 10px;">
 						<label name="message"></label>
-						<textarea rows="5" cols="50" name="message"
-							placeholder="write your message here"
-							style="width:830px;"></textarea>
+						<textarea rows="5" cols="0" name="message"placeholder="write your message here"
+							class="" style="width:100%; max-height: 100px; min-height:100px;">
+						</textarea>
 					</div>
-				</div>
+					<div class=" text-center my-4">
+						<button type="submit" class="btn btn-sm rounded-pill"style="background-color:#CEE204;"> Send </button>
+					</div>
+				
 			</form>
-			<div class="contact-info bg-success text-light position-absolute p-5">
-				<h2 class="mb-5">Contact Info</h2>
-				<div class="infoBox d-flex my-3">
-					<img class="contact-Us-Icon bg-light rounded-circle" alt="phone"
-						src="${pageContext.request.contextPath}/images/phoneContactUs.png">
-					<p style="margin-left: 20px;">(800) 789-7545</p>
-				</div>
-				<div class="infoBox d-flex my-3">
-					<img class="contact-Us-Icon bg-light rounded-circle" alt="location"
-						src="${pageContext.request.contextPath}/images/locationContactUs.png">
-					<p style="margin-left: 20px;">9858 Clint Moore Rd # 110 Boca
-						Raton, FL 33496</p>
-				</div>
-				<div class="infoBox d-flex my-3">
-					<img class="contact-Us-Icon bg-light rounded-circle" alt="email"
-						src="${pageContext.request.contextPath}/images/emailContactUs.png">
-					<p style="margin-left: 20px;">PuppyShopShelter@Email.com</p>
-				</div>
 			</div>
-		</div>
 	</main>
 </body>
 </html>

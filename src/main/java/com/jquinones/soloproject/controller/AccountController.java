@@ -23,10 +23,9 @@ public class AccountController {
 	
 	  @GetMapping("/myCatalog")
 	  private String profile(Model model, HttpSession session) {
-			 Long userId = (Long)session.getAttribute("userId");
 			 User user = userServ.getOne((Long)session.getAttribute("userId"));
 
-			 if(userId != null) {
+			 if(session.getAttribute("userId") != null) {
 				 if(user.getProfile().equals("Breeder")) {
 					 model.addAttribute("doggies", dogServ.all());
 					 model.addAttribute("user", user);
@@ -40,8 +39,9 @@ public class AccountController {
 	  
 	  @GetMapping("/favorites")
 	  public String fav(Model model,HttpSession session){
+		  Long userId = (Long)session.getAttribute("userId");
 		  
-		  if(session.getAttribute("userId") != null) {
+		  if(userId != null) {
 			  User thisUser = userServ.getOne((Long)session.getAttribute("userId"));
 			  model.addAttribute("currentUser", thisUser);
 			  model.addAttribute("dogs", dogServ.all());

@@ -142,25 +142,28 @@ public class PuppyController {
 	@GetMapping("/like/{dogId}")
 	public String likeDog(@PathVariable("dogId") Long dogId, 
 			HttpSession session) {
-		if (session.getAttribute("userId") == null) {
-			return "redirect:/login";
+		if (session.getAttribute("userId") != null) {
+			Dog thisDog = dogServ.findById(dogId);
+			User thisUser = userServ.getOne((Long)session.getAttribute("userId"));
+			dogServ.likedDog(thisDog, thisUser);
+			return "redirect:/puppies";
 		}
-		Dog thisDog = dogServ.findById(dogId);
-		User thisUser = userServ.getOne((Long)session.getAttribute("userId"));
-		dogServ.likedDog(thisDog, thisUser);
-		return "redirect:/puppies";
+		return "redirect:/login";
+
 	}
 	
 	@GetMapping("/unlike/{dogId}")
 	public String unlikeDog(@PathVariable("dogId") Long dogId, 
 			HttpSession session) {
-		if (session.getAttribute("userId") == null) {
-			return "redirect:/login";
+		if (session.getAttribute("userId") != null) {
+			Dog thisDog = dogServ.findById(dogId);
+			User thisUser = userServ.getOne((Long)session.getAttribute("userId"));
+			dogServ.unlikeDog(thisDog, thisUser);
+			return "redirect:/puppies";
+			
 		}
-		Dog thisDog = dogServ.findById(dogId);
-		User thisUser = userServ.getOne((Long)session.getAttribute("userId"));
-		dogServ.unlikeDog(thisDog, thisUser);
-		return "redirect:/puppies";
+		return "redirect:/login";
+
 	}
 	
 	@GetMapping("/puppy/{id}/delete")

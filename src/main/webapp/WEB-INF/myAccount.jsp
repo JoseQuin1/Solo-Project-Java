@@ -79,8 +79,8 @@
 			</div>
 		</div>
 	</nav>
+	<h3 class="top-div-under-header pt-3" style="margin-left: 20px;">Account</h3>
 	<main class="">
-		<h3 style="padding-left: 20px; ">My Account</h3>
 		<div class="d-flex flex-wrap">
 		
 			<div style="padding: 10px 30px;">
@@ -89,7 +89,7 @@
 					<img class="myIcon" style="margin: 15px 10px 0 0;" alt="user Icon"
 						src="${pageContext.request.contextPath}/images/icons/user-regular.svg">
 					<a href="/profile" class="text-decoration-none text-warning"
-						style="margin-top: 10px;">My Account</a>
+						style="margin-top: 10px;">Account</a>
 				</div>
 				
 				<c:choose>
@@ -98,13 +98,13 @@
 							<img class="myIcon" style="margin: 15px 10px 0 0;" alt="user Icon"
 								src="${pageContext.request.contextPath}/images/icons/catalog-icon.png">
 							<a href="/myCatalog" class="text-decoration-none text-dark"
-								style="margin-top: 10px;">My Catalog</a>
+								style="margin-top: 10px;">Catalog</a>
 						</div>
 												<div class="d-flex">
 							<img class="myIcon" style="margin: 15px 10px 0 0;" alt="user Icon"
 								src="${pageContext.request.contextPath}/images/icons/heart-icon.png">
 							<a href="/favorites" class="text-decoration-none text-dark"
-								style="margin-top: 10px;">My Favorites</a>
+								style="margin-top: 10px;">Favorites</a>
 						</div>
 					</c:when>
 					<c:otherwise>
@@ -112,7 +112,7 @@
 							<img class="myIcon" style="margin: 15px 10px 0 0;" alt="user Icon"
 								src="${pageContext.request.contextPath}/images/icons/heart-icon.png">
 							<a href="/favorites" class="text-decoration-none text-dark"
-								style="margin-top: 10px;">My Favorites</a>
+								style="margin-top: 10px;">Favorites</a>
 						</div>
 					</c:otherwise>
 				</c:choose>

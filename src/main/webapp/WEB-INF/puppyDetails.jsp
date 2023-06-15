@@ -24,10 +24,8 @@
 <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
 		integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
 		crossorigin="anonymous"></script>
-<script
-		src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js"></script>
-<script
-		src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js"></script>
+
 
 </head>
 <body>
@@ -79,14 +77,13 @@
 			</div>
 		</div>
 	</nav>
-	<main class="mx-auto">
-		<h1 class="text-center mb-5 pt-5 display-5 text-light"
-			style="text-shadow: 2px 4px 10px #000000;">Puppy Details</h1>
-			<div class="d-flex justify-content-between mx-5 flex-wrap"
-				style="min-width: 900px;">
-				<div 
-					class="mid-box border border-solid border-3 col-6"
+	<main class="mx-auto col-10">
+			<div class="d-flex justify-content-between flex-wrap"
+				style="min-width: 1000px;">
+				<div class="mid-box border border-solid border-3 col-6"
 					style="border-radius: 0 35px 35px 0;">
+					<h1 class="mb-5 display-5 text-light"
+						style="text-shadow: 2px 4px 10px #000000;">Puppy Details</h1>
 					<h3>About Me!</h3>
 						<div class="flip-card">
 							<div class="flip-card-inner">
@@ -99,12 +96,18 @@
 
 										<c:choose>
 											<c:when test="${oneDog.userWhoLiked.contains(currentUser)}">
+											<div class="d-flex justify-content-between">
+												<p><span class="text-success">ID# </span><span class="dog-details text-dark"><c:out value="${oneDog.id}"/></span></p>
 												<p><a href="/user/unlike/${oneDog.id}"
 													style="text-shadow: 2px 4px 10px #000000; text-decoration: none;color: orange;">unlike</a></p>
+											</div>
 											</c:when>
 											<c:otherwise>
+											<div class="d-flex justify-content-between">
+												<p><span class="text-success">ID# </span><span class="dog-details text-dark"><c:out value="${oneDog.id}"/></span></p>
 												<p><a href="/user/like/${oneDog.id}"
 													style="text-shadow: 2px 4px 10px #000000; text-decoration: none; color: orange;">Like me</a></p>
+											</div>
 											</c:otherwise>
 										</c:choose>
 									<p><span class="text-success">Name:</span> <span class="dog-details text-dark"><c:out value="${oneDog.name}"/></span></p>
@@ -161,10 +164,10 @@
 				</div>
 					
 				<div 
-					class="mid-box border border-solid border-3 col-6" 
+					class="mid-box border border-solid border-3 col-6 py-5" 
 					style="box-shadow: 2px 4px 10px #000000; border-radius: 35px 0 0 35px;
 					">
-					<h3 style="border-bottom: 2px solid gray; padding-bottom: 20px;">What comes included FREE with each of our puppies</h3>
+					<h4 style="border-bottom: 2px solid gray; padding-bottom: 20px;">What comes included FREE with each of our puppies</h4>
 					<p class="info-col d-flex justify-content-between">Health Warranty 
 						<img style="height: 40px;"
 							alt="puppyImg" src="${pageContext.request.contextPath}/images/icons/thumbs-up-icon.jpeg"></p>	
@@ -205,7 +208,7 @@
 			</div>
 
 	</main>
-	<footer class="bg-success mt-5 mx-auto my-auto">
+<footer class="bg-success mt-5 mx-auto my-auto">
 		<h1 class="text-light col-2 text-center mx-auto pb-2"
 			style="text-shadow: 2px 4px 10px #000000; back-ground-color: white;">PuppyShop</h1>
 		<div class="mx-auto mt-5 col-4 d-flex justify-content-between flex-wrap">

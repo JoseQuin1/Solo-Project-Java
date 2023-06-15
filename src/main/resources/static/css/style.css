@@ -9,9 +9,7 @@
 	background-color: white;
 	border-bottom: 2px solid #F8F8FF;
 }
-.top-div-under-header{
-	margin-top: 170px;
-}
+
 /* Index.jsp */
 .location{
 	font-size: 0.8em;
@@ -31,8 +29,6 @@
 	width: 223px;
 }
 .mypicture{
-/* 	height: 185px;
-	width: 180px; */
 	height: 155px;
 	width: 150px;
 	border-radius:5px;
@@ -91,6 +87,7 @@
 footer{
 	padding-top: 100px;
 }
+
 /* ===================== AboutUs.jsp ========================= */
 .divRow{
 	margin-top: 120px;
@@ -99,7 +96,6 @@ footer{
 	height: 250px;
 	display: inline-block;
 }
-
 
 .colBox{
 	margin-top: 150px;
@@ -115,27 +111,23 @@ footer{
 .rightbox{
 	margin-left: 50%;
 }
-.center{
-	margin-top: 225px;
-	margin-left: 250px;
-	height: 550px;
-	padding-left: 200px;
-}
+/*=============================Contact Us=========================*/
 .contact-info{
-	margin-top: 300px;
-	height: 400px;
-	width: 400px;
-	margin-right: 1000px;
+	margin-left: 5px; 
+	font-size: 12px;
+	color:#CEE204;
 }
 
 .contact-Us-Icon{
-	height: 30px;
+	height: 20px;
 }
 .contact-form-input{
 	height: 35px;
 	margin-top: 10px;
-	width: 400px;
+	width:100%;
+	border-radius: 4px;
 }
+
 
 /* =========================== LOGIN PAGE ============================*/
 .loginFromInput{
@@ -165,7 +157,7 @@ footer{
 	border-color:#D3D3D3;
 }
 
-/* TRAVEL */
+/* ============================TRAVEL======================== */
 .travel-main-div{
 	height:700px;
 	width: 500px;
@@ -175,7 +167,7 @@ footer{
 	box-shadow: 2px 4px 10px #000000;
 	
 }
-/* PUPPY DETAILS */
+/* ==========================PUPPY DETAILS =======================*/
 .puppy-card-details{
 	margin:5px;
 }
@@ -189,8 +181,8 @@ footer{
 	padding:0 10px;
 }
 .mid-box{
-	padding:100px;
 	height:auto;
+	padding: 0 100px;
 }
 .puppy-details-Review {
 	height: 100px;
