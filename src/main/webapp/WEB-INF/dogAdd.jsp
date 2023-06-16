@@ -79,47 +79,60 @@
 			</div>
 		</div>
 	</nav>
-	<main class="top-div-under-header border border-light rounded">
 	<h3 style="margin-left:20px;">Add Puppy</h3>
-	<div class="my-auto d-flex">
-		<div
-			style="
-				height:auto:
-				min-width:300px;
-				padding-left: 40px;
-				">
-			<div class="d-flex">
-				<img class="myIcon" style="margin: 15px 10px 0 0;" alt="user Icon"
-						src="${pageContext.request.contextPath}/images/icons/user-regular.svg">	
-				<a href="/profile" 
-					class="text-decoration-none text-dark" 
-					style="margin-top: 10px;">My Account</a>
-			</div>
-			<div class="d-flex">
-				<img class="myIcon" style="margin: 15px 10px 0 0;" alt="user Icon"
-						src="${pageContext.request.contextPath}/images/icons/catalog-icon.png">	
-				<a href="/myCatalog" 
-					class="text-decoration-none text-dark" 
-					style="margin-top: 10px;">My Catalog</a>
-			</div>
-			<div class="d-flex">
-				<img class="myIcon" style="margin: 15px 10px 0 0;" alt="user Icon"
-						src="${pageContext.request.contextPath}/images/icons/cart-icon.png">	
-				<a href="/myCatalog" 
-					class="text-decoration-none text-dark" 
-					style="margin-top: 10px;">Order History</a>
-			</div>
+	<main class="top-div-under-header d-flex">
+		<div style="height: auto: width:23%; min-width: 300px;">
+			<div style="padding: 10px 30px;">
+			
+				<div class="d-flex">
+					<img class="myIcon" style="margin: 15px 10px 0 0;" alt="user Icon"
+						src="${pageContext.request.contextPath}/images/icons/user-regular.svg">
+					<a href="/profile" class="text-decoration-none text-dark"
+						style="margin-top: 10px;">Account</a>
+				</div>
 				
+				<c:choose>
+					<c:when test="${user.profile == 'Breeder'}">
+						<div class="d-flex">
+							<img class="myIcon" style="margin: 15px 10px 0 0;" alt="user Icon"
+								src="${pageContext.request.contextPath}/images/icons/catalog-icon.png">
+							<a href="/myCatalog" class="text-decoration-none text-dark"
+								style="margin-top: 10px;">Catalog</a>
+						</div>
+												<div class="d-flex">
+							<img class="myIcon" style="margin: 15px 10px 0 0;" alt="user Icon"
+								src="${pageContext.request.contextPath}/images/icons/heart-icon.png">
+							<a href="/favorites" class="text-decoration-none text-dark"
+								style="margin-top: 10px;">Favorites</a>
+						</div>
+					</c:when>
+					<c:otherwise>
+						<div class="d-flex">
+							<img class="myIcon" style="margin: 15px 10px 0 0;" alt="user Icon"
+								src="${pageContext.request.contextPath}/images/icons/heart-icon.png">
+							<a href="/favorites" class="text-decoration-none text-dark"
+								style="margin-top: 10px;">Favorites</a>
+						</div>
+					</c:otherwise>
+				</c:choose>
+				
+				<div class="d-flex">
+					<img class="myIcon" style="margin: 15px 10px 0 0;" alt="user Icon"
+						src="${pageContext.request.contextPath}/images/icons/cart-icon.png">
+					<a href="/order-history" class="text-decoration-none text-dark"
+						style="margin-top: 10px;">Order History</a>
+				</div>
+	
+			</div>
 		</div>
-		<div class="d-inline-block" style="height:auto; width:auto; margin-left:150px;">
+		<div class="" style="height:auto; width:500px;">
 		<form:form 
 				action="/doggies/new" 
 				method="post" 
 				modelAttribute="dog" 
 				enctype="multipart/form-data"
 				style="
-				height: 600px;
-					width:30%;
+					height: auto;
 					min-width:400px;
 					padding: 30px;
 					border-radius: 25px; 
@@ -135,7 +148,7 @@
 					<form:errors path="age" class="text-danger"/>
 					<form:input path="age" type="number" class="form-control" />
 				</div>
-				<div>
+				<div class="mb-3">
 					<form:label path="price">Price:</form:label>
 					<form:errors path="price" class="text-danger"/>
 					<form:input path="price" type="number" min="0" class="form-control" />
@@ -148,14 +161,26 @@
 				<div class="mb-3">
 					<form:label path="breed">Breed:</form:label>
 					<form:errors path="breed" class="text-danger"/>
-					<form:input path="breed" type="text" class="form-control" />
+					<form:select path="breed" class="form-control">
+							<option value="selected"></option>
+							<option value="Great Dane">Great Dane</option>
+							<option value="Corgi">Corgi</option>
+							<option value="Golden Retriever">Golden Retriever</option>
+							<option value="Labrador Retriever">Labrador Retriever</option>
+							<option value="Jack Rusell Terrier">Jack Rusell Terrier</option>
+							<option value="Husky">Husky</option>
+							<option value="German Shepherd">German Shepherd</option>
+							<option value="Pointer">Pointer</option>
+							<option value="King Charles Spaniel">King Charles Spaniel</option>
+							
+					</form:select>
 				</div>
-				<div class="d-flex justify-content-between"
+				<div class="d-flex justify-content-around"
 					style="margin:20px 0;">
 					<div class="mb-3">
 						<form:label path="color">Color:</form:label>
 						<form:errors path="color" class="text-danger"/>
-						<form:select path="color">
+						<form:select path="color" style="width:100px;">
 							<option value="selected"></option>
 							<option value="white">White</option>
 							<option value="beige">Beige</option>
@@ -169,7 +194,7 @@
 					<div class="mb-3">
 						<form:label path="status">Status:</form:label>
 						<form:errors path="status" class="text-danger"/>
-						<form:select path="status">
+						<form:select path="status" style="width:100px;">
 							<option value="selected"></option>
 							<option value="avilable">Available</option>
 							<option value="unavailable">Unavailable</option>
@@ -178,7 +203,7 @@
 	 				<div class="mb-3">
 						<form:label path="gender">Gender:</form:label>
 						<form:errors path="gender" class="text-danger"/>
-						<form:select path="gender">
+						<form:select path="gender" style="width:100px;">
 							<option value="selected"></option>
 							<option value="male">M</option>
 							<option value="female">F</option>
@@ -186,10 +211,11 @@
 	 				</div>
  				</div>
 			<input type="file" name="file" />
-					<input type="submit" value="Submit for approval!" class="bg-primary text-light rounded-pill" style="width:100%; margin-top:40px;"/>
-	</form:form>
-	</div>
-	</div>
+					<input type="submit" value="Submit for approval!" 
+						class="bg-primary text-light rounded-pill" 
+						style="width:100%; margin-top:40px; height:40px;"/>
+		</form:form>
+		</div>
 	</main>
 </body>
 </html>

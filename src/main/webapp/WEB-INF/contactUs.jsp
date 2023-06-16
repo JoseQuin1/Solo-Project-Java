@@ -99,7 +99,7 @@
 			  min-width:400px;
 			  height: auto;
 			  width:500px;">
-					<h2 style="padding: 5px 0 0 5px;">Send a Message</h2>
+					<h2 class="text-center"style="padding: 5px 0 0 5px;">Send a Message</h2>
 					<div class="d-flex justify-content-between">
 						<div class="p-2">
 							<label name="fname" >First Name</label> 

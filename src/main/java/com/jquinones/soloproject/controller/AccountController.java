@@ -29,6 +29,7 @@ public class AccountController {
 				 if(user.getProfile().equals("Breeder")) {
 					 model.addAttribute("doggies", dogServ.all());
 					 model.addAttribute("user", user);
+					 model.addAttribute("dog", new Dog());
 					 return "myCatalog.jsp";
 				 }
 				 return "redirect:/profile";

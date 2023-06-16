@@ -189,7 +189,7 @@ footer{
 	width: 100px;
 }
 
-/*FAVORITES*/
+/*====================FAVORITES===========================*/
 .favorite-puppy-info{
 	margin:1px;
 }
@@ -265,5 +265,11 @@ footer{
   font-size: 30px;
 }
 
+/*=========================Catalog=============================*/
+.catalog-form-input{	
+	width:100px; 
+	height:32px;
+	border-radius:25px;
+}
 
 

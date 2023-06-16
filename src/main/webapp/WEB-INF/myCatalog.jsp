@@ -77,9 +77,9 @@
 			</div>
 		</div>
 	</nav>
-	<h3 class="top-div-under-header pt-3" style="margin-left: 20px;">Catalog</h3>
 	<main class="d-flex">
 		<div style="height: auto: width:23%; min-width: 300px;">
+		<h3 class="top-div-under-header pt-3" style="margin-left: 20px;">Catalog</h3>
 			<div style="padding: 10px 30px;">
 			
 				<div class="d-flex">
@@ -122,18 +122,109 @@
 				</div>
 	
 			</div>
-			</div>
+		</div>
 		<div style="height: 500px; width: 100%; min-width: 650px; margin-right: 30px;">
-			<h4 class="text-center text-light mb-3" style="text-shadow: 2px 4px 10px #000000;">Catalog
-				<a href="/doggies/new" style="margin-left: 5px; text-decoration: none; font-size: 15px;">( add )</a>
-			</h4>
+			<h4 class="text-center text-light mb-3" style="text-shadow: 2px 4px 10px #000000;">Add to Catalog</h4>
+		<div class="" style="height:auto;">
+		<form:form action="/doggies/new" method="post" modelAttribute="dog" enctype="multipart/form-data"
+				style="
+					height: auto;
+					border-radius: 25px; 
+					background-color:#F0F8FF;
+					box-shadow: 2px 4px 10px #000000;">
+				<div class="d-flex justify-content-between">
+					<div class="p-3" style="width:50%; border-radius:25px 0 0 0;">
+						<div class="mb-3">
+							<form:label path="name">Name:</form:label>
+							<form:errors path="name" class="text-danger"/>
+							<form:input path="name" type="text" class="form-control" />
+						</div>
+						<div class="mb-3">
+							<form:label path="age">Age:</form:label>
+							<form:errors path="age" class="text-danger"/>
+							<form:input path="age" type="number" class="form-control" />
+						</div>
+						<div class="mb-3">
+							<form:label path="price">Price:</form:label>
+							<form:errors path="price" class="text-danger"/>
+							<form:input path="price" type="number" min="0" class="form-control" />
+						</div>
+					</div>
+					<div class="p-3" style="width:50%;border-radius:0 25px 0 0;">
+						<div class="mb-3">
+							<form:label path="weight">Mother's Weight:</form:label>
+							<form:errors path="weight" class="text-danger"/>
+							<form:input path="weight" type="number" class="form-control" />
+						</div>
+						<div class="mb-3">
+							<form:label path="breed">Breed:</form:label>
+							<form:errors path="breed" class="text-danger"/>
+							<form:select path="breed" class="form-control">
+									<option value="selected"></option>
+									<option value="Great Dane">Great Dane</option>
+									<option value="Corgi">Corgi</option>
+									<option value="Golden Retriever">Golden Retriever</option>
+									<option value="Labrador Retriever">Labrador Retriever</option>
+									<option value="Jack Rusell Terrier">Jack Rusell Terrier</option>
+									<option value="Husky">Husky</option>
+									<option value="German Shepherd">German Shepherd</option>
+									<option value="Pointer">Pointer</option>
+									<option value="King Charles Spaniel">King Charles Spaniel</option>
+									
+							</form:select>
+						</div>
+					<div class="d-flex justify-content-around"
+							style="margin:42px 0 0 0;">
+							<div class="mb-3">
+								<form:label path="color">Color:</form:label>
+								<form:errors path="color" class="text-danger"/>
+								<form:select path="color" class="catalog-form-input">
+									<option value="selected"></option>
+									<option value="white">White</option>
+									<option value="beige">Beige</option>
+									<option value="brown">Brown</option>
+									<option value="black">Black</option>
+									<option value="gold">Gold</option>
+									<option value="red">Red</option>
+									<option value="gray">Gray</option>
+								</form:select>
+							</div>
+							<div class="mb-3">
+								<form:label path="status">Status:</form:label>
+								<form:errors path="status" class="text-danger"/>
+								<form:select path="status" class="catalog-form-input">
+									<option value="selected"></option>
+									<option value="avilable">Available</option>
+									<option value="unavailable">Unavailable</option>
+								</form:select>
+			 				</div>
+			 				<div class="mb-3">
+								<form:label path="gender">Gender:</form:label>
+								<form:errors path="gender" class="text-danger"/>
+								<form:select path="gender" class="catalog-form-input">
+									<option value="selected"></option>
+									<option value="male">M</option>
+									<option value="female">F</option>
+								</form:select>
+			 				</div>
+		 				</div>
+ 					</div>
+ 				</div>
+				<div class="d-flex justify-content-start"style="padding-left:20px;"><input type="file" name="file"/></div>
+					<input type="submit" value="Submit for approval!" 
+						class="bg-primary text-light" 
+						style="width:100%; margin-top:30px; height:40px; border-radius: 0 0 25px 25px;"/>
+		</form:form>
+		</div>
+		<h4 class="text-center text-light my-3" style="text-shadow: 2px 4px 10px #000000;">Pending Approval</h4>
 			<div style="
-					height: 300px; 
-					min-width: 650px; 
+					height: 300px;
+					width:100%; 
+					min-width: 500px; 
 					border-style: solid; 
-					border-radius: 10px; 
+					border-radius: 25px; 
 					border-color: #DCDCDC; 
-					padding: 0 10px; 
+					background-color:#F0F8FF;
 					overflow: scroll;
 					box-shadow: 2px 4px 10px #000000;">
 
