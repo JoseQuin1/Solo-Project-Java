@@ -2,15 +2,35 @@
 	margin: 0;
 	padding: 0;
 }
-/*HEADER*/
+/*===================HEADER======================*/
 .header{
 	height: 165px;
 	padding: 0 16%;
 	background-color: white;
 	border-bottom: 2px solid #F8F8FF;
 }
-
-/* Index.jsp */
+.profile-anchor-tag{
+	background-color: #4CAF50; 
+	border: none; 
+	border-radius: 10px; 
+	color: white; 
+	text-align: center; 
+	text-decoration: none; 
+	padding: 0 5px; 
+	font-size: 12px;
+}
+/*==============================Hidden Profile Button <visible on login>==========================*/
+.profile-a-tag{
+	background-color: #4CAF50;
+	border: none; 
+	border-radius: 10px; 
+	color: white; 
+	text-align: center; 
+	text-decoration: none; 
+	padding: 0 5px; 
+	font-size: 12px;
+}
+/*==================Index.jsp=====================*/
 .location{
 	font-size: 0.8em;
 }
@@ -77,6 +97,7 @@
 	width: 700px;
 	margin-bottom: 120px;
 }
+/*========================footer========================*/
 .footerIcon{
 	height: 30px;
 	margin-right: 10px;
@@ -112,9 +133,15 @@ footer{
 	margin-left: 50%;
 }
 /*=============================Contact Us=========================*/
+.contact-card-info{
+	height:400px;
+	background-color: black;
+	padding: 100px 25px 0 25px;
+	border-radius: 5px;
+}
 .contact-info{
 	margin-left: 5px; 
-	font-size: 12px;
+	font-size: 14px;
 	color:#CEE204;
 }
 
@@ -126,7 +153,17 @@ footer{
 	margin-top: 10px;
 	width:100%;
 	border-radius: 4px;
+	border-width: thin;
+	padding-left: 10px;
 }
+.main-box{
+	position: relative;
+	border: 3px solid #73AD21; 
+	height:auto; 
+	min-width:400px;
+	box-shadow: 2px 4px 10px;
+}
+
 
 
 /* =========================== LOGIN PAGE ============================*/
@@ -168,6 +205,11 @@ footer{
 	
 }
 /* ==========================PUPPY DETAILS =======================*/
+.puppy-wrapper-box{
+	height:auto;
+	margin-top:50px;
+}
+
 .puppy-card-details{
 	margin:5px;
 }
@@ -182,13 +224,20 @@ footer{
 }
 .mid-box{
 	height:auto;
-	padding: 0 100px;
+	padding: 0 30px;
+	width:600px;
+	min-width:600px;
 }
 .puppy-details-Review {
 	height: 100px;
 	width: 100px;
 }
-
+.puppy-form{
+	min-width:400px;
+	height: auto;
+	width:100%;
+	padding-top: 20px;
+}
 /*====================FAVORITES===========================*/
 .favorite-puppy-info{
 	margin:1px;
@@ -239,6 +288,9 @@ footer{
   background-color: dodgerblue;
   color: white;
   transform: rotateY(180deg);
+  height: 370px; 
+  box-shadow: 2px 4px 10px #000000;
+  width:300px;
 }
 
 
@@ -265,11 +317,37 @@ footer{
   font-size: 30px;
 }
 
-/*=========================Catalog=============================*/
+/*=========================CATALOG PAGE=============================*/
 .catalog-form-input{	
 	width:100px; 
 	height:32px;
 	border-radius:25px;
 }
+.catalog-box{
+	height: 300px; 
+	width: 800px; 
+	min-width: 500px; 
+	border-style: solid; 
+	border-radius: 25px; 
+	border-color: #DCDCDC; 
+	background-color: #F0F8FF; 
+	box-shadow: 2px 4px 10px #000000;
+}
+.catalog-form{
+	height: auto;
+	border-radius: 25px; 
+	background-color:#F0F8FF;
+	box-shadow: 2px 4px 10px #000000;
+}
+.catalog-form-submit{
+	width: 100%; 
+	margin-top: 30px; 
+	height: 40px; 
+	border-radius: 0 0 25px 25px;
+}
 
-
+/*===========================REVIEW PAGE==============================*/
+.rating-bar{
+	height: 20px; 
+	margin: 0 15px;
+}

@@ -37,12 +37,14 @@ public class Dog {
     private String name;
 	
 	@NotNull(message="Age is required")
+	@Min(value=1, message="Price must be greater than 1!")
     private Integer age;
 	
 	@NotBlank(message="Breed is required")
     private String breed;
 	
 	@NotNull(message="Weight is required")
+	@Min(value=1, message="Price must be greater than 1!")
 	private Integer weight;
 	
 	@NotBlank(message="Color is required!")

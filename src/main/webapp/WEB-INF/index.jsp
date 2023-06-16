@@ -38,15 +38,7 @@
 				alt="logo" src="${pageContext.request.contextPath}/images/logo.webp">
 			</a>
 			<c:if test="${userId != null}">
-				<a href="/profile"
-					style="background-color: #4CAF50;
-						border: none; 
-						border-radius: 10px; 
-						color: white; 
-						text-align: center; 
-						text-decoration: none; 
-						padding: 0 5px; 
-						font-size: 12px;">My Profile
+				<a href="/profile" class="profile-a-tag">My Profile
 				</a>
 
 			</c:if>
@@ -58,7 +50,7 @@
 			</button>
 
 			<div class="collapse navbar-collapse" id="navbarSupportedContent">
-				<ul class="navbar-nav mr-auto w-100 justify-content-center">
+				<ul class="navbar-nav mr-auto w-100 justify-content-end">
 					<li class="nav-item active"><a class="nav-link" href="/">Home
 							<span class="sr-only">(current)</span>
 					</a></li>
@@ -66,6 +58,7 @@
 					<li class="nav-item"><a class="nav-link" href="/contactUs">Contact</a>
 					<li class="nav-item"><a class="nav-link" href="/reviews">Reviews</a>
 					<li class="nav-item"><a class="nav-link" href="/puppies">Puppies</a>
+					<li class="nav-item"><a class="nav-link" href="/travel">Travel</a>
 					<li class="nav-item">
 					<c:choose>
 							<c:when test="${userId != null}">

@@ -34,7 +34,7 @@
 
 	<nav class="navbar sticky-top navbar-expand-lg"
 		style="background-color: white;">
-		<div class="container">
+		<div class="container border-bottom">
 			<a class="navbar-brand" href="/"> <img class="mylogo rounded"
 				alt="logo" src="${pageContext.request.contextPath}/images/logo.webp">
 			</a>
@@ -52,7 +52,7 @@
 			</button>
 
 			<div class="collapse navbar-collapse" id="navbarSupportedContent">
-				<ul class="navbar-nav mr-auto w-100 justify-content-center">
+				<ul class="navbar-nav mr-auto w-100 justify-content-end">
 					<li class="nav-item active"><a class="nav-link" href="/">Home
 							<span class="sr-only">(current)</span>
 					</a></li>
@@ -60,6 +60,7 @@
 					<li class="nav-item"><a class="nav-link" href="/contactUs">Contact</a>
 					<li class="nav-item"><a class="nav-link" href="/reviews">Reviews</a>
 					<li class="nav-item"><a class="nav-link" href="/puppies">Puppies</a>
+					<li class="nav-item"><a class="nav-link" href="/travel">Travel</a>
 					<li class="nav-item"><c:choose>
 							<c:when test="${userId != null}">
 								<a href="/logout" class="nav-link">Logout</a>
@@ -82,26 +83,26 @@
 					padding-left: 40px;">
 				<div class="d-flex">
 					<img class="myIcon" style="margin: 15px 10px 0 0;" alt="user Icon"
-						src="${pageContext.request.contextPath}/icon/user-regular.svg">
+						src="${pageContext.request.contextPath}/images/icons/user-regular.svg">
 					<a href="/profile" class="text-decoration-none text-dark"
 						style="margin-top: 10px;">My Account</a>
 				</div>
 				<div class="d-flex">
 					<img class="myIcon" style="margin: 15px 10px 0 0;" alt="user Icon"
-						src="${pageContext.request.contextPath}/icon/catalog-icon.png">
+						src="${pageContext.request.contextPath}/images/icons/catalog-icon.png">
 					<a href="/myCatalog" class="text-decoration-none text-dark"
 						style="margin-top: 10px;">My Catalog</a>
 				</div>
 				<div class="d-flex">
 					<img class="myIcon" style="margin: 15px 10px 0 0;" alt="user Icon"
-						src="${pageContext.request.contextPath}/icon/cart-icon.png">
+						src="${pageContext.request.contextPath}/images/icons/cart-icon.png">
 					<a href="/myCatalog" class="text-decoration-none text-dark"
 						style="margin-top: 10px;">Order History</a>
 				</div>
 
 			</div>
 			<div class="" style="height: auto; width: 500px;">
-				<form:form action="/doggies/new" method="post" modelAttribute="dog"
+				<form:form action="/puppy/${id}/edit" method="put" modelAttribute="dog"
 					enctype="multipart/form-data"
 					style="
 					height: auto;
@@ -135,7 +136,8 @@
 						<form:label path="breed">Breed:</form:label>
 						<form:errors path="breed" class="text-danger" />
 						<form:select path="breed" class="form-control">
-							<option value="${dog.breed}"><c:out value="${dog.breed}" /></option>
+						<option value="${dog.breed}"><c:out value="${dog.breed}" /></option>
+							<option value=""></option>
 							<option value="Great Dane">Great Dane</option>
 							<option value="Corgi">Corgi</option>
 							<option value="Golden Retriever">Golden Retriever</option>
@@ -154,8 +156,9 @@
 							<form:label path="color">Color:</form:label>
 							<form:errors path="color" class="text-danger" />
 							<form:select path="color" style="width:100px;">
-								<option value="${dog.color}"><c:out
+															<option value="${dog.color}"><c:out
 										value="${dog.color}" /></option>
+								<option value=""></option>
 								<option value="white">White</option>
 								<option value="beige">Beige</option>
 								<option value="brown">Brown</option>
@@ -169,8 +172,9 @@
 							<form:label path="status">Status:</form:label>
 							<form:errors path="status" class="text-danger" />
 							<form:select path="status" style="width:100px;">
-								<option value="${dog.status}"><c:out
+															<option value="${dog.status}"><c:out
 										value="${dog.status}" /></option>
+								<option value=""></option>
 								<option value="avilable">Available</option>
 								<option value="unavailable">Unavailable</option>
 							</form:select>
@@ -181,6 +185,7 @@
 							<form:select path="gender" style="width:100px;">
 								<option value="${dog.gender}"><c:out
 										value="${dog.gender}" /></option>
+								<option value=""></option>
 								<option value="male">M</option>
 								<option value="female">F</option>
 							</form:select>

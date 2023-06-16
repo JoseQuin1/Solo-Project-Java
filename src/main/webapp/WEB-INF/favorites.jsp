@@ -33,7 +33,7 @@
 <body>
 
 	<nav class="navbar sticky-top navbar-expand-lg" style="background-color:white;">
-		<div class="container">
+		<div class="container border-bottom">
 			<a class="navbar-brand" href="/"> <img class="mylogo rounded"
 				alt="logo" src="${pageContext.request.contextPath}/images/logo.webp">
 			</a>
@@ -58,7 +58,7 @@
 			</button>
 
 			<div class="collapse navbar-collapse" id="navbarSupportedContent">
-				<ul class="navbar-nav mr-auto w-100 justify-content-center">
+				<ul class="navbar-nav mr-auto w-100 justify-content-end">
 					<li class="nav-item active"><a class="nav-link" href="/">Home
 							<span class="sr-only">(current)</span>
 					</a></li>
@@ -66,6 +66,7 @@
 					<li class="nav-item"><a class="nav-link" href="/contactUs">Contact</a>
 					<li class="nav-item"><a class="nav-link" href="/reviews">Reviews</a>
 					<li class="nav-item"><a class="nav-link" href="/puppies">Puppies</a>
+					<li class="nav-item"><a class="nav-link" href="/travel">Travel</a>
 					<li class="nav-item">
 					<c:choose>
 							<c:when test="${userId != null}">

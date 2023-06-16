@@ -33,21 +33,12 @@
 <body>
 
 	<nav class="navbar sticky-top navbar-expand-lg" style="background-color:white;">
-		<div class="container">
+		<div class="container border-bottom">
 			<a class="navbar-brand" href="/"> <img class="mylogo rounded"
 				alt="logo" src="${pageContext.request.contextPath}/images/logo.webp">
 			</a>
 			<c:if test="${userId != null}">
-				<a href="/profile"
-					style="background-color: #4CAF50;
-						border: none; 
-						border-radius: 10px; 
-						color: white; 
-						text-align: center; 
-						text-decoration: none; 
-						padding: 0 5px; 
-						font-size: 12px;">My Profile
-				</a>
+				<a href="/profile" class="profile-a-tag">My Profile</a>
 
 			</c:if>
 			<button class="navbar-toggler" type="button" data-toggle="collapse"
@@ -58,7 +49,7 @@
 			</button>
 
 			<div class="collapse navbar-collapse" id="navbarSupportedContent">
-				<ul class="navbar-nav mr-auto w-100 justify-content-center">
+				<ul class="navbar-nav mr-auto w-100 justify-content-end">
 					<li class="nav-item active"><a class="nav-link" href="/">Home
 							<span class="sr-only">(current)</span>
 					</a></li>
@@ -66,6 +57,7 @@
 					<li class="nav-item"><a class="nav-link" href="/contactUs">Contact</a>
 					<li class="nav-item"><a class="nav-link" href="/reviews">Reviews</a>
 					<li class="nav-item"><a class="nav-link" href="/puppies">Puppies</a>
+					<li class="nav-item"><a class="nav-link" href="/travel">Travel</a>
 					<li class="nav-item">
 					<c:choose>
 							<c:when test="${userId != null}">
@@ -125,5 +117,48 @@
 		</div>
 	
 	</main>
+		<footer class="bg-success mt-5 mx-auto my-auto">
+		<h1 class="text-light col-2 text-center mx-auto pb-2"
+			style="text-shadow: 2px 4px 10px #000000; back-ground-color: white;">PuppyShop</h1>
+		<div class="mx-auto mt-5 col-4 d-flex justify-content-between flex-wrap">
+			<a href="/" class=" link-dark text-decoration-none">Home</a> <a
+				href="/aboutUs" class=" link-dark text-decoration-none">About Us</a>
+			<a href="/contactUs"
+				class="headerAnchor link-dark text-decoration-none">Contact Us</a> <a
+				href="/puppies" class=" link-dark text-decoration-none">Puppies</a>
+			<a href="/reviews" class=" link-dark text-decoration-none">Reviews</a>
+			<a href="/travel" class=" link-dark text-decoration-none">Puppy Travel</a>
+		</div>
+		<div class="
+				d-flex 
+				justify-content-between 
+				mx-auto
+				my-5 pb-5 col-5
+				text-light
+				flex-wrap" style="height:auto;">
+			<div class="d-flex justify-content-between p-2">
+				<img class="footerIcon" alt="phone"
+					src="${pageContext.request.contextPath}/images/phone-call.png">
+				<p>(800) 789-7545</p>
+			</div>
+			<div class="d-flex justify-content-between p-2">
+				<img class="footerIcon" alt="location"
+					src="${pageContext.request.contextPath}/images/location_icon.png">
+				<p>9858 Clint Moore Rd # 110 <br>Boca Raton, FL 33496</p>
+			</div>
+			<div class="d-flex justify-content-between p-2">
+				<img class="footerIcon" alt="email"
+					src="${pageContext.request.contextPath}/images/email.png">
+				<p>PuppyShop@Email.com</p>
+			</div>
+		</div>
+		<div class="bg-white py-3 mx-auto text-center">
+			<p>
+				Copyright <span><img class="copyRightIcon" alt="copyright"
+					src="${pageContext.request.contextPath}/images/copyright.png"></span>
+				2023 PuppyShopShelter.com - All Rights Reserved.
+			</p>
+		</div>
+	</footer>
 </body>
 </html>

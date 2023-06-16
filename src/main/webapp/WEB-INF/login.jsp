@@ -33,21 +33,12 @@
 <body>
 
 	<nav class="navbar sticky-top navbar-expand-lg" style="background-color:white;">
-		<div class="container">
+		<div class="container border-bottom">
 			<a class="navbar-brand" href="/"> <img class="mylogo rounded"
 				alt="logo" src="${pageContext.request.contextPath}/images/logo.webp">
 			</a>
 			<c:if test="${userId != null}">
-				<a href="/profile"
-					style="background-color: #4CAF50;
-						border: none; 
-						border-radius: 10px; 
-						color: white; 
-						text-align: center; 
-						text-decoration: none; 
-						padding: 0 5px; 
-						font-size: 12px;">My Profile
-				</a>
+				<a href="/profile" class="profile-a-tag">My Profile</a>
 
 			</c:if>
 			<button class="navbar-toggler" type="button" data-toggle="collapse"
@@ -58,7 +49,7 @@
 			</button>
 
 			<div class="collapse navbar-collapse" id="navbarSupportedContent">
-				<ul class="navbar-nav mr-auto w-100 justify-content-center">
+				<ul class="navbar-nav mr-auto w-100 justify-content-end">
 					<li class="nav-item active"><a class="nav-link" href="/">Home
 							<span class="sr-only">(current)</span>
 					</a></li>

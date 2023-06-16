@@ -78,11 +78,17 @@ public class PuppyController {
 		return "contactUs.jsp";
 	}
 	
+	
+	@GetMapping("travel")
+	public String travel() {
+		return "travel.jsp";
+	}
+	
 	@GetMapping("/puppies")
 	public String contactUs(Model model, 
 			@ModelAttribute("newDogs")Dog newDogs,
 			HttpSession session) {
-		
+	
 		
 		if(session.getAttribute("userId")!=null) {
 			User thisUser = userServ.getOne((Long) session.getAttribute("userId"));
@@ -96,21 +102,6 @@ public class PuppyController {
 		return "puppies.jsp";
 	}
 	
-	@GetMapping("/doggies/new")
-	public String newDog(Model model,
-			HttpSession session) {
-
-		Long userId = (Long)session.getAttribute("userId");
-		User user = userServ.getOne((Long)session.getAttribute("userId"));
-				 
-		if(userId == null) {
-			return "redirect:/login";
-		}
-		
-		model.addAttribute("dog", new Dog());
-		model.addAttribute("user", user);
-		return "dogAdd.jsp";
-	}
 	
 	@PostMapping("/doggies/new")
 	public String newDog(@Valid @ModelAttribute("dog") Dog dog,
@@ -207,12 +198,12 @@ public class PuppyController {
 	public String update(@Valid @ModelAttribute("dog") Dog dog,
 			BindingResult result, @PathVariable("id")Long id, HttpSession session,
 			Model model) {
+		
 		if(session.getAttribute("userId") == null) {
 			return "redirect:/profile";
 		}
 		
 		if(result.hasErrors()) {
-//			model.addAttribute("dog", dogServ.findById(id));
 			return "dogEdit.jsp";
 		}else {
 			dog.setUser(userServ.getOne((Long)session.getAttribute("userId")));
@@ -220,11 +211,7 @@ public class PuppyController {
 			return "redirect:/myCatalog";
 		}
 	}
-	
-	@GetMapping("puppy-travel")
-	public String travel() {
-		return "travel.jsp";
-	}
+
 	
 	@GetMapping("/puppy/{id}")
 	public String puppyShow(Model model, @PathVariable("id") Long id,

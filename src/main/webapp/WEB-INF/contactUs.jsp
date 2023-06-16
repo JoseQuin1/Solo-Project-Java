@@ -36,9 +36,7 @@
 				alt="logo" src="${pageContext.request.contextPath}/images/logo.webp">
 			</a>
 			<c:if test="${userId != null}">
-				<a href="/profile"
-					style="background-color: #4CAF50; border: none; border-radius: 10px; color: white; text-align: center; text-decoration: none; padding: 0 5px; font-size: 12px;">My
-					Profile </a>
+				<a href="/profile"class="profile-anchor-tag">My Profile </a>
 
 			</c:if>
 			<button class="navbar-toggler" type="button" data-toggle="collapse"
@@ -49,7 +47,7 @@
 			</button>
 
 			<div class="collapse navbar-collapse" id="navbarSupportedContent">
-				<ul class="navbar-nav mr-auto w-100 justify-content-center">
+				<ul class="navbar-nav mr-auto w-100 justify-content-end">
 					<li class="nav-item active"><a class="nav-link" href="/">Home
 							<span class="sr-only">(current)</span>
 					</a></li>
@@ -57,6 +55,7 @@
 					<li class="nav-item"><a class="nav-link" href="/contactUs">Contact</a>
 					<li class="nav-item"><a class="nav-link" href="/reviews">Reviews</a>
 					<li class="nav-item"><a class="nav-link" href="/puppies">Puppies</a>
+					<li class="nav-item"><a class="nav-link" href="/travel">Travel</a>
 					<li class="nav-item"><c:choose>
 							<c:when test="${userId != null}">
 								<a href="/logout" class="nav-link">Logout</a>
@@ -70,13 +69,9 @@
 		</div>
 	</nav>
 	<main class="pt-5">
-		<div class="mx-auto p-5 col-8 d-flex justify-content-center flex-wrap bg-secondary rounded"
-			style=" position: relative;border: 3px solid #73AD21; height:auto; box-shadow: 2px 4px 10px">
-		
-			  	<div style="
-			  			height:400px;
-			  			background-color: black;
-			  			padding: 100px 25px 0 25px;">
+		<div class="main-box mx-auto p-5 col-8 d-flex justify-content-center flex-wrap rounded">
+			
+			  	<div class="contact-card-info">
 					<div class="d-flex">
 						<img class="contact-Us-Icon rounded-circle" alt="phone"
 							src="${pageContext.request.contextPath}/images/phoneContactUs.png">
@@ -90,7 +85,7 @@
 					<div class="d-flex">
 						<img class="contact-Us-Icon  rounded-circle" alt="location"
 							src="${pageContext.request.contextPath}/images/locationContactUs.png">
-						<p class="contact-info">9858 Clint Moore Rd # 110 Boca
+						<p class="contact-info">9858 Clint Moore Rd # 110 <br>Boca
 							Raton, FL 33496</p>
 					</div>
 				</div>
@@ -102,36 +97,28 @@
 					<h2 class="text-center"style="padding: 5px 0 0 5px;">Send a Message</h2>
 					<div class="d-flex justify-content-between">
 						<div class="p-2">
-							<label name="fname" >First Name</label> 
-							<input 
-								name="fname" type="text" 
-								class="contact-form-input"/>
+							<label name="fname" ></label> 
+							<input name="fname" type="text" placeholder="First Name" class="contact-form-input"/>
 								
 							<label name="email"></label> 
-							<input
-								name="email" type="email" placeholder="Email Address"
-								class="contact-form-input" />
+							<input name="email" type="email" placeholder="Email Address" class="contact-form-input" />
 						</div>
 						<div class="p-2 rounded">
-							<label name="lname" class="">Last Name</label> 
-							<input 
-								name="lname" type="text" 
-								class="contact-form-input"/>
+							<label name="lname" class=""></label> 
+							<input name="lname" type="text" placeholder="Last Name"  class="contact-form-input"/>
 								
 							<label name="phone"></label> 
-							<input
-								name="phone" type="number" placeholder="Phone Number"
-								class="contact-form-input" />
+							<input name="phone" type="number" placeholder="Phone Number"class="contact-form-input" />
 						</div>
 					</div>
 					<div class="px-2" style="margin-top: 10px;">
 						<label name="message"></label>
-						<textarea rows="5" cols="0" name="message"placeholder="write your message here"
+						<textarea rows="5" cols="3" name="message"placeholder="write your message here"
 							class="" style="width:100%; max-height: 100px; min-height:100px;">
 						</textarea>
 					</div>
 					<div class=" text-center my-4">
-						<button type="submit" class="btn btn-sm rounded-pill"style="background-color:#CEE204;"> Send </button>
+						<button type="submit" class="btn btn-sm rounded-pill"style="background-color:#CEE204; box-shadow: 2px 4px 10px #000000;"> Send </button>
 					</div>
 				
 			</form>
