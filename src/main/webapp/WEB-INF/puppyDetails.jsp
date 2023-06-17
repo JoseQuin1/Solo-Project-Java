@@ -309,42 +309,28 @@
 		</div>
 
 	</main>
-	<footer class="bg-success mt-5 mx-auto my-auto">
-		<h1 class="text-light col-2 text-center mx-auto pb-2"
-			style="text-shadow: 2px 4px 10px #000000; back-ground-color: white;">PuppyShop</h1>
-		<div
-			class="mx-auto mt-5 col-4 d-flex justify-content-between flex-wrap">
-			<a href="/" class=" link-dark text-decoration-none">Home</a> <a
-				href="/aboutUs" class=" link-dark text-decoration-none">About Us</a>
-			<a href="/contactUs"
-				class="headerAnchor link-dark text-decoration-none">Contact Us</a> <a
-				href="/puppies" class=" link-dark text-decoration-none">Puppies</a>
-			<a href="/reviews" class=" link-dark text-decoration-none">Reviews</a>
-			<a href="/travel" class=" link-dark text-decoration-none">Puppy
-				Travel</a>
+	<footer class="bg-success mt-5 mx-auto my-auto text-center">
+		<h1 class="text-light text-center pb-2" style="text-shadow: 2px 4px 10px #000000;">PuppyShop</h1>
+		<div class="mx-auto mt-5 d-flex justify-content-center flex-wrap">
+			<a 	href="/" class="px-5 link-dark text-decoration-none">Home</a> <a
+				href="/aboutUs" class="px-5 link-dark text-decoration-none">About Us</a>
+			<a 	href="/contactUs"class="px-5 headerAnchor link-dark text-decoration-none">Contact Us</a> <a
+				href="/puppies" class="px-5 link-dark text-decoration-none">Puppies</a>
+			<a 	href="/reviews" class="px-5 link-dark text-decoration-none">Reviews</a>
+			<a 	href="/travel" class="px-5 link-dark text-decoration-none">Travel</a>
 		</div>
-		<div
-			class="
-				d-flex 
-				justify-content-between 
-				mx-auto
-				my-5 pb-5 col-5
-				text-light
-				flex-wrap"
-			style="height: auto;">
-			<div class="d-flex justify-content-between p-2">
+		<div class="d-flex justify-content-center my-5 pb-5 text-light flex-wrap" style="height:auto;">
+			<div class="footer-info-boxes d-flex p-2">
 				<img class="footerIcon" alt="phone"
 					src="${pageContext.request.contextPath}/images/phone-call.png">
 				<p>(800) 789-7545</p>
 			</div>
-			<div class="d-flex justify-content-between p-2">
+			<div class="footer-info-boxes d-flex p-2">
 				<img class="footerIcon" alt="location"
 					src="${pageContext.request.contextPath}/images/location_icon.png">
-				<p>
-					9858 Clint Moore Rd # 110 <br>Boca Raton, FL 33496
-				</p>
+				<p>9858 Clint Moore Rd # 110 <br>Boca Raton, FL 33496</p>
 			</div>
-			<div class="d-flex justify-content-between p-2">
+			<div class="footer-info-boxes d-flex p-2">
 				<img class="footerIcon" alt="email"
 					src="${pageContext.request.contextPath}/images/email.png">
 				<p>PuppyShop@Email.com</p>

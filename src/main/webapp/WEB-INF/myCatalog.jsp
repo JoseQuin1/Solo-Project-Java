@@ -2,6 +2,7 @@
 	pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form"%>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
 <%@ page isErrorPage="true"%>
 <!DOCTYPE html>
 <html>
@@ -122,10 +123,7 @@
 		</div>
 		<div 
 			class="d-flex justify-content-between flex-wrap p-5"
-			style="
-				height: auto; 
-				width: 100%;
-				">
+			style=" height: auto; width: 100%;">
 		<div>
 			<div class="catalog-box" style="height: auto;">
 				<h5
@@ -165,8 +163,8 @@
 							<div class="mb-3">
 								<form:label path="breed">Breed:</form:label>
 								<form:errors path="breed" class="text-danger" />
-								<form:select path="breed" class="form-control">
-									<option value="selected"></option>
+ 								<form:select path="breed" type="text" class="form-control">
+									<option value=""></option>
 									<option value="Great Dane">Great Dane</option>
 									<option value="Corgi">Corgi</option>
 									<option value="Golden Retriever">Golden Retriever</option>
@@ -187,7 +185,7 @@
 									<form:label path="color">Color:</form:label>
 									<form:errors path="color" class="text-danger" />
 									<form:select path="color" class="catalog-form-input">
-										<option value="selected"></option>
+										<option value=""></option>
 										<option value="white">White</option>
 										<option value="beige">Beige</option>
 										<option value="brown">Brown</option>
@@ -201,7 +199,7 @@
 									<form:label path="status">Status:</form:label>
 									<form:errors path="status" class="text-danger" />
 									<form:select path="status" class="catalog-form-input">
-										<option value="selected"></option>
+										<option value=""></option>
 										<option value="avilable">Available</option>
 										<option value="unavailable">Unavailable</option>
 									</form:select>
@@ -210,7 +208,7 @@
 									<form:label path="gender">Gender:</form:label>
 									<form:errors path="gender" class="text-danger" />
 									<form:select path="gender" class="catalog-form-input">
-										<option value="selected"></option>
+										<option value=""></option>
 										<option value="male">M</option>
 										<option value="female">F</option>
 									</form:select>
@@ -226,13 +224,15 @@
 						class="catalog-form-submit bg-primary text-light" />
 				</form:form>
 			</div>
-			</div>
-			<div>
-			<h3 class="text-center text-light mb-5"
-				style="text-shadow: 2px 4px 10px #000000;">Pending Approval</h3>
+		</div>
+		<div class="catalog-box mt-5" style="height: auto;">
+				<h5
+					class="text-light mb-3 bg-warning text-center py-2"
+					style="text-shadow: 2px 4px 10px #000000; border-radius: 25px 25px 0 0; ">Pending Approval
+				</h5>
 			<div class="catalog-box overflow-auto">
-				<table class="table table-border">
-					<thead class="sticky-top bg-success">
+				<table class="table table-border text-center">
+					<thead class="sticky-top bg-primary">
 						<tr>
 							<th>Name</th>
 							<th>Age</th>
@@ -241,6 +241,7 @@
 							<th>Mom's Weight</th>
 							<th>Status</th>
 							<th>Gender</th>
+							<th>Price</th>
 							<th>Image</th>
 							<th>Action</th>
 						</tr>
@@ -252,9 +253,10 @@
 								<td><c:out value="${oneDog.age}"></c:out> weeks</td>
 								<td><c:out value="${oneDog.breed}"></c:out></td>
 								<td><c:out value="${oneDog.color}"></c:out></td>
-								<td><c:out value="${oneDog.weight}"></c:out></td>
+								<td><c:out value="${oneDog.weight}"></c:out> lbs</td>
 								<td><c:out value="${oneDog.status}"></c:out></td>
 								<td><c:out value="${oneDog.gender}"></c:out></td>
+								<td>$<fmt:formatNumber type="number" maxFractionDigits="2" value="${oneDog.price}" /></td>
 								<td><c:out value="${oneDog.fileName}"></c:out></td>
 								<td><a href="/puppy/${oneDog.id}/edit">edit</a> | <a
 									href="/puppy/${oneDog.id}/delete">delete</a></td>
@@ -262,7 +264,7 @@
 						</tbody>
 					</c:forEach>
 				</table>
-			</div>
+				</div>
 			</div>
 		</div>
 	</main>

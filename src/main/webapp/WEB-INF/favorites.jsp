@@ -93,8 +93,8 @@
 						style="margin-top: 10px;">Account</a>
 				</div>
 				
-				<c:choose>
-					<c:when test="${user.profile == 'Breeder'}">
+								<c:choose>
+					<c:when test="${currentUser.profile == 'Breeder'}">
 						<div class="d-flex">
 							<img class="myIcon" style="margin: 15px 10px 0 0;" alt="user Icon"
 								src="${pageContext.request.contextPath}/images/icons/catalog-icon.png">
@@ -112,12 +112,11 @@
 						<div class="d-flex">
 							<img class="myIcon" style="margin: 15px 10px 0 0;" alt="user Icon"
 								src="${pageContext.request.contextPath}/images/icons/heart-icon.png">
-							<a href="/favorites" class="text-decoration-none text-warning"
+							<a href="/favorites" class="text-decoration-none text-dark"
 								style="margin-top: 10px;">Favorites</a>
 						</div>
 					</c:otherwise>
-				</c:choose>
-				
+				</c:choose>				
 				<div class="d-flex">
 					<img class="myIcon" style="margin: 15px 10px 0 0;" alt="user Icon"
 						src="${pageContext.request.contextPath}/images/icons/cart-icon.png">
@@ -127,7 +126,7 @@
 	
 			</div>
 
-			<div class="col-6 p-5 mx-5 overflow-auto" style="height: 500px">
+			<div class="col-6 px-5 mx-5 overflow-auto" style="height: 500px">
 				<c:forEach items="${dogs}" var="oneDog">
 					<c:if test="${oneDog.userWhoLiked.contains(currentUser) && currentUser.dogsLiked.contains(oneDog)}">
 					<div class="my-3 d-flex">
@@ -141,7 +140,7 @@
 							<p class="favorite-puppy-info" style="margin-left:20px;"><span class="favorite-puppy-info text-secondary">Breed:</span> <c:out value="${oneDog.breed}"/></p>
 							<p class="favorite-puppy-info" style="margin-left:20px;"><span class="favorite-puppy-info text-secondary">Puppy Message:</span>Hello There! Thank you for adding me to your favorites. Please feel free to 
 								<span>
-									<a href="/contactUs"style="text-shadow: 2px 4px 10px #000000; text-decoration: none; color: white;">Ask About Me!</a>
+									<a href="/contactUs"style="text-decoration: none;">Ask About Me!</a>
 								</span> I look forward to meeting you.
 							</p>
 							<p style="margin-left:20px;"><a href="/userFavorite/unlike/${oneDog.id}"

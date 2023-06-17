@@ -98,6 +98,7 @@
 	margin-bottom: 120px;
 }
 /*========================footer========================*/
+
 .footerIcon{
 	height: 30px;
 	margin-right: 10px;
@@ -225,8 +226,9 @@ footer{
 .mid-box{
 	height:auto;
 	padding: 0 30px;
-	width:600px;
+	width:640px;
 	min-width:600px;
+	
 }
 .puppy-details-Review {
 	height: 100px;
@@ -324,8 +326,8 @@ footer{
 	border-radius:25px;
 }
 .catalog-box{
-	height: 300px; 
-	width: 800px; 
+	height:400px;
+	width: 900px; 
 	min-width: 500px; 
 	border-style: solid; 
 	border-radius: 25px; 

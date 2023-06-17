@@ -63,6 +63,9 @@ public class User {
 	
 	@OneToMany(mappedBy="user", fetch=FetchType.LAZY)
     private List<Review> reviews;
+	
+	@OneToMany(mappedBy="user", fetch=FetchType.LAZY)
+    private List<Message> messages;
     
 	@ManyToMany(fetch = FetchType.LAZY)
 	@JoinTable(
@@ -183,6 +186,14 @@ public class User {
 
 	public void setReviews(List<Review> reviews) {
 		this.reviews = reviews;
+	}
+
+	public List<Message> getMessages() {
+		return messages;
+	}
+
+	public void setMessages(List<Message> messages) {
+		this.messages = messages;
 	}
 	
 }

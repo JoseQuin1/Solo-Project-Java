@@ -41,9 +41,9 @@ public class AccountController {
 	  @GetMapping("/favorites")
 	  public String fav(Model model,HttpSession session){
 		  Long userId = (Long)session.getAttribute("userId");
+		  User thisUser = userServ.getOne((Long)session.getAttribute("userId"));
 		  
 		  if(userId != null) {
-			  User thisUser = userServ.getOne((Long)session.getAttribute("userId"));
 			  model.addAttribute("currentUser", thisUser);
 			  model.addAttribute("dogs", dogServ.all());
 			  return "favorites.jsp";

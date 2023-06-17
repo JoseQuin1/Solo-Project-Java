@@ -1,7 +1,5 @@
 package com.jquinones.soloproject.controller;
 
-import java.io.IOException;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -11,11 +9,11 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
-import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.multipart.MultipartFile;
 import com.jquinones.soloproject.models.Dog;
+import com.jquinones.soloproject.models.Message;
 import com.jquinones.soloproject.models.User;
 import com.jquinones.soloproject.services.DogService;
+import com.jquinones.soloproject.services.MessageService;
 import com.jquinones.soloproject.services.UserService;
 
 import jakarta.servlet.http.HttpSession;
@@ -29,6 +27,8 @@ public class PuppyController {
 	private DogService dogServ;
 	@Autowired
 	private UserService userServ;
+	@Autowired
+	private MessageService messageServ;
 	
 	 @GetMapping("/")
 	 public String index() {
@@ -71,17 +71,45 @@ public class PuppyController {
 		
 		return "aboutUs.jsp";
 	}
-	
-	@GetMapping("/contactUs")
-	public String contactUs() {
 		
-		return "contactUs.jsp";
-	}
-	
-	
 	@GetMapping("travel")
 	public String travel() {
 		return "travel.jsp";
+	}
+	
+	@GetMapping("/contactUs")
+	public String contactUs(Model model, HttpSession session) {
+		
+		if(session.getAttribute("userId") !=null) {
+//			User thisUser = userServ.getOne((Long)session.getAttribute("userId"));
+//			model.addAttribute("currentUser", thisUser);
+			model.addAttribute("thisMessage", new Message());
+			return "contactUs.jsp";
+		}
+		model.addAttribute("thisMessage", new Message());
+		return "contactUs.jsp"; 
+		
+	}
+	
+	@PostMapping("/contactUs")
+	public String messageCreate(@Valid @ModelAttribute("message")Message message,
+			Model model, BindingResult result, HttpSession session){
+		
+		if (result.hasErrors()) {
+			return "redirect:/myCatalog";
+		}
+		
+		if(session.getAttribute("userId") != null) {
+			User thisUser = userServ.getOne((Long)session.getAttribute("userId"));
+			message.setUser(thisUser);
+			messageServ.create(message);
+			
+			return"redirect:/contactUs";
+		}
+		
+		messageServ.create(message);
+		return"redirect:/contactUs";
+		
 	}
 	
 	@GetMapping("/puppies")
@@ -105,7 +133,7 @@ public class PuppyController {
 	
 	@PostMapping("/doggies/new")
 	public String newDog(@Valid @ModelAttribute("dog") Dog dog,
-		@RequestParam("file") MultipartFile file,
+//		@RequestParam("file") MultipartFile file,
 		BindingResult result, Model model, HttpSession session) {
 		
 		if (session.getAttribute("userId") == null) {
@@ -113,20 +141,24 @@ public class PuppyController {
 		}
 		
 		if (result.hasErrors()) {
-			return "redirect:/myCatalog";
+			model.addAttribute("newPup", new Dog());
+			return "myCatalog.jsp";
 		}
-		else {
-			try {
-			dog.setUser(userServ.getOne((Long)session.getAttribute("userId")));
-			dog.setFileName(file.getOriginalFilename());
-			dog.setContent(file.getBytes());
-			dogServ.create(dog);
-			return "redirect:/myCatalog";
-			}catch(IOException e) {
-				e.printStackTrace();
-				return "error";
-			}
-		}
+
+		dog.setUser(userServ.getOne((Long)session.getAttribute("userId")));
+		dogServ.create(dog);
+		return "redirect:/myCatalog";
+//		
+//			try {
+//				dog.setUser(userServ.getOne((Long)session.getAttribute("userId")));
+//				dog.setFileName(file.getOriginalFilename());
+//				dog.setContent(file.getBytes());
+//				dogServ.create(dog);
+//				return "redirect:/myCatalog";
+//			}catch(IOException e) {
+//				e.printStackTrace();
+//				return "error";
+//			}
 	}
 
 	
