@@ -43,9 +43,8 @@ public class Message {
     @Min(value=1, message="Phone must be greater than one")
     private String phone;
     
-//    @NotBlank(message="Message is required!")
-//    @Size(min = 1, max = 255, message="First name must be between 50 and 255 characters")
-//    private String message;
+    @NotBlank
+    private String comment;
     
     @Column(updatable=false)
     private Date createdAt;
@@ -130,12 +129,13 @@ public class Message {
 		this.user = user;
 	}
 
-//	public String getMessage() {
-//		return message;
-//	}
-//
-//	public void setMessage(String message) {
-//		this.message = message;
-//	}
+	public String getComment() {
+		return comment;
+	}
+
+	public void setComment(String comment) {
+		this.comment = comment;
+	}
+
 	
 }

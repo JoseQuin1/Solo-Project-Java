@@ -89,7 +89,7 @@
 							Raton, FL 33496</p>
 					</div>
 				</div>
-		<form:form action="/contactUs" method="post" modelAttribute="thisMessage"
+		<form:form action="/contactUs" method="post" modelAttribute="message"
 				class="m-2" style="min-width:400px; height: auto; width:500px;">
 					<h2 class="text-center"style="padding: 5px 0 0 5px;">Send a Message</h2>
 					<div class="d-flex justify-content-between">
@@ -113,11 +113,11 @@
 						</div>
 					</div>
 
-<%--  	 				<div class="px-2" style="margin-top: 10px;">
-						<form:label path="message"></form:label>
-						<form:errors path="message" class="text-danger"/>
-						<form:textarea path="message" placeholder="Write your message here" style="width:100%; max-height: 100px; min-height:100px;"/>
-					</div> --%>
+ 				<div class="px-2" style="margin-top: 10px;">
+						<form:label path="comment"></form:label>
+						<form:errors path="comment" class="text-danger"/>
+						<form:textarea path="comment" style="width:100%; height:100px;" placeholder="Write your message here"/>
+				</div>
 
 					<div class=" text-center my-4">
 						<button type="submit" class="btn btn-sm rounded-pill"style="background-color:#CEE204; box-shadow: 2px 4px 10px #000000;"> Send </button>

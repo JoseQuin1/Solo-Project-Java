@@ -3,15 +3,21 @@ package com.jquinones.soloproject.controller;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PostMapping;
 
 import com.jquinones.soloproject.models.Dog;
+import com.jquinones.soloproject.models.Message;
 import com.jquinones.soloproject.models.User;
 import com.jquinones.soloproject.services.DogService;
+import com.jquinones.soloproject.services.MessageService;
 import com.jquinones.soloproject.services.UserService;
 
 import jakarta.servlet.http.HttpSession;
+import jakarta.validation.Valid;
 
 @Controller
 public class AccountController {
@@ -20,6 +26,8 @@ public class AccountController {
 	private UserService userServ;
 	@Autowired
 	private DogService dogServ;
+	@Autowired
+	private MessageService messageServ;
 	
 	  @GetMapping("/myCatalog")
 	  private String profile(Model model, HttpSession session) {
@@ -31,8 +39,9 @@ public class AccountController {
 					 model.addAttribute("user", user);
 					 model.addAttribute("dog", new Dog());
 					 return "myCatalog.jsp";
-				 }
+				 }else {
 				 return "redirect:/profile";
+				 }
 			 }
 			 return "redirect:/login";
 
@@ -76,4 +85,32 @@ public class AccountController {
 			return "redirect:/login";
 			
 		}
+		
+		@GetMapping("/contactUs")
+		public String contactUs(Model model) {
+			
+			model.addAttribute("message", new Message());
+			return "contactUs.jsp"; 
+			
+		}
+		
+		@PostMapping("/contactUs")
+		public String messageCreate(@Valid @ModelAttribute("message") Message message,
+				BindingResult result, Model model,HttpSession session) {
+			
+			if(result.hasErrors()) {
+				model.addAttribute("mess", new Message());
+				return "contactUs.jsp";
+			}
+			
+			if(session.getAttribute("userId") != null) {
+				User user = userServ.getOne((Long)session.getAttribute("userId"));
+				message.setUser(user);
+				messageServ.create(message);
+				return"redirect:/contactUs";
+			}
+			
+			return"redirect:/contactUs";
+		}
+			
 }

@@ -73,7 +73,7 @@
 		</div>
 	</nav>
 	<main class="d-flex">
-		<div style="height: auto:">
+		<div style="width: 200px;">
 			<h3 class="top-div-under-header pt-3"style="margin-left:20px;">Catalog</h3>
 			<div style="padding: 10px 30px;">
 
@@ -227,12 +227,12 @@
 		</div>
 		<div class="catalog-box mt-5" style="height: auto;">
 				<h5
-					class="text-light mb-3 bg-warning text-center py-2"
+					class="text-light mb-3 text-center py-2"
 					style="text-shadow: 2px 4px 10px #000000; border-radius: 25px 25px 0 0; ">Pending Approval
 				</h5>
 			<div class="catalog-box overflow-auto">
 				<table class="table table-border text-center">
-					<thead class="sticky-top bg-primary">
+					<thead class="sticky-top" style="background-color:lightgray;">
 						<tr>
 							<th>Name</th>
 							<th>Age</th>
