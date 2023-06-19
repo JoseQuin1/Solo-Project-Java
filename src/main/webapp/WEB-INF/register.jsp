@@ -83,7 +83,7 @@
 	</div>
 	<div style="
 			min-width:400px;
-			height:700px; 
+			height: 900px;
 			width:400px; 
 			margin-right:150px;
 			border-style: solid;
@@ -91,7 +91,7 @@
 			box-shadow: 2px 2px 20px #000000">
 			<form:form action="/register" method="post" modelAttribute="newUser" 
 				class="col-6 p-5"
-				style="width:100%; height:auto;">
+				style="width:100%;">
 				<h2 class="mb-3">New Registration</h2>
 				<div class="mb-3">
 					<form:label path="firstName">First Name:</form:label>

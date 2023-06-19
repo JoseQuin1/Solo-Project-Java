@@ -90,7 +90,7 @@
 					</div>
 				</div>
 		<form:form action="/contactUs" method="post" modelAttribute="message" id="contactForm"
-				class="m-2" style="min-width:400px; height: auto; width:500px;">
+				class="m-2" style="min-width:400px; width:500px;">
 					<h2 class="text-center"style="padding: 5px 0 0 5px;">Send a Message</h2>
 					<c:choose>
 					<c:when test="${userId != null}">

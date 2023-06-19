@@ -121,7 +121,7 @@
 				<div class="d-flex">
 					<img class="myIcon" style="margin: 15px 10px 0 0;" alt="user Icon"
 						src="${pageContext.request.contextPath}/images/icons/cart-icon.png">
-					<a href="/order-history" class="text-decoration-none text-dark"
+					<a href="#" class="text-decoration-none text-dark"
 						style="margin-top: 10px;">Order History</a>
 				</div>
 	
