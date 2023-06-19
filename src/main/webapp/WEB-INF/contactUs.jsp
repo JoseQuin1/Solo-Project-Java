@@ -89,29 +89,55 @@
 							Raton, FL 33496</p>
 					</div>
 				</div>
-		<form:form action="/contactUs" method="post" modelAttribute="message"
+		<form:form action="/contactUs" method="post" modelAttribute="message" id="contactForm"
 				class="m-2" style="min-width:400px; height: auto; width:500px;">
 					<h2 class="text-center"style="padding: 5px 0 0 5px;">Send a Message</h2>
-					<div class="d-flex justify-content-between">
-						<div class="p-2">
-							<form:label path="firstName" ></form:label>
-							<form:errors path="firstName" class="text-danger"/>
-							<form:input path="firstName" type="text" placeholder="First Name" class="contact-form-input"/>
-								
-							<form:label path="email"></form:label> 
-							<form:errors path="email" class="text-danger"/>
-							<form:input path="email" type="email" placeholder="Email Address" class="contact-form-input" />
+					<c:choose>
+					<c:when test="${userId != null}">
+						<div class="d-flex justify-content-between">
+							<div class="p-2">
+								<form:label path="firstName" ></form:label>
+								<form:errors path="firstName" class="text-danger"/>
+								<form:input path="firstName" type="text" value="${thisUser.firstName}" class="contact-form-input"/>
+									
+								<form:label path="email"></form:label> 
+								<form:errors path="email" class="text-danger"/>
+								<form:input path="email" type="email" value="${thisUser.email}" class="contact-form-input" />
+							</div>
+							<div class="p-2 rounded">
+								<form:label path="lastName" class=""></form:label>
+								<form:errors path="lastName" class="text-danger"/>
+								<form:input path="lastName" type="text" value="${thisUser.lastName}"  class="contact-form-input"/>
+									
+								<form:label path="phone"></form:label> 
+								<form:errors path="phone" class="text-danger"/>
+								<form:input path="phone" type="number" placeholder="Phone Number" class="contact-form-input" />
+							</div>
 						</div>
-						<div class="p-2 rounded">
-							<form:label path="lastName" class=""></form:label>
-							<form:errors path="lastName" class="text-danger"/>
-							<form:input path="lastName" type="text" placeholder="Last Name"  class="contact-form-input"/>
-								
-							<form:label path="phone"></form:label> 
-							<form:errors path="phone" class="text-danger"/>
-							<form:input path="phone" type="number" placeholder="Phone Number" class="contact-form-input" />
+						</c:when>
+						<c:otherwise>
+						<div class="d-flex justify-content-between">
+							<div class="p-2">
+								<form:label path="firstName" ></form:label>
+								<form:errors path="firstName" class="text-danger"/>
+								<form:input path="firstName" type="text" placeholder="First Name" class="contact-form-input"/>
+									
+								<form:label path="email"></form:label> 
+								<form:errors path="email" class="text-danger"/>
+								<form:input path="email" type="email" placeholder="Email Address" class="contact-form-input" />
+							</div>
+							<div class="p-2 rounded">
+								<form:label path="lastName" class=""></form:label>
+								<form:errors path="lastName" class="text-danger"/>
+								<form:input path="lastName" type="text" placeholder="Last Name"  class="contact-form-input"/>
+									
+								<form:label path="phone"></form:label> 
+								<form:errors path="phone" class="text-danger"/>
+								<form:input path="phone" type="number" placeholder="Phone Number" class="contact-form-input" />
+							</div>
 						</div>
-					</div>
+						</c:otherwise>
+					</c:choose>
 
  				<div class="px-2" style="margin-top: 10px;">
 						<form:label path="comment"></form:label>

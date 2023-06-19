@@ -87,10 +87,17 @@ public class AccountController {
 		}
 		
 		@GetMapping("/contactUs")
-		public String contactUs(Model model) {
+		public String contactUs(Model model, HttpSession session) {
 			
-			model.addAttribute("message", new Message());
-			return "contactUs.jsp"; 
+			if(session.getAttribute("userId") != null) {
+				User user = userServ.getOne((Long)session.getAttribute("userId"));
+				model.addAttribute("thisUser", user);
+				model.addAttribute("message", new Message());
+				return "contactUs.jsp";
+			}else {
+				model.addAttribute("message", new Message());
+				return "contactUs.jsp";
+			}
 			
 		}
 		
@@ -109,8 +116,29 @@ public class AccountController {
 				messageServ.create(message);
 				return"redirect:/contactUs";
 			}
-			
+			messageServ.create(message);
 			return"redirect:/contactUs";
+		}
+		
+		@PostMapping("/askAboutMe/{id}")
+		public String puppyDetailsMessageNew(@Valid @ModelAttribute("message") Message message,
+				BindingResult result, @PathVariable("id")Long id, Model model, HttpSession session) {
+			
+			if(result.hasErrors()) {
+				model.addAttribute("mess", new Message());
+				return "puppyDetails.jsp";
+			}
+			
+			if(session.getAttribute("userId") != null) {
+				User user = userServ.getOne((Long)session.getAttribute("userId"));
+				message.setUser(user);
+				model.addAttribute("thisPup", dogServ.findById(id));
+				messageServ.create(message);
+				return"redirect:/puppy/{id}";
+			}
+			
+			messageServ.create(message);
+			return"redirect:/puppy/{id}";
 		}
 			
 }

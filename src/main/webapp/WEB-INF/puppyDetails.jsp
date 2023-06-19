@@ -271,37 +271,38 @@
 						src="${pageContext.request.contextPath}/images/icons/thumbs-up-icon.jpeg">
 				</p>
 				<div class="">
-					<form class="puppy-form">
-						<h2 class="text-center" style="padding: 5px 0 0 5px;">Ask
-							about me</h2>
-						<div class="d-flex justify-content-between">
-							<div class="p-2">
-								<label name="fname"></label> <input name="fname" type="text"
-									placeholder="First Name" class="contact-form-input" /> <label
-									name="email"></label> <input name="email" type="email"
-									placeholder="Email Address" class="contact-form-input" />
-							</div>
-							<div class="p-2 rounded">
-								<label name="lname"></label> <input name="lname" type="text"
-									placeholder="Last Name" class="contact-form-input" /> <label
-									name="phone"></label> <input name="phone" type="number"
-									placeholder="Phone Number" class="contact-form-input" />
-							</div>
+					<form:form action="/askAboutMe/${oneDog.id}" method="post" modelAttribute="message" class="puppy-form">
+						<h2 class="text-center" style="padding: 5px 0 0 5px;">Ask about me</h2>	
+					<div class="d-flex justify-content-between">
+						<div class="p-2">
+							<form:label path="firstName" ></form:label>
+							<form:errors path="firstName" class="text-danger"/>
+							<form:input path="firstName" type="text" placeholder="First Name" class="contact-form-input"/>
+								
+							<form:label path="email"></form:label> 
+							<form:errors path="email" class="text-danger"/>
+							<form:input path="email" type="email" placeholder="Email Address" class="contact-form-input" />
 						</div>
-						<div class="px-2" style="margin-top: 10px;">
-							<label name="message"></label>
-							<textarea rows="5" cols="3" name="message"
-								placeholder="Write your message here"
-								style="width: 100%; max-height: 100px; min-height: 100px;">
-						</textarea>
+						<div class="p-2 rounded">
+							<form:label path="lastName" class=""></form:label>
+							<form:errors path="lastName" class="text-danger"/>
+							<form:input path="lastName" type="text" placeholder="Last Name"  class="contact-form-input"/>
+								
+							<form:label path="phone"></form:label> 
+							<form:errors path="phone" class="text-danger"/>
+							<form:input path="phone" type="number" placeholder="Phone Number" class="contact-form-input" />
 						</div>
-						<div class=" text-center my-4">
-							<button type="submit" class="btn btn-sm rounded-pill"
-								style="background-color: #97E994; box-shadow: 2px 4px 10px #000000;">
-								Send</button>
-						</div>
+					</div>
+ 				<div class="px-2" style="margin-top: 10px;">
+						<form:label path="comment"></form:label>
+						<form:errors path="comment" class="text-danger"/>
+						<form:textarea path="comment" style="width:100%; height:100px;" placeholder="Write your message here"/>
+				</div>
+					<div class=" text-center my-4">
+						<button type="submit" class="btn btn-sm rounded-pill"style="background-color:#97E994; box-shadow: 2px 4px 10px #000000;"> Send </button>
+					</div>
 
-					</form>
+					</form:form>
 				</div>
 			</div>
 

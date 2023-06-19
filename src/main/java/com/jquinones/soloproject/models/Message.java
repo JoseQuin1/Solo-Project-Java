@@ -40,7 +40,7 @@ public class Message {
     private String email;
     
     @NotNull(message="Phone is required!")
-    @Min(value=1, message="Phone must be greater than one")
+    @Min(value=1, message="Phone must be greater than 1!")
     private String phone;
     
     @NotBlank

@@ -54,3 +54,10 @@ function scrollX(value){
 		});
 }
 
+//Form submit alert
+function submitForm(){
+	
+	alert("Thank you for contacting us. Our service team will contact you shortly!");
+	
+}
+

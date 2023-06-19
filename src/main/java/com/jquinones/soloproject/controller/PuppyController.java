@@ -10,6 +10,7 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
 import com.jquinones.soloproject.models.Dog;
+import com.jquinones.soloproject.models.Message;
 import com.jquinones.soloproject.models.User;
 import com.jquinones.soloproject.services.DogService;
 import com.jquinones.soloproject.services.UserService;
@@ -185,10 +186,12 @@ public class PuppyController {
 			User thisUser = userServ.getOne((Long) session.getAttribute("userId"));
 			model.addAttribute("oneDog", dogServ.findById(id));
 			model.addAttribute("currentUser", thisUser);
+			model.addAttribute("message", new Message());
 			
 			return "puppyDetails.jsp";
 		}
 		
+		model.addAttribute("message", new Message());
 		model.addAttribute("oneDog", dogServ.findById(id));
 		return "puppyDetails.jsp";
 	}
